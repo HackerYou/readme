@@ -1,31 +1,44 @@
 import { resolve } from 'path';
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+import { getIfUtils } from 'webpack-config-utils';
+import webpackValidator from 'webpack-validator';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-const extractSass = new ExtractTextPlugin({
-    filename: 'src/'
-});
+const { extract } = ExtractTextPlugin;
 
-const baseConfig = {
-    entry: {
-        main: './src/index.js'
-    },
-    output: {
-        filename: '[name].js',
-        path: path.resolve('./build')
-    },
-    module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                use: [
-                    { loader: 'style-loader' },
-                    { loader: 'css-loader '},
-                    { loader: 'sass-loader' }
-                ]
-            }
+export default (env) => {
+    const { ifProd, ifNotProd } = getIfUtils(env);
+    const settings = {
+        context: resolve('src'),
+        entry: './index.js',
+        output: {
+            filename: 'bundle.js',
+            path: resolve('public'),
+            publicPath: '/public/',
+            pathinfo: ifNotProd()
+        },
+        devtool: ifProd('source-map', 'eval'),
+        module: {
+            rules: [
+                {test: /\.js$/, use: ['babel-loader'], exclude: /node_modules/},
+                {test: /\.scss$/, use: ifProd(
+                        extract({
+                            fallback: 'style-loader',
+                            use: ['css-loader', 'sass-loader']
+                        }),
+                        ['css-loader', 'sass-loader']
+                    )
+                }
+            ]
+        },
+        plugins: [
+            new ExtractTextPlugin('style.css')
         ]
     }
-};
 
-module.exports = baseConfig;
+    if (env.debug) {
+        console.log(config);
+        debugger;
+    }
 
+    return settings;
+}
