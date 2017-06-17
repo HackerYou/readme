@@ -4,7 +4,9 @@ module.exports = {
         "react"
     ],
     "globals": {
-        "document": true
+        "document": true,
+        "describe": true,
+        "it": true
     },
     "rules": {
         "indent": ["error", 4],
