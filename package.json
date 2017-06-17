@@ -8,8 +8,10 @@
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
-    "eslint-plugin-jsx-a11y": "^5.0.3"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "babel-loader": "^7.0.0",
@@ -19,8 +21,7 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "node-nightly": "^1.7.2",
     "node-sass": "^4.5.3",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react-dev-utils": "^3.0.0",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
@@ -35,6 +36,7 @@
     "build": "webpack --env.prod -p",
     "prebuild:dev": "rimraf public",
     "build:dev": "webpack --env.dev",
+    "dev": "webpack-dev-server --env.dev",
     "debug": "node-nightly --inspect --debug-brk node_modules/.bin/webpack --env.debug",
     "debug:dev": "npm run debug -- --env.dev",
     "debug:prod": "npm run debug -- --env.prod"
