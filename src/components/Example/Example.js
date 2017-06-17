@@ -1,9 +1,9 @@
 import React from 'react';
 
-require('./Example.scss');
+import './Example.scss';
 
-const Example = () => (
-    <div>Test</div>
+const Example = ({ test }) => (
+    <div>{ test }</div>
 );
 
 export default Example;
