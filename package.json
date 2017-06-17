@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Readme",
   "main": "public/bundle.js",
+  "jest": {
+    "transform": {".*": "./node_modules/jest-css-modules"}
+  },
   "dependencies": {
     "babel-core": "^6.25.0",
     "eslint": "^3.19.0",
@@ -14,15 +17,22 @@
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "babel-jest": "^20.0.3",
     "babel-loader": "^7.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "chai": "^4.0.2",
     "css-loader": "^0.28.4",
+    "enzyme": "^2.8.2",
     "eslint-loader": "^1.8.0",
     "extract-text-webpack-plugin": "^2.1.2",
+    "jest": "^20.0.4",
+    "jest-css-modules": "^1.1.0",
     "node-nightly": "^1.7.2",
     "node-sass": "^4.5.3",
     "react-dev-utils": "^3.0.0",
+    "react-test-renderer": "^15.6.1",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
@@ -32,7 +42,7 @@
     "webpack-validator": "^3.0.0"
   },
   "scripts": {
-    "test": "",
+    "test": "jest",
     "prebuild": "rimraf public",
     "build": "webpack --env.prod -p",
     "prebuild:dev": "rimraf public",
