@@ -24,7 +24,7 @@ export default (env) => {
         devtool: ifProd('source-map', 'eval'),
         module: {
             rules: [
-                { test: /\.js$/, use: ['babel-loader'], exclude: /node_modules/ },
+                { test: /\.js$/, use: ifProd(['babel-loader'], ['babel-loader', 'eslint-loader']), exclude: /node_modules/ },
                 { test: /\.scss$/, use: ifProd(
                         extract({
                             fallback: 'style-loader',

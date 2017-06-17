@@ -4,7 +4,7 @@ import Example from './components/Example/Example';
 
 const App = () => (
     <div>
-        <Example />
+        <Example test="A test prop." />
     </div>
 );
 
