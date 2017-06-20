@@ -1,25 +1,36 @@
 # Readme
 Readme is an online classroom management system.
 
+## Getting Started
+1. Clone this repository
+2. Run `npm install`
+3. Run `npm run dev` to start your local server.
+
 ## Styleguide
 For syntax and style, The Readme client follows the [Air BnB Style Guide](https://github.com/airbnb/javascript).
 
 This project also uses ESLint in order to help enforce the AirBnB style. In order for PRs to successfully merge, they will need to adhere to this style guide. We would recommend downloading the ESLint package for your respective code editor to help facilitate this process.
 
 ## Contributing to Readme
-Readme has two main deployment branches: `staging` and `master`.
+Contributions to Readme are made by forking the repository, making a feature branch, making changes, and then pull requesting your changes in.
 
-The `master` branch contains the production code for Readme. It should never be pushed to directly - it receives code that is PR'd in from the `staging` branch. Merging a pull request from the staging branch will trigger a deploy to the production instance of Readme.
+The process is as follows:
+1. Clone this repository
+2. Run `npm install`
+3. Create a feature branch (`git checkout -b feature/name-of-feature`)
+4. Push your changes to your fork's feature branch
+5. Merge your changes into this repository's `staging` branch.
 
-Do not merge from staging into production unless you are 100% sure that the code you have written is working flawlessly on staging. In general, have someone else review and merge your PR from staging.
+Merged changes into staging will be automatically deployed to our staging server, which is currently located at `138.197.164.101`.
 
-The `staging` branch deploys to a staging instance of Readme. You will merge your feature branches into here - merging a feature branch into `staging` will trigger a deploy to the staging instance of Readme, and give you an opportunity to test out your new code in an environment that simulates production. Once you have tested your code on staging and it looks good, you are ready to make a pull request from staging into master.
+Once changes have been tested on staging and are good to go, they can be merged from `staging` into `production` directly on the repo itself - this is step six:
 
-So, the contribution flow for Readme works as follows:
+6. Merge staging into master
 
-1. Fork a copy of Readme.
-2. In your forked copy of Readme, create a feature branch. (`git checkout -b feature/your-feature`)
-3. Make all of your changes here.
-4. Once you're ready to merge your changes into Readme, push those changes to your fork's feature branch, and make a pull request into the `staging` branch of Readme. It will be run against some tests that will make sure it adhere's to Readme's style and doesn't break any previously committed code.
-5. Have another dev on the team review your pull request and merge it in. This will trigger a deploy to the staging instance of Readme..
-6. Test your changes on the staging first. If they look good to go, make a pull request from staging into master. This will trigger a deploy to the master branch, launching your code into production. You did it!! 🔥🎉🔥🎉🔥🎉
+This will triger a deploy to our production server, which is currently located at `<no production server set>`
+
+## Making a pull request
+New pull requests have to pass all previously written tests before they can be merged.
+
+Currently, Readme is using jest/enzyme for unit testing. Each new component that is created should have a unit test - this should live in `components/<component-name>/ComponentName.test.js`. 
+

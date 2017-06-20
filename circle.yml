@@ -1,0 +1,7 @@
+dependencies:
+  post:
+    - npm install
+test:
+  override:
+    - npm run test
+    
