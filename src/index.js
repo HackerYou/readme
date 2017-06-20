@@ -14,7 +14,7 @@ const App = () => (
     <Provider store={store}>
         <Router>
             <div>
-                Nothing to see here.
+                Testing deploy script.
             </div>
         </Router>
     </Provider>
