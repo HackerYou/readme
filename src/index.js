@@ -14,7 +14,7 @@ const App = () => (
     <Provider store={store}>
         <Router>
             <div>
-                Testing deploy script.
+                Super cool deploy script!
             </div>
         </Router>
     </Provider>
