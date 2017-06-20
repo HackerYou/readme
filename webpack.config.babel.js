@@ -20,6 +20,9 @@ export default (env) => {
                 warnings: ifNotProd(),
                 errors: ifNotProd(),
             },
+            historyApiFallback: {
+              index: 'index.html',
+            },
         },
         devtool: ifProd('source-map', 'eval'),
         module: {
