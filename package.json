@@ -4,7 +4,9 @@
   "description": "Readme",
   "main": "public/bundle.js",
   "jest": {
-    "transform": {".*": "./node_modules/jest-css-modules"}
+    "transform": {
+      ".*": "./node_modules/jest-css-modules"
+    }
   },
   "dependencies": {
     "babel-core": "^6.25.0",
@@ -13,9 +15,12 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.1"
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.0"
   },
   "devDependencies": {
     "babel-jest": "^20.0.3",
