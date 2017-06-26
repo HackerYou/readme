@@ -17,7 +17,7 @@ export default (env) => {
         },
         devServer: {
             overlay: {
-                warnings: ifNotProd(),
+                // warnings: ifNotProd(),
                 errors: ifNotProd(),
             },
             historyApiFallback: {
