@@ -1,4 +1,8 @@
+import config from '../services/config';
+
 export default {
-    session: !!sessionStorage.jwt,
+    auth: {
+        loggedIn: !!localStorage[`${config.getAppName()}_token`],
+    },
 };
 

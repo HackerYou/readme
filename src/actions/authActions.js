@@ -18,3 +18,13 @@ export function logInUser(credentials) {
             })
     );
 }
+
+export function logOutUser() {
+    setCredentials({
+        token: '',
+        user_id: '',
+    });
+    return {
+        type: types.LOG_OUT,
+    };
+}

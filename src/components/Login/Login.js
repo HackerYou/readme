@@ -57,6 +57,7 @@ class Login extends React.Component {
                       labelText=""
                     />
                 </form>
+                <button onClick={this.props.actions.logOutUser}>Log Out</button>
             </div>
         );
     }
@@ -65,6 +66,7 @@ class Login extends React.Component {
 Login.propTypes = {
     actions: PropTypes.shape({
         logInUser: PropTypes.func.isRequired,
+        logOutUser: PropTypes.func.isRequired,
     }).isRequired,
 };
 
