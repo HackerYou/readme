@@ -1,5 +1,5 @@
 import types from './actionTypes';
-import { login } from '../services/authService';
+import { login, setCredentials } from '../services/authService';
 
 export function loginSuccess() {
     return { type: types.LOG_IN_SUCCESS };
@@ -8,8 +8,9 @@ export function loginSuccess() {
 export function logInUser(credentials) {
     return dispatch => (
         login(credentials)
-            .then((response) => {
-                sessionStorage.setItem('jwt', response.jwt);
+            .then(response => response.json())
+            .then((data) => {
+                setCredentials(data);
                 dispatch(loginSuccess());
             })
             .catch((error) => {

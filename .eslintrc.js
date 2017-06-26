@@ -11,9 +11,11 @@ module.exports = {
         "Headers": true,
         "Request": true,
         "fetch": true,
-        "sessionStorage": true
+        "sessionStorage": true,
+        "localStorage": true
     },
     "rules": {
+        "arrow-body-style": 0,
         "no-underscore-dangle": ["error", {"allow": ["__REDUX_DEVTOOLS_EXTENSION__", "__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"]}],
         "indent": ["error", 4],
         "react/jsx-indent": ["error", 4],
