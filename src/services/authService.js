@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 import config from './config';
 import { setLocalStorage } from '../utils/index';
 
