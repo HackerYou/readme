@@ -1,4 +1,4 @@
-# Readme
+# Readme 👌
 Readme is an online classroom management system.
 
 ## Getting Started
