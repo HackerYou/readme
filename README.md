@@ -7,9 +7,11 @@ Readme is an online classroom management system.
 3. Run `npm run dev` to start your local server.
 
 ## Styleguide
-For syntax and style, The Readme client follows the [Air BnB Style Guide](https://github.com/airbnb/javascript).
+For syntax and style, The Readme client follows the [Air BnB Style Guide](https://github.com/airbnb/javascript), with some slight modifications.
 
-This project also uses ESLint in order to help enforce the AirBnB style. In order for PRs to successfully merge, they will need to adhere to this style guide. We would recommend downloading the ESLint package for your respective code editor to help facilitate this process.
+This project also uses ESLint in order to help enforce the AirBnB style. It's strongly recommended that you configure your code editor to work with Readme's ESLint configuration. 
+
+You'll want to get an ESLint package for your code editor, so that you are notified of any linting errors as you write your code. For information on setting up ESLint in Sublime text, [take a look at this video](http://jonathancreamer.com/setup-eslint-with-es6-in-sublime-text/)
 
 ## Contributing to Readme
 Contributions to Readme are made by forking the repository, making a feature branch, making changes, and then pull requesting your changes in.
