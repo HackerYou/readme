@@ -7,9 +7,8 @@ import { isLoggedIn } from '../../services/authService';
 export const handleRender = (Component, props) => {
     if (isLoggedIn()) {
         return <Component {...props} />;
-    } else {
-        return <Redirect to={{ pathname: '/login' }} />;
     }
+    return <Redirect to={{ pathname: '/login' }} />;
 };
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
