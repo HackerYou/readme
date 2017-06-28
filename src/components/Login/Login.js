@@ -2,7 +2,11 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+<<<<<<< HEAD
 import Footer from '../Footer/Footer';
+=======
+import Members from '../Members/Members';
+>>>>>>> f2dc5af074f16d0f9e50f5d7f5244cd5a4615f33
 
 import Input from '../Forms/Input/Input';
 import * as authActions from '../../actions/authActions';
@@ -60,6 +64,7 @@ class Login extends React.Component {
                 </form>
                 <button onClick={this.props.actions.logOutUser}>Logout</button>
                 <Footer />
+                <Members/>
             </div>
         );
     }
