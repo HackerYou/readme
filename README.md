@@ -1,5 +1,4 @@
-# Readme 👌
-Readme is an online classroom management system.
+# Readme
 
 ## Getting Started
 1. Clone this repository
