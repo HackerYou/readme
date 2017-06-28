@@ -8,28 +8,34 @@
 ## Styleguide
 For syntax and style, The Readme client follows the [Air BnB Style Guide](https://github.com/airbnb/javascript).
 
-This project also uses ESLint in order to help enforce the AirBnB style. In order for PRs to successfully merge, they will need to adhere to this style guide. We would recommend downloading the ESLint package for your respective code editor to help facilitate this process.
+This project also uses ESLint in order to help enforce the AirBnB style. Code that fails to adhere to the AirBnB style will trigger errors in compilation.
+
+The easiest way to navigate this is to download ESLint and get a copy of it running in your editor. For more information on setting up ESLint, check out [this article](http://jonathancreamer.com/setup-eslint-with-es6-in-sublime-text/) on setting up ESLint in your editor - this article is for setting it up using Sublime, but the steps will be similar for your respective editor.
 
 ## Contributing to Readme
-Contributions to Readme are made by forking the repository, making a feature branch, making changes, and then pull requesting your changes in.
+Contributions to Readme are made by forking the repository, making changes, and then pull requesting your changes back in to `master`.
 
 The process is as follows:
 1. Clone this repository
 2. Run `npm install`
-3. Create a feature branch (`git checkout -b feature/name-of-feature`)
-4. Push your changes to your fork's feature branch
-5. Merge your changes into this repository's `staging` branch.
+3. Make your changes, test them locally on your computer.
+5. Pull request your changes back into HackerYou/readme's master branch.
 
-Merged changes into staging will be automatically deployed to our staging server, which is currently located at `138.197.164.101`.
+New pull requests have to pass all previously written tests before they can be merged. More on testing below.
 
-Once changes have been tested on staging and are good to go, they can be merged from `staging` into `production` directly on the repo itself - this is step six:
+Merged changes into master  will be automatically deployed to our staging server, which is currently located at `138.197.164.101`.
 
-6. Merge staging into master
+Once changes have been tested on staging and are good to go, they can be merged from `master` into `production` directly on the repo itself.
 
-This will triger a deploy to our production server, which is currently located at `<no production server set>`
+## Deploying to Production
+Deploying to production will be straightfoward, once it's set up - you simply make a pull request from master into the production branch, which will automatically trigger a deploy to our production server.
 
-## Making a pull request
-New pull requests have to pass all previously written tests before they can be merged.
+## Testing
+Currently, we are using Jest for our unit testing. When new components are created, unit tests should be written for them. We are not currently doing any end to end testing, though this might be something worth exploring for the future.
 
-Currently, Readme is using jest/enzyme for unit testing. Each new component that is created should have a unit test - this should live in `components/<component-name>/ComponentName.test.js`. 
+For more information on testing using Jest and Enzyme, check out these notes on [Testing in React](https://github.com/swbloom/scribbles/blob/master/testing.md).
+
+Redux actions and reducers should also be united tested. For more information on how to do this, check out [Writing Tests](http://redux.js.org/docs/recipes/WritingTests.html) in the Redux documentation.
+
+
 
