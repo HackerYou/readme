@@ -57,7 +57,7 @@ class Login extends React.Component {
                       labelText=""
                     />
                 </form>
-                <button onClick={this.props.actions.logOutUser}>Log Out</button>
+                <button onClick={this.props.actions.logOutUser}>Logout</button>
             </div>
         );
     }
