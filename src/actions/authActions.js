@@ -1,3 +1,5 @@
+import { push } from 'react-router-redux';
+
 import types from './actionTypes';
 import { login, setCredentials } from '../services/authService';
 
@@ -8,9 +10,9 @@ export function loginSuccess() {
 export function logInUser(credentials) {
     return dispatch => (
         login(credentials)
-            .then(response => response.json())
             .then((data) => {
                 setCredentials(data);
+                dispatch(push('/dashboard'));
                 dispatch(loginSuccess());
             })
             .catch((error) => {
