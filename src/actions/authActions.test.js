@@ -27,6 +27,13 @@ describe('async actions', () => {
             user_id: "56ba54e67a16140b67e4bb88"
         });
         const expectedActions = [
+            {
+                payload: {
+                    args: [ '/dashboard' ],
+                    method: 'push',
+                },
+                type: '@@router/CALL_HISTORY_METHOD',
+            },
             { 
                 type: types.LOG_IN_SUCCESS,
             },
