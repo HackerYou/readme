@@ -1,12 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
-import { isLoggedIn } from './services/authService';
 
 import rootReducer from './reducers/index';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -24,17 +23,11 @@ const store = createStore(
     ),
 );
 
-if (isLoggedIn()) {
-    store.dispatch(push('/dashboard'));
-} else {
-    store.dispatch(push('/login'));
-}
-
 const App = () => (
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <div>
-                <Route path="/login" render={props => <Login {...props} />} />
+                <Route path="/" render={props => <Login {...props} />} />
                 <PrivateRoute path="/dashboard" component={DashboardContainer} />
             </div>
         </ConnectedRouter>
