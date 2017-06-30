@@ -7,7 +7,6 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 
-import { isLoggedIn } from './services/authService';
 import rootReducer from './reducers/index';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Login from './components/Login/Login';

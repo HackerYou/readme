@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
 import { isLoggedIn } from '../../services/authService';
-import * as authActions from '../../actions/authActions';
 import Input from '../Forms/Input/Input';
 import * as authActions from '../../actions/authActions';
 
@@ -15,7 +14,6 @@ class Login extends React.Component {
         this.state = {
             email: '',
             password: '',
-            redirectToReferrer: false,
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
