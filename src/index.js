@@ -7,10 +7,12 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 
+import { isLoggedIn } from './services/authService';
 import rootReducer from './reducers/index';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Login from './components/Login/Login';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
+import Footer from './components/Footer/Footer';
 
 const history = createHistory();
 const middleware = applyMiddleware(thunk, routerMiddleware(history));
@@ -29,6 +31,7 @@ const App = () => (
             <div>
                 <Route path="/" render={props => <Login {...props} />} />
                 <PrivateRoute path="/dashboard" component={DashboardContainer} />
+                <Footer />
             </div>
         </ConnectedRouter>
     </Provider>
