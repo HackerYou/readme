@@ -10,6 +10,7 @@ export function loginSuccess() {
 export function logInUser(credentials) {
     return dispatch => (
         login(credentials)
+            .then(response => response.json())
             .then((data) => {
                 setCredentials(data);
                 dispatch(push('/dashboard'));
