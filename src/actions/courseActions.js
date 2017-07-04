@@ -10,7 +10,7 @@ export function updateCourses(courses) {
 
 export function getCourses() {
     return (dispatch) => {
-        requestCourses()
+        return requestCourses()
             .then(response => response.json())
             .then(({ course }) => {
                 dispatch(updateCourses(course));

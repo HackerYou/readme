@@ -21,7 +21,9 @@ Dashboard.propTypes = {
     // auth: PropTypes.shape({
     //     loggedIn: PropTypes.bool.isRequired,
     // }).isRequired,
-    course: PropTypes.arrayOf(PropTypes.object).isRequired,
+    course: PropTypes.shape({
+        courses: PropTypes.arrayOf(PropTypes.object).isRequired,
+    }).isRequired,
     actions: PropTypes.shape({
         getCourses: PropTypes.func.isRequired,
     }).isRequired,
