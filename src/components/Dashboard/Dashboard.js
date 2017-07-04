@@ -18,9 +18,6 @@ class Dashboard extends React.Component {
 }
 
 Dashboard.propTypes = {
-    // auth: PropTypes.shape({
-    //     loggedIn: PropTypes.bool.isRequired,
-    // }).isRequired,
     course: PropTypes.shape({
         courses: PropTypes.arrayOf(PropTypes.object).isRequired,
     }).isRequired,
