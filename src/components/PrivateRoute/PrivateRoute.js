@@ -13,8 +13,8 @@ export const handleRender = (Component, props) => {
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
-      {...rest}
-      render={props => handleRender(Component, props)}
+        {...rest}
+        render={props => handleRender(Component, props)}
     />
 );
 

@@ -4,5 +4,8 @@ export default {
     auth: {
         loggedIn: !!localStorage[`${config.getAppName()}_token`],
     },
+    course: {
+        courses: [],
+    },
 };
 

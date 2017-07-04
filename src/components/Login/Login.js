@@ -2,6 +2,9 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
+
+import { isLoggedIn } from '../../services/authService';
 import Input from '../Forms/Input/Input';
 import * as authActions from '../../actions/authActions';
 
@@ -30,30 +33,33 @@ class Login extends React.Component {
         logInUser(credentials);
     }
     render() {
-        return (
+        return isLoggedIn() ?
+        (
+            <Redirect to={{ pathname: '/dashboard' }} />
+        ) : (
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <Input
-                      name="email"
-                      type="email"
-                      placeholder="Enter your email"
-                      labelText="Email"
-                      value={this.state.email}
-                      handleChange={this.handleChange}
+                        name="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        labelText="Email"
+                        value={this.state.email}
+                        handleChange={this.handleChange}
                     />
                     <Input
-                      name="password"
-                      type="password"
-                      labelText="Password"
-                      value={this.state.password}
-                      placeholder="Enter your password"
-                      handleChange={this.handleChange}
+                        name="password"
+                        type="password"
+                        labelText="Password"
+                        value={this.state.password}
+                        placeholder="Enter your password"
+                        handleChange={this.handleChange}
                     />
                     <Input
-                      type="submit"
-                      name="submit"
-                      value="Log In"
-                      labelText=""
+                        type="submit"
+                        name="submit"
+                        value="Log In"
+                        labelText=""
                     />
                 </form>
                 <button onClick={this.props.actions.logOutUser}>Logout</button>
@@ -68,6 +74,7 @@ Login.propTypes = {
         logOutUser: PropTypes.func.isRequired,
     }).isRequired,
 };
+
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(authActions, dispatch),

@@ -30,6 +30,14 @@ Once changes have been tested on staging and are good to go, they can be merged 
 ## Deploying to Production
 Deploying to production will be straightfoward, once it's set up - you simply make a pull request from master into the production branch, which will automatically trigger a deploy to our production server.
 
+## Which DB to build against?
+When working on the Readme API, it is **not** recommended to build against the production database. Instead, you should set up a local instance of the DB so you can test against that.
+
+Setting up a local copy of the DB will require some basic knowledge of MongoDB. Talk to any of the instructor team about getting a copy of the DB/helping you to set it up you can test against on your computer. 
+
+Once you've grabbed a copy of the DB, you can create a new instance of the DB on your computer by typing:
+`mongorestore -d db_name path/`
+
 ## Testing
 Currently, we are using Jest for our unit testing. When new components are created, unit tests should be written for them. We are not currently doing any end to end testing, though this might be something worth exploring for the future.
 
