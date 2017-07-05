@@ -9,3 +9,13 @@ export const requestCourses = () => {
         },
     });
 };
+
+export const getCourseById = (id) => {
+    return fetch(`${config.getApiUrl()}/course/${id}`, {
+        method: 'GET',
+        headers: {
+            'x-access-token': config.getToken(),
+        },
+    });
+};
+

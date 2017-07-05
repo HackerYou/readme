@@ -11,6 +11,7 @@ import rootReducer from './reducers/index';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Login from './components/Login/Login';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
+import ClassroomContainer from './components/Classroom/ClassroomContainer';
 import Footer from './components/Footer/Footer';
 
 const history = createHistory();
@@ -28,8 +29,12 @@ const App = () => (
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <div>
-                <Route path="/" render={props => <Login {...props} />} />
+                <Route exact path="/" render={props => <Login {...props} />} />
                 <PrivateRoute path="/dashboard" component={DashboardContainer} />
+                <PrivateRoute
+                    path="/classroom/:classroom_id"
+                    component={props => <ClassroomContainer {...props} />}
+                />
                 <Footer />
             </div>
         </ConnectedRouter>
