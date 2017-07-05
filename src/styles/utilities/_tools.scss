@@ -1,0 +1,38 @@
+@mixin bp($point) {
+  @if $point == xl { // 1050px
+    @media (max-width: 1050px) { @content; }
+  }
+  @else if $point == lg { // 900px
+    @media (max-width: 900px) { @content; }
+  }
+  @else if $point == md { // 768px
+    @media (max-width: 768px) { @content; }
+  }
+  @else if $point == sm { // 480px
+    @media (max-width: 480px) { @content; }
+  }
+	@else if $point == xs { // 320px
+    @media (max-width: 320px) { @content; }
+  }
+}
+
+@mixin cf {
+	*zoom: 1;
+	&::before,
+	&::after {
+		display: table;
+		content: "";
+		line-height: 0;
+	}
+	&::after {
+		clear: both;
+	}
+}
+
+// Hide text
+// ---------
+@mixin hide-text {
+	font: 0/0 a;
+	color: transparent;
+	text-shadow: none;
+}

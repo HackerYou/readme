@@ -1,0 +1,126 @@
+section.topicsWrap {
+	padding-top: 2rem;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	@include bp(sm) {
+		flex-direction: column;
+	}
+	.topicCard {
+		/*lost-masonry-column: 1/3;*/
+		/*lost-waffle: 1/4 4 1rem;*/
+		margin: 0 1.5rem 1.5rem 0;
+		/*lost-column: 210;*/
+		cursor: pointer;
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		padding: 1.3rem 1.8rem 1rem;
+		transition: all 0.2s;
+		text-align: center;
+		@include bp(sm) {
+			margin: 0 0 1.5rem 0;
+		}
+		h4 {
+			margin-top: 0;
+		}
+		h4, p {
+			margin-bottom: 0;
+		}
+		&:hover {
+			box-shadow: 0 3px 7px 0 rgba(0,0,0,.05)
+		}
+	}
+}
+
+.topicsForm {
+	padding: 25px 45px 10px;
+	margin-bottom: 2rem;
+	@include bp(md) {
+		.fieldRow {
+			margin-bottom: 1.5rem;
+			input[type=text] {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			button.success {
+				width: 100%;
+			}
+		}
+	}
+}
+
+.topicDetails {
+	@include bp(sm) {
+		width: 100%;
+		display: flex;
+		flex-flow: row wrap;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.searchTopics {
+	padding: 2rem;
+	@include bp(md) {
+		padding: 2rem 2rem 1rem;
+	}
+	.fieldRow {
+		margin-bottom: 0;
+	}
+}
+
+.topicRow {
+	margin: 25px 0;
+	padding: 45px 45px 40px 45px;
+	@include bp(sm) {
+		padding: 25px;
+	}
+	.topicLong {
+		width: 63%;
+		@include bp(sm) {
+			width: 100%;
+		}
+	}
+	select {
+		@include bp(sm) {
+			width: 100%;
+			margin-bottom: 25px;
+		}
+	}
+	textarea {
+		width: 100%;
+		@include bp(sm) {
+			min-width: 100%;
+		}
+	}
+}
+
+.hideType {
+	display: none;
+}
+
+.showType {
+	display: block;
+}
+
+.dropZone {
+	width: 100%;
+	border: 2px dashed $border;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100px;
+	@include bp(sm) {
+		padding: 2rem;
+	}
+	p {
+		margin: 0;
+	}
+}
+
+ul.uploadedFiles {
+	padding: 0;
+	margin-bottom: 25px;
+	list-style-type: none;
+}

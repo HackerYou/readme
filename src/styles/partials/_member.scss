@@ -1,0 +1,75 @@
+.memberWrap {
+	padding: 10px 25px 10px 25px;
+}
+
+ul.memberList {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	li {
+		lost-flex-container: row;
+		padding: 25px 0;
+		align-items: center;
+		border-bottom: 1px solid $border;
+		p {
+			margin: 0;
+		}
+		@include bp(sm) {
+			& > *:nth-child(1) { lost-column: 2/4 }
+			& > *:nth-child(2) { display: none; }
+			& > *:nth-child(4) { display: none; }
+			& > *:nth-child(5) { lost-column: 2/4 }
+			& > *:nth-child(3) {
+				display: none;
+			}
+			& > *:nth-child(5) span {
+				display: none;
+			}
+		}
+		& > * {
+			lost-column: 1/5;
+		}
+		&:last-child {
+			border-bottom: 0;
+		}
+		.inputBlock {
+			/*lost-flex-container: row;*/
+			align-items: baseline;
+			.fieldRow {
+				margin-bottom: 0;
+				lost-flex-container: row;
+				align-items: center;
+				input {
+					height: 1.5rem;
+				}
+			}
+			label {
+				margin-right: 10px;
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+form.addMembersForm {
+
+	padding-bottom: 20px;
+
+	.inlineRow {
+		position: relative;
+		display: inline-block;
+		input {
+			/*margin: 0;*/
+
+		}
+		small {
+			position: absolute;
+			bottom: -21px;
+			left: 0;
+			@include bp(sm) {
+				bottom: 5px;
+				position: relative;
+			}
+		}
+	}
+}

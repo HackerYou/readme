@@ -1,0 +1,162 @@
+.lessonView {
+	padding: 40px 50px 50px;
+	margin-bottom: 50px;
+	@include bp(sm) {
+		padding: 20px 20px 40px;
+	}
+	@include bp(xs) {
+		padding: 15px;
+	}
+}
+
+.lessonEditView {
+	padding: 10px 50px 50px;
+	margin-bottom: 50px;
+}
+
+input.nameInput {
+	margin-right: 2rem;
+	width: 50%;
+}
+
+.lessonEditContainer {
+	border: 2px dashed $border;
+	text-align: center;
+	padding: 50px 0;
+	cursor: pointer;
+	margin-top: 50px;
+	transition: all 0.2s;
+	&:hover {
+		border: 2px dashed lighten($border, 80%);
+		color: lighten($black, 40%);
+	}
+	h3 {
+		margin: 0;
+	}
+}
+
+.show-favs {
+	.lessonGroup {
+		display: none;
+	}
+	.lessonGroup.favsGroup {
+		display: block;
+	}
+}
+
+.show-favs .favsGroup {
+	.lessonRow {
+		display: none;
+	}
+	.lessonRow.fav {
+		display: flex;
+	}
+}
+
+.deleteTopicBlock {
+	position: relative;
+	padding: 5px;
+	lost-flex-container: row;
+	justify-content: center;
+	margin: 50px 0 10px;
+	&:after {
+		content: '';
+		height: 1px;
+		background: $border;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 50%;
+	}
+}
+
+p.deleteTopic {
+	position: relative;
+	z-index: 99;
+	cursor: pointer;
+	display: inline-block;
+	background: $redLight;
+	color: white;
+	padding: 10px 25px;
+	font-size: 1.3rem;
+	text-align: center;
+	margin: 0 10px 0;
+	transition: all 0.3s;
+	&:hover {
+		background: $red;
+	}
+}
+
+p.editTopic {
+	position: relative;
+	z-index: 99;
+	cursor: pointer;
+	display: inline-block;
+	background: $blueLight;
+	color: white;
+	padding: 10px 25px;
+	font-size: 1.3rem;
+	text-align: center;
+	margin: 0 10px 0;
+	transition: all 0.3s;
+	&:hover {
+		background: $blue;
+	}
+}
+
+.topicAddBlock {
+	margin-top: 10px;
+	padding: 50px;
+	border: 2px dashed $greyLight;
+	cursor: pointer;
+	text-align: center;
+	h3 {
+		margin: 0;
+	}
+}
+
+.topicAddBlock:only-child {
+	margin-top: 20px;
+}
+
+.lessonEditView div:nth-last-child(-n+4):first-child ~ div.topicAddBlock {
+	margin-top: 35px;
+}
+
+.lessonTitle {
+	position: relative;
+	.flag-in-topic {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	.topic-edit {
+		float: right;
+		opacity: 0.5;
+		font-size: 16px;
+		position: relative;
+		top: 13px;
+		margin-right: 13px;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}
+
+.lessonHeader {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+ul.tableContent {
+	padding-left: 0;
+	li.lessonTopics {
+		list-style: none;
+		padding: 6px 0 !important;
+		&:before {
+			display: none;
+		}
+	}
+}

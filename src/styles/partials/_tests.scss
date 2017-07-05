@@ -1,0 +1,54 @@
+.completed {
+	color: grey;
+}
+
+.testProgress__test {
+	display: flex;
+	list-style-type: none;
+	align-items: center;
+}
+
+.testProgress__circles {
+	border-radius: 50%;
+	padding: 2px 8px;
+	color: #fff;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-right: 10px;
+}
+
+.testProgress__circles--pass {
+	background-color: #000;
+}
+
+.testProgress__circles--fail {
+	background-color: #000;
+}
+
+.testProgress__testName {
+	font-family: $headerFont;
+	font-weight: 700;
+}
+
+.progressCard {
+	display: flex;
+	ul {
+		padding: 0;
+		margin: 0;
+		&:nth-of-type(2) li {
+			list-style: none;
+			margin: 0 0 17px 0;
+		}
+	}
+}
+
+.codeSubmit {
+	margin: 10px 0;
+}
+
+input[type='submit'][disabled] {
+	background-color: rgba($black, 0.5);
+	&:hover {
+		cursor: default;
+	}
+}

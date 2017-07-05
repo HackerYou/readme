@@ -36,12 +36,14 @@ export default (env) => {
                         ['style-loader', 'css-loader', 'sass-loader'],
                     ),
                 },
+                { test: /\.(ttf|eot|woff|woff2|svg)$/, loader: 'file-loader' },
             ],
+
         },
         plugins: [
             new ExtractTextPlugin('style.css'),
         ],
-    }
+    };
 
     if (env.debug) {
         console.log(config);
