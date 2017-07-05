@@ -1,0 +1,75 @@
+header.mainHeader {
+	padding: 40px 0;
+	margin-bottom: 3rem;
+	@include bp(sm) {
+		padding: 2rem 0;
+		margin-bottom: 1.5rem;
+	}
+	.innerWrap {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 2.4rem 3.9rem 2.4rem 240px;
+		@include bp(sm) {
+			padding: 1rem 2rem 1rem 1rem;
+			justify-content: flex-start;
+		}
+		.userInfo {
+			display: flex;
+			align-items: center;
+			flex-flow: row wrap;
+			width: 100%;
+			justify-content: space-between;
+			@include bp(md) {
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-end;
+			}
+		}
+		.topLogo {
+			display: inline-block;
+			position: absolute;
+			width: 170px;
+			top: -27px;
+			left: 4.5rem;
+		  line-height: 0;
+		  @include bp(md) {
+		  	width: 130px;
+		  	top: -15px;
+		  }
+		  @include bp(sm) {
+		  	width: 85px;
+		  	left: 12px;
+		  	top: -10px;
+		  }
+			@include bp(xs) {
+				width: 40px;
+				left: 10px;
+				top: 8px;
+			}
+		}
+		h3 {
+			@include bp(md) {
+				margin: 0;
+				font-size: 2rem;
+			}
+			@include bp(xs) {
+				font-size: 1.5rem;
+			}
+		}
+		p.signOut {
+			margin: 0;
+			@include bp(sm) {
+				font-size: 1.4rem;
+			}
+			@include bp(xs) {
+				font-size: 1.2rem;
+			}
+			a {
+				color: $black;
+				border: 0;
+			}
+		}
+	}
+}

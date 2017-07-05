@@ -1,0 +1,81 @@
+.mediaWrap {
+	padding: 15px 25px 15px 25px;
+	ul.mediaList {
+		padding: 0;
+		margin: 0;
+		li {
+			border-bottom: 1px solid $border;
+			&:last-child {
+				border: 0;
+			}
+		}
+	}
+}
+
+.mediaRow {
+	lost-flex-container: row;
+	justify-content: space-between;
+	padding: 25px;
+	align-items: center;
+	@include bp(sm) {
+		padding: 0;
+	}
+	.mediaIcon {
+		lost-column: 1/3;
+		display: flex;
+		align-items: center;
+		margin: 0;
+		@include bp(sm) {
+			flex: 3;
+			margin: 0 1rem;
+
+		}
+		i {
+			font-size: 2.5rem;
+			margin-right: 1.5rem;
+			@include bp(sm) {
+				display: none;
+			}
+		}
+		span {
+			font-size: 1.6rem;
+			line-height: 1.2;
+			@include bp(sm) {
+				font-size: 1.4rem;
+			}
+		}
+	}
+	.mediaLink {
+		@include bp(sm) {
+			flex: 1;
+		}
+	}
+	input[type=text] {
+		margin: 0;
+		/*border-radius: 5px;*/
+		border: 1px solid $greyLight;
+		padding: 1rem;
+		@include bp(sm) {
+			display: none;
+		}
+	}
+	.mediaCopy {
+		padding: 0.6rem 0.6rem 0.7rem 1rem;
+		font-size: 2rem;
+		/*border-radius: 5px;*/
+		box-shadow: none;
+	}
+	.error {
+		cursor: pointer;
+		margin-bottom: 0;
+		@include bp(sm) {
+			flex: 1;
+			text-align: right;
+		}
+		span {
+			@include bp(sm) {
+				display: none;
+			}
+		}
+	}
+}
