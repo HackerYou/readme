@@ -10,6 +10,8 @@ import config from '../services/config.js';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
+const mock_user_id = '56ba54e67a16140b67e4bb88'
+
 describe('async actions', () => {
    afterEach(() => {
        nock.cleanAll();
@@ -24,8 +26,14 @@ describe('async actions', () => {
         })
         .reply(200, {
             token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiU2ltb24gQmxvb20iLCJhZG1pbiI6dHJ1ZSwiaW5zdHJ1Y3RvciI6dHJ1ZSwidXNlcl9pZCI6IjU2YmE1NGU2N2ExNjE0MGI2N2U0YmI4OCIsImlhdCI6MTQ5ODQ5OTk4NCwiZXhwIjoxNDk4OTMxOTg0fQ.JaYjeFG_HsNW-Mmr5gVap_9szjo5M0KdI6WCWzLDOrk",
-            user_id: "56ba54e67a16140b67e4bb88"
+            user_id: mock_user_id,
         });
+    nock(`${config.getApiUrl()}/`)
+        .get(`/user/${mock_user_id}`)
+        .reply(200, {
+            user: {},
+        });
+
         const expectedActions = [
             {
                 payload: {
@@ -36,6 +44,13 @@ describe('async actions', () => {
             },
             { 
                 type: types.LOG_IN_SUCCESS,
+            },
+            {
+                payload: {
+                    args: [ '/' ],
+                    method: 'push',
+                },
+                type: '@@router/CALL_HISTORY_METHOD',
             },
             { 
                 type: types.LOG_OUT 

@@ -9,6 +9,7 @@ import createHistory from 'history/createBrowserHistory';
 
 import rootReducer from './reducers/index';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
 import ClassroomContainer from './components/Classroom/ClassroomContainer';
@@ -30,6 +31,7 @@ const App = () => (
         <ConnectedRouter history={history}>
             <div>
                 <Route exact path="/" render={props => <Login {...props} />} />
+                <Route path="/:all_routes" render={props => <HeaderContainer {...props} />} />
                 <PrivateRoute path="/dashboard" component={DashboardContainer} />
                 <PrivateRoute
                     path="/classroom/:classroom_id"

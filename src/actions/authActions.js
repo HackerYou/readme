@@ -2,6 +2,7 @@ import { push } from 'react-router-redux';
 
 import types from './actionTypes';
 import { login, setCredentials } from '../services/authService';
+import { getUserDetails } from './userActions';
 
 export function loginSuccess() {
     return { type: types.LOG_IN_SUCCESS };
@@ -14,6 +15,7 @@ export function logInUser(credentials) {
             .then((data) => {
                 setCredentials(data);
                 dispatch(push('/dashboard'));
+                dispatch(getUserDetails(data.user_id));
                 dispatch(loginSuccess());
             })
             .catch((error) => {
@@ -22,12 +24,20 @@ export function logInUser(credentials) {
     );
 }
 
-export function logOutUser() {
-    setCredentials({
-        token: '',
-        user_id: '',
-    });
+export function logOut() {
     return {
         type: types.LOG_OUT,
     };
 }
+
+export function logOutUser() {
+    return (dispatch) => {
+        setCredentials({
+            token: '',
+            user_id: '',
+        });
+        dispatch(push('/'));
+        dispatch(logOut());
+    };
+}
+
