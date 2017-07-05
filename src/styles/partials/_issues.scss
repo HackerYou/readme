@@ -1,0 +1,37 @@
+.issues-container {
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		a {
+			font-size: 16px;
+			border-bottom: none;
+			margin-left: 1rem;
+			color: #ADB2A8;
+		}
+	}
+}
+
+.issueCard {
+	position: relative;
+	.fa-archive {
+		position: absolute;
+		right: 1.5rem;
+		top: 1.5rem;
+	}
+	.created-info {
+		border-top: 2px solid #ecedeb;
+		margin: 10px 0;
+		padding-top: 10px;
+	}
+	h3,
+	.created-by {
+		margin-bottom: 0;
+		// color:
+	}
+	.created-by {
+		font-size: 1.2rem;
+		margin-right: 20px;
+		color: grey;
+	}
+}

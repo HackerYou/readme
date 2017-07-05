@@ -1,0 +1,183 @@
+ .noScroll {
+	overflow: hidden;
+}
+
+.modal {
+	background: rgba(0,0,0,0.5);
+	position: fixed 0;
+	z-index: 1000;
+	overflow: scroll;
+	display: flex;
+	flex-flow: row wrap;
+	@include bp(sm) {
+		padding: 20px;
+	}
+}
+
+.modalBody {
+	width: 95%;
+	padding: 25px 45px 67px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	i.chalk-close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		margin: 0;
+	}
+}
+
+.flagForm {
+	width: 60%;
+	textarea {
+		min-width: 100%;
+	}
+}
+
+.modalBody--small {
+	margin: auto;
+	max-width: 900px;
+	padding: 20px 60px 45px;
+	position: relative;
+	// position: absolute;
+	// left: calc(50% - 400px);
+	// top: 25px;
+	@include bp(sm) {
+		padding: 20px;
+		width: 100%;
+	}
+	.inlineFieldRow .fieldGroup {
+		@include bp(sm) {
+			width: 100%;
+		}
+	}
+	i.chalk-close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		margin: 0;
+	}
+}
+
+.loginModal {
+	border-top: $blue 10px solid;
+	h2 {
+		margin-bottom: 3rem;
+	}
+	button.primary {
+		width: 100%;
+		font-size: 1.7rem;
+	}
+}
+
+
+/*================================================
+=            Single Lesson Edit Modal            =
+================================================*/
+
+.lessonModalWrap {
+	lost-flex-container: row;
+	height: 100%;
+	.lessonModalColumn:first-child {
+		lost-column: 1/2;
+	}
+	.lessonModalColumn:first-child {
+		lost-column: 2/6;
+	}
+	.lessonModalColumn:last-child {
+		lost-column: 4/6;
+	}
+}
+
+.lessonModalColumn input[type=text], .lessonModalColumn textarea {
+	width: 100%;
+}
+
+.lessonAddContent {
+	textarea {
+		min-height: 400px;
+	}
+}
+/*=====  End of Single Lesson Edit Modal  ======*/
+
+/*===============================================
+=            Classroom Members Modal            =
+===============================================*/
+
+.membersModalWrap {
+	lost-flex-container: row;
+	height: 100%;
+	.memberModalColumn:first-child {
+		lost-column: 2/5;
+	}
+	.memberModalColumn:last-child {
+		lost-column: 3/5;
+	}
+}
+
+.memberModalForm {
+	input[type="text"] {
+		width: 100%;
+	}
+}
+
+.memberModalManage {
+	padding-bottom: 50px;
+	ul.membersModalList {
+		padding: 10px 25px;
+		margin: 0;
+		list-style: none;
+		background: $inputGrey;
+		overflow-y: scroll;
+		max-height: 400px;
+		li {
+			margin: 10px 0;
+			i {
+				color: $red;
+				font-size: 1.3rem;
+			}
+		}
+	}
+}
+
+
+
+
+/*=====  End of Classroom Members Modal  ======*/
+
+
+
+/*.lessonAddContent*/
+.modalBtns {
+	position: absolute;
+	bottom: 35px;
+	right: 35px;
+}
+
+/*MODAL STYLES*/
+
+.modal i{
+  font-size: 22px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.modal-animation-enter {
+    opacity: 0.00;
+    transition: all 0.2s;
+}
+
+.modal-animation-enter.modal-animation-enter-active {
+    opacity: 1;
+}
+.modal-animation-leave {
+    opacity: 1;
+    transition: all 0.2s;
+}
+
+.modal-animation-leave.modal-animation-leave-active {
+    opacity: 0.00;
+}

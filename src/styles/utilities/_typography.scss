@@ -1,0 +1,372 @@
+@font-face {
+  font-family: 'Nimbus Sans';
+  font-weight: 400;
+  src: url('fonts/nimbussansnovusdot-reg-webfont.eot'); /* IE9 Compat Modes */
+  src: url('fonts/nimbussansnovusdot-reg-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/nimbussansnovusdot-reg-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/nimbussansnovusdot-reg-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/nimbussansnovusdot-reg-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Nimbus Sans Light';
+  font-weight: 300;
+  src: url('fonts/nimbussansnovusdot-lig-webfont.eot'); /* IE9 Compat Modes */
+  src: url('fonts/nimbussansnovusdot-lig-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/nimbussansnovusdot-lig-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/nimbussansnovusdot-lig-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/nimbussansnovusdot-lig-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Nimbus Sans Semi-Bold';
+  font-weight: 700;
+  src: url('fonts/nimbussansnovusdot-sembol-webfont.eot'); /* IE9 Compat Modes */
+  src: url('fonts/nimbussansnovusdot-sembol-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/nimbussansnovusdot-sembol-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/nimbussansnovusdot-sembol-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/nimbussansnovusdot-sembol-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Nimbus Sans Medium';
+  font-weight: 600;
+  src: url('fonts/nimbussansnovusdot-med-webfont.eot'); /* IE9 Compat Modes */
+  src: url('fonts/nimbussansnovusdot-med-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/nimbussansnovusdot-med-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('fonts/nimbussansnovusdot-med-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/nimbussansnovusdot-med-webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'chalk';
+  src:url('fonts/chalk.eot?83k4wi');
+  src:url('fonts/chalk.eot?83k4wi#iefix') format('embedded-opentype'),
+    url('fonts/chalk.ttf?83k4wi') format('truetype'),
+    url('fonts/chalk.woff?83k4wi') format('woff'),
+    url('fonts/chalk.svg?83k4wi#chalk') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$baseFont: 'Nimbus Sans Light', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$headerFont: 'Nimbus Sans Semi-Bold', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$regularFont: 'Nimbus Sans', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$mediumFont: 'Nimbus Sans Medium', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.5rem;
+  font-family: $baseFont;
+	color: #333;
+}
+
+h1, h2, h3, h4, summary {
+  font-family: $headerFont;
+  /*margin: 0 0 1.7rem 0;*/
+  font-weight: 700;
+	line-height: 1.1;
+}
+
+summary{
+  outline: none;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 2rem 0;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2,
+.lessonTopic h2.notes-h2 {
+  font-size: 3rem;
+}
+
+
+h3 {
+  font-size: 2.4rem;
+  /*line-height: 1.2;*/
+}
+
+
+h4 {
+  font-size: 1.8rem;
+  /*line-height: 1.2;*/
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem 0;
+	font-family: $regularFont;
+	font-weight: 400;
+	letter-spacing: 0.01rem;
+	// word-break: break-all;
+	word-wrap: break-word;
+	@include bp(sm) {
+		font-size: 1.7rem;
+	  line-height: 1.7;
+	}
+}
+
+p.title {
+  font-family: $headerFont;
+  font-weight: 700;
+}
+
+p.large {
+  font-size: 2.2rem;
+}
+
+p.lessonTitle {
+  font-family: $headerFont;
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.3;
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+
+p.lessonExercise {
+  font-family: $regularFont;
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+strong {
+  font-family: $headerFont;
+  margin: 0 0 1.7rem 0;
+  font-weight: 700;
+}
+
+em {
+  font-family: $regularFont;
+  font-weight: 400;
+  /*font-style: normal;*/
+  letter-spacing: 0;
+}
+
+small {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-family: $regularFont;
+  font-weight: 400;
+}
+
+.smallcaps {
+	font-size: 1.2rem;
+  line-height: 1.2;
+  font-family: $regularFont;
+  font-weight: 400;
+	text-transform: uppercase;
+}
+
+a {
+  color: $blue;
+  border-bottom: 1px solid $blue;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+a.strong {
+  font-family: $headerFont;
+  font-weight: 700;
+  border: 0;
+}
+
+a:enter {
+  color: $blueDark;
+  border-bottom: 1px solid transparent;
+}
+
+
+
+.red { color: $red; }
+.redLight { color: $redLight; }
+.redDark { color: $redDark; }
+.green { color: $green; }
+.greenLight { color: $greenLight; }
+.greenDark { color: $greenDark; }
+.blue {color: $blue; }
+.blueLight {color: $blueLight; }
+.blueDark {color: $blueDark; }
+.grey { color: $grey; }
+.greyLight { color: $greyLight; }
+.greyDark { color: $greyDark; }
+.black { color: $black; }
+.blackLight { color: $blackLight; }
+.blackDark { color: $blackDark; }
+
+p.error {
+  font-weight: 700;
+  font-family: $headerFont;
+}
+
+p.success {
+  font-weight: 700;
+  font-family: $headerFont;
+}
+
+p.warning {
+  color: $red;
+}
+
+p.muted {
+  color: $grey;
+}
+
+p.emptyState {
+	width: 100%;
+	text-align: center;
+	color: $grey;
+	font-size: 2rem;
+	font-weight: 700;
+	font-family: $mediumFont;
+}
+
+ul, ol {
+	font-size: 1.5rem;
+}
+
+ul li, ol li {
+  line-height: 1.7;
+}
+
+
+i[class^="chalk-"] {
+  font-family: 'chalk';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  margin-right: 0.5rem;
+  line-height: 1;
+  position: relative;
+  top: 0.13rem;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.chalk-rightArrow:before {
+  content: "\e906";
+}
+.chalk-copy:before {
+  content: "\e905";
+}
+.chalk-add:before {
+  content: "\e900";
+}
+.chalk-leftArrow:before {
+  content: "\e901";
+}
+.chalk-close:before {
+  content: "\e902";
+}
+.chalk-remove:before {
+  content: "\e903";
+}
+.chalk-code:before {
+  content: "\e904";
+}
+.chalk-doc:before {
+  content: "\e907";
+}
+.chalk-download:before {
+  content: "\e908";
+}
+.chalk-edit:before {
+  content: "\e909";
+}
+.chalk-github:before {
+  content: "\e90a";
+}
+.chalk-heart:before {
+  content: "\e90b";
+}
+.chalk-home:before {
+  content: "\e90c";
+}
+.chalk-image:before {
+  content: "\e90d";
+}
+.chalk-link:before {
+  content: "\e90e";
+}
+.chalk-log-out:before {
+  content: "\e90f";
+}
+.chalk-email:before {
+  content: "\e910";
+}
+.chalk-save:before {
+  content: "\e911";
+}
+.chalk-twitter:before {
+  content: "\e912";
+}
+.chalk-users:before {
+  content: "\e913";
+}
+.chalk-star {
+  cursor: pointer;
+}
+.chalk-star:before {
+  content: "\e914";
+}
+
+
+.lessonTopic {
+	font-size: 1.5rem;
+	font-family: $regularFont;
+	font-weight: 400;
+  margin: 0 0 1.7rem 0;
+  h2, 
+  summary {
+    font-size: 4rem;
+  }
+	h2 ~ div span h3 {
+		margin-top: 1.5rem;
+	}
+	ul {
+		color: #333;
+		/*line-height: 1.7;*/
+		margin: 1rem 0 2rem;
+		font-family: $regularFont;
+		font-weight: 400;
+		letter-spacing: 0.01rem;
+	}
+	pre {
+		margin-bottom: 2rem;
+	}
+
+	img {
+		max-width: 100%;
+	}
+	table {
+		border: 1px solid $border;
+		thead {
+			background: $border;
+			border-bottom: 1px solid $border;
+		}
+		td {
+			text-align: center;
+			min-width: 5rem;
+			padding: 5px;
+			border-right: 1px solid $border;
+		}
+	}
+}
+
+video {
+  max-width: 100%;
+}

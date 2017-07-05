@@ -15,6 +15,8 @@ import DashboardContainer from './components/Dashboard/DashboardContainer';
 import ClassroomContainer from './components/Classroom/ClassroomContainer';
 import Footer from './components/Footer/Footer';
 
+import './styles/style.scss';
+
 const history = createHistory();
 const middleware = applyMiddleware(thunk, routerMiddleware(history));
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
