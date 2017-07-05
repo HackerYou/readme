@@ -16,5 +16,5 @@ test('It renders the correct component if user has a valid token', () => {
 test('It renders a redirect if the user does not have a valid token', () => {
     localStorage.setItem(`${config.getAppName()}_token`, null);
     const component = handleRender(() => <p>Access Granted</p>, {});
-    expect(component.props.to.pathname).toBe('/login');   
+    expect(component.props.to.pathname).toBe('/');   
 });

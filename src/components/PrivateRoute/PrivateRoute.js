@@ -8,7 +8,7 @@ export const handleRender = (Component, props) => {
     if (isLoggedIn()) {
         return <Component {...props} />;
     }
-    return <Redirect to={{ pathname: '/login' }} />;
+    return <Redirect to={{ pathname: '/' }} />;
 };
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
