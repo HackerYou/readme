@@ -20,11 +20,13 @@ class CourseCard extends React.Component {
     }
     render() {
         return (
-            <div>
-                <h2>{this.props.title}</h2>
-                <h3>{this.state.instructor}</h3>
-                <h3>{this.props.term}</h3>
-                <h3>{this.props.classroomId}</h3>
+            <div className="classCard">
+                <article className="card">
+                    <h3>{this.props.title}</h3>
+                    <h4>{this.state.instructor}</h4>
+                    <h4>{this.props.term}</h4>
+                    <h4>{this.props.classroomId}</h4>
+                </article>
             </div>
         );
     }

@@ -34,7 +34,7 @@ store.dispatch(updateUserStatus());
 const App = () => (
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <div>
+            <div className="wrapper">
                 <Route exact path="/" render={props => <Login {...props} />} />
                 <Route path="/:all_routes" render={props => <HeaderContainer {...props} />} />
                 <PrivateRoute path="/dashboard" component={DashboardContainer} />
