@@ -2,7 +2,6 @@ import { resolve } from 'path';
 import { getIfUtils } from 'webpack-config-utils';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import lost from 'lost';
-import webpack from 'webpack';
 
 const { extract } = ExtractTextPlugin;
 
@@ -35,9 +34,9 @@ export default (env) => {
                     use: ifProd(
                         extract({
                             fallback: 'style-loader',
-                            use: ['css-loader', 'sass-loader', { loader: 'postcss-loader', options: { plugins: 'lost' } }],
+                            use: ['css-loader', 'sass-loader', { loader: 'postcss-loader', options: { plugins: () => [lost] } }],
                         }),
-                        ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+                        ['style-loader', 'css-loader', 'postcss-loader', { loader: 'postcss-loader', options: { plugins: () => [lost] } }, 'sass-loader'],
                     ),
                 },
                 { test: /\.(ttf|eot|woff|woff2|svg)$/, loader: 'file-loader' },
@@ -46,13 +45,6 @@ export default (env) => {
         },
         plugins: [
             new ExtractTextPlugin('style.css'),
-            // new webpack.LoaderOptionsPlugin({
-            //     options: {
-            //         postcss: [
-            //             lost(),
-            //         ],
-            //     },
-            // }),
         ],
     };
 
