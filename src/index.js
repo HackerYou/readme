@@ -30,7 +30,7 @@ const store = createStore(
 const App = () => (
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <div>
+            <div className="wrapper">
                 <Route exact path="/" render={props => <Login {...props} />} />
                 <PrivateRoute path="/dashboard" component={DashboardContainer} />
                 <PrivateRoute
