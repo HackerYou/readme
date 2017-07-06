@@ -19,4 +19,9 @@ export default {
         created_at: 0,
         updated_at: 0,
     },
+    user: {
+        firstName: 'Loading',
+        lastName: '...',
+        email: 'user@email.com',
+    },
 };

@@ -10,19 +10,13 @@ class CourseCard extends React.Component {
         };
     }
     componentDidMount() {
-        if (this.props.instructor) {
-            getUserId(this.props.instructor)
-                .then(response => response.json())
-                .then((data) => {
-                    this.setState({
-                        instructor: `${data.user.firstName} ${data.user.lastName}`,
-                    });
+        getUserId(this.props.instructor)
+            .then(response => response.json())
+            .then((data) => {
+                this.setState({
+                    instructor: `${data.user.firstName} ${data.user.lastName}`,
                 });
-        } else {
-            this.setState({
-                instructor: 'N/A',
             });
-        }
     }
     render() {
         return (

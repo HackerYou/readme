@@ -8,7 +8,9 @@ import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 
 import rootReducer from './reducers/index';
+import { updateUserStatus } from './actions/userActions';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
 import ClassroomContainer from './components/Classroom/ClassroomContainer';
@@ -27,11 +29,14 @@ const store = createStore(
     ),
 );
 
+store.dispatch(updateUserStatus());
+
 const App = () => (
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <div>
                 <Route exact path="/" render={props => <Login {...props} />} />
+                <Route path="/:all_routes" render={props => <HeaderContainer {...props} />} />
                 <PrivateRoute path="/dashboard" component={DashboardContainer} />
                 <PrivateRoute
                     path="/classroom/:classroom_id"
