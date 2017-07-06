@@ -12,4 +12,7 @@ export default {
     getToken() {
         return localStorage.getItem(`${appName}_token`);
     },
+    getUserIdFromToken() {
+        return localStorage.getItem(`${appName}_user_id`);
+    },
 };
