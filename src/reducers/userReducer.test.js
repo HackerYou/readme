@@ -6,8 +6,8 @@ describe('user reducer', () => {
    it('should return the initial state', () => {
     expect(userReducer(undefined, {})).toEqual(
         {
-            firstName: 'First Name',
-            lastName: 'Last Name',
+            firstName: 'Loading',
+            lastName: '...',
             email: 'user@email.com',
         }
     )
