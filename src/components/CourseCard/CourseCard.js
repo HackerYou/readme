@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import { getUserId } from '../../services/userService';
 
 class CourseCard extends React.Component {
@@ -25,7 +27,7 @@ class CourseCard extends React.Component {
                     <h3>{this.props.title}</h3>
                     <h4>{this.state.instructor}</h4>
                     <h4>{this.props.term}</h4>
-                    <h4>{this.props.classroomId}</h4>
+                    <Link className="primary" to={`/classroom/${this.props.classroomId}`}>View Class</Link>
                 </article>
             </div>
         );
