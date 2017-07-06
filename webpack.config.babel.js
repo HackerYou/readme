@@ -37,7 +37,7 @@ export default (env) => {
                             fallback: 'style-loader',
                             use: ['css-loader', 'sass-loader', { loader: 'postcss-loader', options: { plugins: 'lost' } }],
                         }),
-                        ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
+                        ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
                     ),
                 },
                 { test: /\.(ttf|eot|woff|woff2|svg)$/, loader: 'file-loader' },
