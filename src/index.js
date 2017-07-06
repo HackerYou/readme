@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 
 import rootReducer from './reducers/index';
+import { updateUserStatus } from './actions/userActions';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
@@ -27,6 +28,8 @@ const store = createStore(
         middleware,
     ),
 );
+
+store.dispatch(updateUserStatus());
 
 const App = () => (
     <Provider store={store}>

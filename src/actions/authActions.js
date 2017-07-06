@@ -1,5 +1,4 @@
 import { push } from 'react-router-redux';
-
 import types from './actionTypes';
 import { login, setCredentials } from '../services/authService';
 import { getUserDetails } from './userActions';

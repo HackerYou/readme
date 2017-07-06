@@ -20,8 +20,8 @@ export default {
         updated_at: 0,
     },
     user: {
-        firstName: 'First Name',
-        lastName: 'Last Name',
+        firstName: 'Loading',
+        lastName: '...',
         email: 'user@email.com',
     },
 };
