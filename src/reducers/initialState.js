@@ -18,6 +18,7 @@ export default {
         description: '',
         created_at: 0,
         updated_at: 0,
+        sections: [],
     },
     user: {
         firstName: 'Loading',
