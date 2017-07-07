@@ -25,9 +25,6 @@ class Dashboard extends React.Component {
                                 />
                             );
                         })}
-                        <pre>
-                            {JSON.stringify(this.props.course, null, 3)}
-                        </pre>
                     </section>
                 </div>
             </div>

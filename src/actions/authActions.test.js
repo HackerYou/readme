@@ -17,6 +17,36 @@ describe('async actions', () => {
        nock.cleanAll();
    })
 
+   // commented out until requests can throw
+   xit('revokes a users token after receiving an authentication error', () => {
+        nock(`${config.getApiUrl()}/`)
+        .get('/user/authenticate')
+        .query({
+            email: 'baduser@evil.com',
+            password: 'thisuserdoesntexist',
+        })
+        .reply(200, {
+            "success": false,
+            "message": "Authentication failed",
+            "token": "",
+        });
+
+        const expectedActions = [
+            {
+                type: types.LOG_OUT,
+            }
+        ];
+
+        const store = mockStore();
+        return store.dispatch(actions.logInUser({
+            email: 'baduser@evil.com',
+            password: 'thisuserdoesntexist'
+        }))
+        .then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+   });
+
    it('creates LOG_IN_SUCCESS action after authentication is done, and LOG_OUT action after user logs out', () => {
     nock(`${config.getApiUrl()}/`)
         .get('/user/authenticate')

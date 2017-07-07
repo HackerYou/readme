@@ -1,6 +1,7 @@
 import { getUserId } from '../services/userService';
 import { isLoggedIn } from '../services/authService';
 import config from '../services/config';
+import { errorHandler } from './index';
 
 import types from './actionTypes';
 
@@ -17,6 +18,9 @@ export function getUserDetails(userId) {
             .then(response => response.json())
             .then(({ user }) => {
                 dispatch(updateUser(user));
+            })
+            .catch((error) => {
+                errorHandler(dispatch, error.response, types.AUTH_ERROR);
             })
     );
 }

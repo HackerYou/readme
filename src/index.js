@@ -14,6 +14,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
 import ClassroomContainer from './components/Classroom/ClassroomContainer';
+import LessonContainer from './components/Lesson/LessonContainer';
 import Footer from './components/Footer/Footer';
 
 import './styles/style.scss';
@@ -41,6 +42,10 @@ const App = () => (
                 <PrivateRoute
                     path="/classroom/:classroom_id"
                     component={props => <ClassroomContainer {...props} />}
+                />
+                <PrivateRoute
+                    path="/lesson/:lesson_id"
+                    component={props => <LessonContainer {...props} />}
                 />
                 <Footer />
             </div>
