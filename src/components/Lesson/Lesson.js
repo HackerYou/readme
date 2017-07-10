@@ -8,15 +8,32 @@ class Lesson extends React.Component {
     }
     render() {
         const { lesson } = this.props;
-        return (<pre>
-            {JSON.stringify(lesson, null, 3)}
-        </pre>);
+        return (<div className="full">
+            <header className="topContent container">
+                <div className="headerLinks">
+                    HeaderLinks Stub
+                </div>
+                <div className="lessonHeader">
+                    <h1>{lesson.title}</h1>
+                    <div>
+                        Upload Exercise Stub
+                    </div>
+                </div>
+                <span>Modal Stub</span>
+            </header>
+            <section className="lessonView card">
+                LessonView Stub
+            </section>
+            <div className="container">
+                Back to Classroom Stub
+            </div>
+        </div>);
     }
 }
 
 Lesson.propTypes = {
     lesson: PropTypes.shape({
-        name: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
     }).isRequired,
     actions: PropTypes.shape({
         getLesson: PropTypes.func.isRequired,
