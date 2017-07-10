@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import HYLogo from '../../images/logo-hackeryou.svg';
+
 const Header = ({ actions, user }) => {
     return (<header className="mainHeader">
         <div className="innerWrap card">
             <Link to="/dashboard" className="linkBtn topLogo">
-                HackerYou Logo
+                <img src={HYLogo} alt="HackerYou Logo" />
             </Link>
             <div className="userInfo">
                 <h3>Hello, {user.firstName} {user.lastName}</h3>
