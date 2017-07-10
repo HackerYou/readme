@@ -2,6 +2,7 @@ import { push } from 'react-router-redux';
 import types from './actionTypes';
 import { login, setCredentials } from '../services/authService';
 import { getUserDetails } from './userActions';
+import { errorHandler } from './index';
 
 export function loginSuccess() {
     return { type: types.LOG_IN_SUCCESS };
@@ -18,7 +19,7 @@ export function logInUser(credentials) {
                 dispatch(loginSuccess());
             })
             .catch((error) => {
-                throw (error);
+                errorHandler(dispatch, error.response, types.AUTH_ERROR);
             })
     );
 }
@@ -39,4 +40,3 @@ export function logOutUser() {
         dispatch(logOut());
     };
 }
-

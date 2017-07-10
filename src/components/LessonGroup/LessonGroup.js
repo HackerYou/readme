@@ -1,17 +1,16 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const LessonGroup = (props) => {
-    const lesson = props;
-    console.log('hello', lesson.group);
+const LessonGroup = ({ group }) => {
     return (
         <li className="lessonGroup">
-            <h3>{lesson.group.title}</h3>
+            <h3>{group.title}</h3>
             <div className="card lessonCard">
                 <ol className="lessonSection">
-                    {lesson.group.lessons.map((item) => {
+                    {group.lessons.map((lesson) => {
                         return (
-                            <li className="lessonRow">{item.title}</li>
+                            <li key={lesson._id} className="lessonRow"><Link to={`/lesson/${lesson._id}`}>{lesson.title}</Link></li>
                         );
                     })}
                 </ol>
@@ -20,10 +19,11 @@ const LessonGroup = (props) => {
     );
 };
 
-// LessonGroup.propTypes = {
-//     group: PropTypes.shape({
-//         name: PropTypes.string.isRequired,
-//     }).isRequired,
-// };
+LessonGroup.propTypes = {
+    group: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        lessons: PropTypes.arrayOf(PropTypes.object).isRequired,
+    }).isRequired,
+};
 
 export default LessonGroup;

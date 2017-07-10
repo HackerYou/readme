@@ -1,5 +1,6 @@
 import types from './actionTypes';
 import { getCourseById } from '../services/courseService';
+import { errorHandler } from './index';
 
 export function updateClassroom(classroom) {
     return {
@@ -16,7 +17,7 @@ export function getCourse(id) {
                 dispatch(updateClassroom(course));
             })
             .catch((error) => {
-                throw (error);
+                errorHandler(dispatch, error.response, types.AUTH_ERROR);
             });
     };
 }
