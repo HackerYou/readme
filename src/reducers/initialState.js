@@ -22,6 +22,7 @@ export default {
     },
     lesson: {
         title: '',
+        topics: [],
     },
     user: {
         firstName: 'Loading',

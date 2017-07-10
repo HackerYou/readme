@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import LessonTopic from '../LessonTopic/LessonTopic';
+
 class Lesson extends React.Component {
     componentDidMount() {
         const { actions, match } = this.props;
@@ -22,7 +24,7 @@ class Lesson extends React.Component {
                 <span>Modal Stub</span>
             </header>
             <section className="lessonView card">
-                LessonView Stub
+                {lesson.topics.map(topic => <LessonTopic key={topic._id} topic={topic} />)}
             </section>
             <div className="container">
                 Back to Classroom Stub
@@ -34,6 +36,7 @@ class Lesson extends React.Component {
 Lesson.propTypes = {
     lesson: PropTypes.shape({
         title: PropTypes.string.isRequired,
+        topics: PropTypes.arrayOf(PropTypes.object).isRequired,
     }).isRequired,
     actions: PropTypes.shape({
         getLesson: PropTypes.func.isRequired,
