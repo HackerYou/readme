@@ -12,6 +12,7 @@ export default {
         title: '',
         template: false,
         term: '',
+        students: [],
         start_date: 0,
         end_date: 0,
         instructor: '0',
@@ -28,6 +29,8 @@ export default {
         firstName: 'Loading',
         lastName: '...',
         email: 'user@email.com',
+        admin: false,
+        instructor: false,
     },
     loader: {
         loading: false,

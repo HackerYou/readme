@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import LessonGroup from '../LessonGroup/LessonGroup';
+import ClassroomDetails from '../ClassroomDetails/ClassroomDetails';
 
 class Classroom extends React.Component {
     componentDidMount() {
@@ -11,7 +13,7 @@ class Classroom extends React.Component {
         getCourse(classroom_id);
     }
     render() {
-        const { classroom } = this.props;
+        const { classroom, user } = this.props;
         return (
             <div className="container full">
                 <Link to="/dashboard" className="linkBtn">Go Back To Dashboard</Link>
@@ -29,6 +31,7 @@ class Classroom extends React.Component {
                             );
                         })}
                     </ol>
+                    <ClassroomDetails user={user} classroom={classroom} />
                 </section>
             </div>
         );
@@ -38,6 +41,10 @@ class Classroom extends React.Component {
 Classroom.propTypes = {
     actions: PropTypes.shape({
         getCourse: PropTypes.func.isRequired,
+    }).isRequired,
+    user: PropTypes.shape({
+        admin: PropTypes.bool.isRequired,
+        instructor: PropTypes.bool.isRequired,
     }).isRequired,
     classroom: PropTypes.shape({
     //     _id: PropTypes.string.isRequired,
