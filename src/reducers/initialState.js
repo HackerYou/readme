@@ -20,7 +20,9 @@ export default {
         updated_at: 0,
         sections: [],
     },
-    lesson: {},
+    lesson: {
+        title: '',
+    },
     user: {
         firstName: 'Loading',
         lastName: '...',
