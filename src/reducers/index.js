@@ -6,7 +6,8 @@ import course from './courseReducer';
 import classroom from './classroomReducer';
 import user from './userReducer';
 import lesson from './lessonReducer';
+import loader from './loaderReducer';
 
-const rootReducer = combineReducers({ auth, course, classroom, user, lesson, router });
+const rootReducer = combineReducers({ auth, course, classroom, user, lesson, loader, router });
 
 export default rootReducer;

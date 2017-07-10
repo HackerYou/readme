@@ -26,4 +26,7 @@ export default {
         lastName: '...',
         email: 'user@email.com',
     },
+    loader: {
+        loading: false,
+    },
 };

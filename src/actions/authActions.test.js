@@ -66,6 +66,9 @@ describe('async actions', () => {
 
         const expectedActions = [
             {
+                type: types.LOADING,
+            },
+            {
                 payload: {
                     args: [ '/dashboard' ],
                     method: 'push',
@@ -74,6 +77,9 @@ describe('async actions', () => {
             },
             { 
                 type: types.LOG_IN_SUCCESS,
+            },
+            {
+                type: types.LOADING_SUCCESS,
             },
             {
                 payload: {
