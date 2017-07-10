@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { isAdmin } from '../../services/authService';
+import AdminPanel from '../AdminPanel/AdminPanel';
 import CourseCard from '../CourseCard/CourseCard';
 
 class Dashboard extends React.Component {
@@ -12,6 +14,7 @@ class Dashboard extends React.Component {
         const { courses } = this.props.course;
         return (
             <div className="container full classroom-container">
+                {isAdmin(this.props.user) && <AdminPanel />}
                 <div className="content">
                     <section className="dashWrap">
                         {courses.map((course) => {
@@ -35,6 +38,9 @@ class Dashboard extends React.Component {
 Dashboard.propTypes = {
     course: PropTypes.shape({
         courses: PropTypes.arrayOf(PropTypes.object).isRequired,
+    }).isRequired,
+    user: PropTypes.shape({
+        admin: PropTypes.bool.isRequired,
     }).isRequired,
     actions: PropTypes.shape({
         getCourses: PropTypes.func.isRequired,
