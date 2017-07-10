@@ -4,8 +4,9 @@ import { bindActionCreators } from 'redux';
 import * as classroomActions from '../../actions/classroomActions';
 import Classroom from './Classroom';
 
-const mapStateToProps = ({ classroom }) => {
+const mapStateToProps = ({ classroom, user }) => {
     return {
+        user,
         classroom,
     };
 };

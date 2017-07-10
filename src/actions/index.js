@@ -1,10 +1,11 @@
-import { logOutUser } from './authActions';
+// import { logOutUser } from './authActions';
 
 export function errorHandler(dispatch, error, type) {
-    if (error.success === false) {
-        dispatch({
-            type,
-        });
-        logOutUser();
-    }
+    throw (type, error);
+    // if (error.success === false) {
+    //     dispatch({
+    //         type,
+    //     });
+    //     logOutUser();
+    // }
 }

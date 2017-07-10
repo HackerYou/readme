@@ -11,6 +11,12 @@ export const login = ({ email, password }) => {
     });
 };
 
+export const isAdmin = user => user.admin;
+
+export const isInstructor = user => user.instructor;
+
+export const hasOps = user => user.instructor || user.admin;
+
 export const isLoggedIn = () => {
     if (localStorage.getItem([`${appName}_token`])) {
         return true;

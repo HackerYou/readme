@@ -9,6 +9,8 @@ describe('user reducer', () => {
             firstName: 'Loading',
             lastName: '...',
             email: 'user@email.com',
+            admin: false,
+            instructor: false,
         }
     )
    });

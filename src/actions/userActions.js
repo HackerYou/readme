@@ -20,7 +20,7 @@ export function getUserDetails(userId) {
                 dispatch(updateUser(user));
             })
             .catch((error) => {
-                errorHandler(dispatch, error.response, types.AUTH_ERROR);
+                errorHandler(dispatch, error, types.AUTH_ERROR);
             })
     );
 }
