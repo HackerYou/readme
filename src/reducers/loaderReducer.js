@@ -1,7 +1,7 @@
 import types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function (state = initialState.loading, action) {
+export default function (state = initialState.loader, action) {
     switch (action.type) {
     case types.LOADING:
         return {

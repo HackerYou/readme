@@ -8,7 +8,7 @@ export function loading() {
 
 export function loadingSuccess() {
     return {
-        types: types.LOADING_SUCCESS,
+        type: types.LOADING_SUCCESS,
     };
 }
 

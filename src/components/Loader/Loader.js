@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-const Loader = ({ loading }) => {
+const Loader = ({ loader }) => {
     const loaderClass = classNames({
         'chalk-loader': true,
-        hide: !loading,
+        hide: !loader.loading,
     });
     return (
         <div className={loaderClass}>
@@ -22,12 +22,14 @@ const Loader = ({ loading }) => {
 };
 
 Loader.propTypes = {
-    loading: PropTypes.bool.isRequired,
+    loader: PropTypes.shape({
+        loading: PropTypes.bool.isRequired,
+    }).isRequired,
 };
 
-const mapStateToProps = ({ loading }) => {
+const mapStateToProps = ({ loader }) => {
     return {
-        loading,
+        loader,
     };
 };
 
