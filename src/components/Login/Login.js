@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 import { isLoggedIn } from '../../services/authService';
 import Input from '../Forms/Input/Input';
 import * as authActions from '../../actions/authActions';
+import HYLogo from '../../images/logo-hackeryou.svg';
 
 class Login extends React.Component {
     constructor() {
@@ -37,32 +38,40 @@ class Login extends React.Component {
         (
             <Redirect to={{ pathname: '/dashboard' }} />
         ) : (
-            <div>
+            <div className="card loginCard">
                 <form onSubmit={this.handleSubmit}>
-                    <Input
-                        name="email"
-                        type="email"
-                        placeholder="Enter your email"
-                        labelText="Email"
-                        value={this.state.email}
-                        handleChange={this.handleChange}
-                    />
-                    <Input
-                        name="password"
-                        type="password"
-                        labelText="Password"
-                        value={this.state.password}
-                        placeholder="Enter your password"
-                        handleChange={this.handleChange}
-                    />
-                    <Input
-                        type="submit"
-                        name="submit"
-                        value="Log In"
-                        labelText=""
-                    />
+                    <img src={HYLogo} className="loginLogo" alt="HackerYou Logo" />
+                    <h1>readme</h1>
+                    <div className="fieldGroup">
+                        <Input
+                            name="email"
+                            type="email"
+                            placeholder="Enter your email"
+                            labelText="Email"
+                            value={this.state.email}
+                            handleChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="fieldGroup">
+                        <Input
+                            name="password"
+                            type="password"
+                            labelText="Password"
+                            value={this.state.password}
+                            placeholder="Enter your password"
+                            handleChange={this.handleChange}
+                        />
+                    </div>
+                    <div className="fieldGroup">
+                        <Input
+                            type="submit"
+                            name="submit"
+                            value="Log In"
+                            labelText=""
+                            classes="button primary"
+                        />
+                    </div>
                 </form>
-                <button onClick={this.props.actions.logOutUser}>Logout</button>
             </div>
         );
     }
