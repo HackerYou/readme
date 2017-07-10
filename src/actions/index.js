@@ -1,7 +1,7 @@
 // import { logOutUser } from './authActions';
 
 export function errorHandler(dispatch, error, type) {
-    console.log(type, error);
+    throw (type, error);
     // if (error.success === false) {
     //     dispatch({
     //         type,
