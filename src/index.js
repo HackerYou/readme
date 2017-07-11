@@ -16,6 +16,7 @@ import Login from './components/Login/Login';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
 import ClassroomContainer from './components/Classroom/ClassroomContainer';
 import TestResultsContainer from './components/TestResults/TestResultsContainer';
+import CreateTestContainer from './components/CreateTests/CreateTestContainer';
 import LessonContainer from './components/Lesson/LessonContainer';
 import Footer from './components/Footer/Footer';
 
@@ -46,6 +47,10 @@ const App = () => (
                     <PrivateRoute
                         path="/classroom/:classroom_id/test-results"
                         component={props => <TestResultsContainer {...props} />}
+                    />
+                    <PrivateRoute
+                        path="/classroom/:classroom_id/create-test"
+                        component={props => <CreateTestContainer {...props} />}
                     />
                     <PrivateRoute
                         path="/classroom/:classroom_id"
