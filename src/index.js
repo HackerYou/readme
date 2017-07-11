@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
@@ -15,6 +15,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
 import ClassroomContainer from './components/Classroom/ClassroomContainer';
+import TestResultsContainer from './components/TestResults/TestResultsContainer';
 import LessonContainer from './components/Lesson/LessonContainer';
 import Footer from './components/Footer/Footer';
 
@@ -41,10 +42,16 @@ const App = () => (
                 <Route exact path="/" render={props => <Login {...props} />} />
                 <Route path="/:all_routes" render={props => <HeaderContainer {...props} />} />
                 <PrivateRoute path="/dashboard" component={DashboardContainer} />
-                <PrivateRoute
-                    path="/classroom/:classroom_id"
-                    component={props => <ClassroomContainer {...props} />}
-                />
+                <Switch>
+                    <PrivateRoute
+                        path="/classroom/:classroom_id/test-results"
+                        component={props => <TestResultsContainer {...props} />}
+                    />
+                    <PrivateRoute
+                        path="/classroom/:classroom_id"
+                        component={props => <ClassroomContainer {...props} />}
+                    />
+                </Switch>
                 <PrivateRoute
                     path="/lesson/:lesson_id"
                     component={props => <LessonContainer {...props} />}
