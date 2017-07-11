@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Input from '../Forms/Input/Input';
 
 class CreateTests extends React.Component {
     componentDidMount() {
@@ -13,10 +13,18 @@ class CreateTests extends React.Component {
             <div className="classCard">
                 <section className="full detailsForm card">
                     <form action="">
-                        <label htmlFor="testName">What is the name of the test?</label>
-                        <input name="testName" type="text" />
-                        <input type="submit" />
-                        <div className="filedRow">
+                        <Input
+                            name="testName"
+                            type="text"
+                            labelText="What is the name of the test?"
+                            value=""
+                        />
+                        <Input
+                            type="submit"
+                            name="submit"
+                            value="submit"
+                        />
+                        <div className="fieldRow">
                             <label htmlFor="show">Show test in classroom</label>
                             <select name="show" id="show">
                                 <option value="true">Yes</option>
