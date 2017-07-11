@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 
 class TestResults extends React.Component {
     componentDidMount() {
-        const { getCourse, getTestResultsForCourse } = this.props.actions;
+        const { getTestResults } = this.props.actions;
         const { classroom_id } = this.props.match.params;
 
-        getCourse(classroom_id);
-        getTestResultsForCourse(classroom_id);
+        getTestResults(classroom_id);
     }
     render() {
         return (
@@ -23,8 +22,7 @@ TestResults.propTypes = {
         params: PropTypes.object.isRequired,
     }).isRequired,
     actions: PropTypes.shape({
-        getCourse: PropTypes.func.isRequired,
-        getTestResultsForCourse: PropTypes.func.isRequired,
+        getTestResults: PropTypes.func.isRequired,
     }).isRequired,
 };
 
