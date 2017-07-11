@@ -16,6 +16,7 @@ class Dashboard extends React.Component {
             <div className="container full classroom-container">
                 {isAdmin(this.props.user) && <AdminPanel />}
                 <div className="content">
+                    <h1>Your Classrooms</h1>
                     <section className="dashWrap">
                         {courses.map((course) => {
                             return (
