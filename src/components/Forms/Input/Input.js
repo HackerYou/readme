@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Input = ({ name, value, labelText, type, placeholder, handleChange, classes }) => (
-    <label htmlFor={name}>{labelText}
+    <span>
+        {labelText !== '' && <label htmlFor={name}>{labelText}</label>}
         <input
             name={name}
             value={value}
@@ -11,12 +12,13 @@ const Input = ({ name, value, labelText, type, placeholder, handleChange, classe
             onChange={handleChange}
             className={classes}
         />
-    </label>
+    </span>
 );
 
 Input.defaultProps = {
     placeholder: '',
     classes: '',
+    labelText: '',
     handleChange: null,
 };
 
@@ -25,7 +27,7 @@ Input.propTypes = {
     value: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-    labelText: PropTypes.string.isRequired,
+    labelText: PropTypes.string,
     placeholder: PropTypes.string,
     handleChange: PropTypes.func,
 };

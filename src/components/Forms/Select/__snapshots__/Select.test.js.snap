@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It renders the select component when you pass and object into options prop 1`] = `
+<span>
+  <select
+    className=""
+    name="Tiff"
+    onChange={null}
+  >
+    <option
+      value="bulldog"
+    >
+      fluffy
+    </option>
+    <option
+      value="calico"
+    >
+      meow
+    </option>
+  </select>
+</span>
+`;
+
+exports[`It renders the select component when you pass in array into options prop 1`] = `
+<span>
+  <select
+    className=""
+    name="Test"
+    onChange={null}
+  >
+    <option
+      value="blue"
+    >
+      blue
+    </option>
+    <option
+      value="green"
+    >
+      green
+    </option>
+    <option
+      value="darkcyan"
+    >
+      darkcyan
+    </option>
+  </select>
+</span>
+`;

@@ -39,6 +39,7 @@ const ClassroomDetails = ({ user, classroom }) => {
                                 <ul>
                                     <li>Test Stub</li>
                                 </ul>
+                                <Link to={`/classroom/${classroom._id}/create-test`}>Add a Test</Link>
                             </div>
                         </div>
                     )}
