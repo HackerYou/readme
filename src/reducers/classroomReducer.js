@@ -34,9 +34,8 @@ export default function (state = initialState.classroom, action) {
                 testTable.push(user);
             }
         });
-        return {
-            test_results: testTable,
-        };
+
+        return Object.assign(action.classroom, { test_results: testTable });
     }
     default:
         return state;
