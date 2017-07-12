@@ -8,7 +8,7 @@ const ClassroomDetails = ({ user, classroom }) => {
     return (
         <aside>
             <section className="sideCard">
-                {hasOps(user) ?
+                {hasOps(user) && classroom.tests.length > 0 ?
                     <div className="card">
                         <Link to={`/classroom/${classroom._id}/test-results`}>View Test Results</Link>
                     </div>

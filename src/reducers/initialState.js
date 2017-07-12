@@ -20,6 +20,8 @@ export default {
         created_at: 0,
         updated_at: 0,
         sections: [],
+        tests: [],
+        test_results: [],
     },
     lesson: {
         title: '',

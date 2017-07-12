@@ -26,27 +26,32 @@ export function getCourse(id) {
     };
 }
 
-export function getTestResultsForCourse(classroomId) {
+const getTestResultsForClassroom = (classroom, users) => {
+    return {
+        type: types.GET_TEST_RESULTS,
+        classroom,
+        users,
+    };
+};
+
+export function getTestResults(classroomId) {
     return (dispatch) => {
         dispatch(loading());
         return getCourseById(classroomId)
             .then(response => response.json())
             .then(({ course }) => {
-                const { tests } = course;
-                let usersInfo = [];
-                tests.forEach((test) => {
-                    usersInfo = test.users.map((userId) => {
-                        return getUserId(userId);
-                    });
+                const userReqs = course.students.map((studentShortDesc) => {
+                    return getUserId(studentShortDesc._id)
+                    .then(response => response.json());
                 });
-                Promise.all(usersInfo)
-                    .then((promises) => {
-                        const users = promises.map((promise) => {
-                            return promise.json().then(user => user);
-                            // return promise.json();
-                        });
-                        console.log(users);
+                Promise.all(userReqs)
+                .then((usersLongDesc) => {
+                    const users = usersLongDesc.map((userObj) => {
+                        return Object.assign({}, userObj.user);
                     });
+                    dispatch(getTestResultsForClassroom(course, users));
+                    dispatch(loadingSuccess());
+                });
             });
     };
 }

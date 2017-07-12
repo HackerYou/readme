@@ -1,30 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import TestResultsCard from './TestResultsCard/TestResultsCard';
+
 class TestResults extends React.Component {
     componentDidMount() {
-        const { getCourse, getTestResultsForCourse } = this.props.actions;
+        const { getTestResults } = this.props.actions;
         const { classroom_id } = this.props.match.params;
 
-        getCourse(classroom_id);
-        getTestResultsForCourse(classroom_id);
+        getTestResults(classroom_id);
     }
     render() {
         return (
-            <pre>
-                {JSON.stringify(this.props.match.params, null, 3)}
-            </pre>
+            <section className="dashWrap">
+                {this.props.classroom.test_results.map((student) => {
+                    return Object.keys(student.tests).length > 0 &&
+                    (
+                        <TestResultsCard
+                            key={student._id}
+                            student={student}
+                        />
+                    );
+                })}
+            </section>
         );
     }
 }
 
 TestResults.propTypes = {
+    classroom: PropTypes.shape({
+        test_results: PropTypes.array.isRequired,
+    }).isRequired,
     match: PropTypes.shape({
         params: PropTypes.object.isRequired,
     }).isRequired,
     actions: PropTypes.shape({
-        getCourse: PropTypes.func.isRequired,
-        getTestResultsForCourse: PropTypes.func.isRequired,
+        getTestResults: PropTypes.func.isRequired,
     }).isRequired,
 };
 
