@@ -8,12 +8,12 @@ exports[`It renders the select component when you pass and object into options p
     onChange={null}
   >
     <option
-      value="fluffy"
+      value="bulldog"
     >
       fluffy
     </option>
     <option
-      value="meow"
+      value="calico"
     >
       meow
     </option>

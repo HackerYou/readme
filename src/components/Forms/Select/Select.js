@@ -11,7 +11,11 @@ const Select = ({ name, labelText, options, chosenKey, chosenVal, handleChange, 
                 if (typeof option === 'string') {
                     return <option key={keygen._()} value={option}>{option}</option>;
                 }
-                return <option value={option[chosenVal]}>{option[chosenKey]}</option>;
+                return (
+                    <option key={keygen._()} value={option[chosenVal]}>
+                        {option[chosenKey]}
+                    </option>
+                );
             })}
         </select>
     </span>
