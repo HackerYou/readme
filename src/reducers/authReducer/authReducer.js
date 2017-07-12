@@ -1,6 +1,6 @@
-import types from '../actions/actionTypes';
-import initialState from './initialState';
-import config from '../services/config';
+import types from '../../actions/actionTypes';
+import initialState from '../initialState';
+import config from '../../services/config';
 
 export default function (state = initialState.auth, action) {
     switch (action.type) {

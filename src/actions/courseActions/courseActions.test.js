@@ -3,9 +3,9 @@ import thunk from 'redux-thunk';
 import * as actions from './courseActions';
 import expect from 'expect';
 import nock from 'nock';
-import types from './actionTypes';
+import types from '../actionTypes';
 
-import config from '../services/config.js';
+import config from '../../services/config.js';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

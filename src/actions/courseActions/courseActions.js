@@ -1,5 +1,5 @@
-import types from './actionTypes';
-import { requestCourses } from '../services/courseService';
+import types from '../actionTypes';
+import { requestCourses } from '../../services/courseService';
 
 export function updateCourses(courses) {
     return {

@@ -1,5 +1,5 @@
-import types from '../actions/actionTypes';
-import initialState from './initialState';
+import types from '../../actions/actionTypes';
+import initialState from '../initialState';
 
 export default function (state = initialState.lesson, action) {
     switch (action.type) {

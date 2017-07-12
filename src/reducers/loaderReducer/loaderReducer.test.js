@@ -1,7 +1,7 @@
 import loaderReducer from './loaderReducer';
-import config from '../services/config';
-import types from '../actions/actionTypes';
-import initialState from './initialState';
+import config from '../../services/config';
+import types from '../../actions/actionTypes';
+import initialState from '../initialState';
 
 describe('loading reducer', () => {
     it('should return the initial state', () => {
