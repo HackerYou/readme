@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from '../Forms/Input/Input';
+import Select from '../Forms/Select/Select';
 
 class CreateTests extends React.Component {
     componentDidMount() {
@@ -9,6 +10,16 @@ class CreateTests extends React.Component {
         getCourse(classroom_id);
     }
     render() {
+        const options = [
+            {
+                text: 'yes',
+                value: 'true',
+            },
+            {
+                text: 'no',
+                value: 'false',
+            },
+        ];
         return (
             <div className="classCard">
                 <section className="full detailsForm card">
@@ -26,10 +37,7 @@ class CreateTests extends React.Component {
                         />
                         <div className="fieldRow">
                             <label htmlFor="show">Show test in classroom</label>
-                            <select name="show" id="show">
-                                <option value="true">Yes</option>
-                                <option value="false">No</option>
-                            </select>
+                            <Select value="cat" name="cat" options={options} />
                         </div>
                     </form>
                 </section>
