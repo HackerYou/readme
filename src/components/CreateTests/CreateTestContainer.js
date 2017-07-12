@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import CreateTests from './CreateTests';
-import * as classroomActions from '../../actions/classroomActions';
+import * as classroomActions from '../../actions/classroomActions/classroomActions';
 
 const mapStateToProps = ({ classroom }) => {
     return {

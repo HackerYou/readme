@@ -17,9 +17,10 @@ test('It renders the select component when you pass and object into options prop
     const props = {
         name: 'Tiff',
         chosenKey: 'petName',
-        options: [{petType: 'dog', petName: 'fluffy'}, {petType: 'cat', petName: 'meow'}]
+        chosenVal: 'breed',
+        options: [{petType: 'dog', breed:'bulldog', petName: 'fluffy'}, {petType: 'cat', breed:'calico', petName: 'meow'}]
     };
-    const component = renderer.create(<Select name={props.name} chosenKey={props.chosenKey} options={props.options}/>);
+    const component = renderer.create(<Select name={props.name} chosenKey={props.chosenKey} chosenVal={props.chosenVal} options={props.options}/>);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 });
