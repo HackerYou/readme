@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as lessonActions from '../../actions/lessonActions';
+import * as lessonActions from '../../actions/lessonActions/lessonActions';
 import Lesson from './Lesson';
 
 

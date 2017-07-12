@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 import { isLoggedIn } from '../../services/authService';
 import Input from '../Forms/Input/Input';
-import * as authActions from '../../actions/authActions';
+import * as authActions from '../../actions/authActions/authActions';
 import HYLogo from '../../images/logo-hackeryou.svg';
 
 class Login extends React.Component {

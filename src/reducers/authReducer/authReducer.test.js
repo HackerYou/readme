@@ -1,6 +1,6 @@
 import authReducer from './authReducer';
-import config from '../services/config';
-import types from '../actions/actionTypes';
+import config from '../../services/config';
+import types from '../../actions/actionTypes';
 
 const mockToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiU2ltb24gQmxvb20iLCJhZG1pbiI6dHJ1ZSwiaW5zdHJ1Y3RvciI6dHJ1ZSwidXNlcl9pZCI6IjU2YmE1NGU2N2ExNjE0MGI2N2U0YmI4OCIsImlhdCI6MTQ5ODUwNzU0OSwiZXhwIjoxNDk4OTM5NTQ5fQ.IKXH8RRwUW9bMSu76C8-t5S1FkDdAmrLuBt7XTUBfGQ';
 

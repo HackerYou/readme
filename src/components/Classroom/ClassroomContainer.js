@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as classroomActions from '../../actions/classroomActions';
+import * as classroomActions from '../../actions/classroomActions/classroomActions';
 import Classroom from './Classroom';
 
 const mapStateToProps = ({ classroom, user }) => {

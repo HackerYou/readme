@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 
 import rootReducer from './reducers/index';
-import { updateUserStatus } from './actions/userActions';
+import { updateUserStatus } from './actions/userActions/userActions';
 import Loader from './components/Loader/Loader';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import HeaderContainer from './components/Header/HeaderContainer';

@@ -1,7 +1,7 @@
 import courseReducer from './courseReducer';
-import config from '../services/config';
-import types from '../actions/actionTypes';
-import initialState from './initialState';
+import config from '../../services/config';
+import types from '../../actions/actionTypes';
+import initialState from '../initialState';
 
 describe('course reducer', () => {
     it('should return the initial state', () => {
