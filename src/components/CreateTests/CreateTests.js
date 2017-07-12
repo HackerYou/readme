@@ -10,7 +10,6 @@ class CreateTests extends React.Component {
         getCourse(classroom_id);
     }
     render() {
-        // const options = ['yes', 'no'];
         const options = [
             {
                 text: 'yes',
@@ -38,7 +37,13 @@ class CreateTests extends React.Component {
                         />
                         <div className="fieldRow">
                             <label htmlFor="show">Show test in classroom</label>
-                            <Select value="cat" val="text" name="cat" options={options} />
+                            <Select
+                                value="cat"
+                                chosenVal="value"
+                                chosenKey="text"
+                                name="cat"
+                                options={options}
+                            />
                         </div>
                     </form>
                 </section>

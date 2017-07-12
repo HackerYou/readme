@@ -22,6 +22,7 @@
     "eslint-plugin-react": "^7.1.0",
     "history": "^4.6.3",
     "isomorphic-fetch": "^2.2.1",
+    "keygenerator": "^1.0.4",
     "lost": "^8.1.0",
     "pixrem": "^4.0.1",
     "postcss-color-function": "^4.0.0",
