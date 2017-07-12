@@ -1,8 +1,8 @@
-import types from './actionTypes';
-import { getCourseById } from '../services/courseService';
-import { getUserId } from '../services/userService';
-import { errorHandler } from './index';
-import { loading, loadingSuccess } from './loaderActions';
+import types from '../actionTypes';
+import { getCourseById } from '../../services/courseService';
+import { getUserId } from '../../services/userService';
+import { errorHandler } from '../index';
+import { loading, loadingSuccess } from '../loaderActions/loaderActions';
 
 export function updateClassroom(classroom) {
     return {

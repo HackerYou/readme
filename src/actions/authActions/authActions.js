@@ -1,9 +1,9 @@
 import { push } from 'react-router-redux';
-import types from './actionTypes';
-import { login, setCredentials } from '../services/authService';
-import { getUserDetails } from './userActions';
-import { loading, loadingSuccess } from './loaderActions';
-import { errorHandler } from './index';
+import types from '../actionTypes';
+import { login, setCredentials } from '../../services/authService';
+import { getUserDetails } from '../userActions/userActions';
+import { loading, loadingSuccess } from '../loaderActions/loaderActions';
+import { errorHandler } from '../index';
 
 export function loginSuccess() {
     return { type: types.LOG_IN_SUCCESS };

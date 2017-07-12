@@ -1,6 +1,6 @@
-import types from './actionTypes';
-import { getLessonById } from '../services/lessonService';
-import { loading, loadingSuccess } from './loaderActions';
+import types from '../actionTypes';
+import { getLessonById } from '../../services/lessonService';
+import { loading, loadingSuccess } from '../loaderActions/loaderActions';
 
 export function updateLesson(lesson) {
     return {

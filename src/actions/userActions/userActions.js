@@ -1,9 +1,9 @@
-import { getUserId } from '../services/userService';
-import { isLoggedIn } from '../services/authService';
-import config from '../services/config';
-import { errorHandler } from './index';
+import { getUserId } from '../../services/userService';
+import { isLoggedIn } from '../../services/authService';
+import config from '../../services/config';
+import { errorHandler } from '../index';
 
-import types from './actionTypes';
+import types from '../actionTypes';
 
 export function updateUser(user) {
     return {
