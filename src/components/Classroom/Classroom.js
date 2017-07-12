@@ -13,7 +13,6 @@ class Classroom extends React.Component {
         getCourse(classroom_id);
     }
     render() {
-        console.log(this.props.classroom);
         const { classroom, user } = this.props;
         return (
             <div className="container full">
