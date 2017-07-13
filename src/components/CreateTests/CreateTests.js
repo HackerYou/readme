@@ -5,9 +5,10 @@ import Select from '../Forms/Select/Select';
 
 class CreateTests extends React.Component {
     componentDidMount() {
-        const { getCourse } = this.props.actions;
+        const { getCourse, retrieveQuestions } = this.props.actions;
         const { classroom_id } = this.props.match.params;
         getCourse(classroom_id);
+        retrieveQuestions();
     }
     render() {
         const options = [
@@ -58,6 +59,7 @@ CreateTests.propTypes = {
     }).isRequired,
     actions: PropTypes.shape({
         getCourse: PropTypes.func.isRequired,
+        retrieveQuestions: PropTypes.func.isRequired,
     }).isRequired,
 };
 
