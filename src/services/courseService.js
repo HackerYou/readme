@@ -10,6 +10,15 @@ export const requestCourses = () => {
     });
 };
 
+export const requestTemplates = () => {
+    return fetch(`${config.getApiUrl()}/course/template`, {
+        method: 'GET',
+        headers: {
+            'x-access-token': config.getToken(),
+        },
+    });
+};
+
 export const getCourseById = (id) => {
     return fetch(`${config.getApiUrl()}/course/${id}`, {
         method: 'GET',

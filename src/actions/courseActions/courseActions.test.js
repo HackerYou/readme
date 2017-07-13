@@ -15,6 +15,24 @@ describe('async actions', () => {
       nock.cleanAll();
   })
 
+  it('creates a UPDATE_CLASSROOMS action after templates are retrieved', () => {
+    nock(`${config.getApiUrl()}`)
+        .get('/course/template')
+        .reply(200, {
+            course: [],
+        });
+        const expectedActions = [
+            {
+                type: types.UPDATE_COURSES,
+                courses: [],
+            }
+
+        ];
+        const store = mockStore({ courses: [] });
+        return store.dispatch(actions.getTemplates()).then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+        });   
+  });
   it('creates a UPDATE_CLASSROOMS action after classrooms are retrieved', () => {
         nock(`${config.getApiUrl()}`)
         .get('/course')
@@ -33,5 +51,5 @@ describe('async actions', () => {
             expect(store.getActions()).toEqual(expectedActions);
         });
   
-    })
+    });
 })
