@@ -22,6 +22,7 @@ class CreateTests extends React.Component {
                 value: 'false',
             },
         ];
+        const { questions } = this.props.tests;
         return (
             <div className="classCard">
                 <section className="full detailsForm card">
@@ -49,8 +50,21 @@ class CreateTests extends React.Component {
                         </div>
                     </form>
                 </section>
-                <h2>Title of test goes here:</h2>
-                <QuestionCard />
+                <section className="full">
+                    <h2>Title of test goes here:</h2>
+                    <article className="questionCard__wrapper">
+                        {questions.map(({ title, difficulty, type, category }) => {
+                            return (
+                                <QuestionCard
+                                    title={title}
+                                    category={category}
+                                    difficulty={difficulty}
+                                    type={type}
+                                />
+                            );
+                        })}
+                    </article>
+                </section>
             </div>
         );
     }
@@ -59,6 +73,9 @@ class CreateTests extends React.Component {
 CreateTests.propTypes = {
     match: PropTypes.shape({
         params: PropTypes.object.isRequired,
+    }).isRequired,
+    tests: PropTypes.shape({
+        questions: PropTypes.arrayOf.isRequired,
     }).isRequired,
     actions: PropTypes.shape({
         getCourse: PropTypes.func.isRequired,
