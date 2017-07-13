@@ -1,10 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 
-const ManageClassroom = () => {
-    return (
-        <div className="container">
+class ManageClassroom extends React.Component {
+    componentDidMount() {
+        const { getTemplates } = this.props.actions;
+        getTemplates();
+    }
+    render() {
+        return (<div className="container">
             <header className="topContent">
                 <Link className="linkBtn" to="/dashboard">
                     <button className="primary">
@@ -39,8 +44,14 @@ const ManageClassroom = () => {
                     Classrooms Stub
                 </section>
             </div>
-        </div>
-    );
+        </div>);
+    }
+}
+
+ManageClassroom.propTypes = {
+    actions: PropTypes.shape({
+        getTemplates: PropTypes.func.isRequired,
+    }).isRequired,
 };
 
 export default ManageClassroom;
