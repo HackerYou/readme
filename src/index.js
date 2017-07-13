@@ -14,6 +14,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
+import ManageClassroomContainer from './components/ManageClassroom/ManageClassroomContainer';
 import ClassroomContainer from './components/Classroom/ClassroomContainer';
 import TestResultsContainer from './components/TestResults/TestResultsContainer';
 import CreateTestContainer from './components/CreateTests/CreateTestContainer';
@@ -44,6 +45,10 @@ const App = () => (
                 <Route path="/:all_routes" render={props => <HeaderContainer {...props} />} />
                 <PrivateRoute path="/dashboard" component={DashboardContainer} />
                 <Switch>
+                    <PrivateRoute
+                        path="/classroom/manage"
+                        component={props => <ManageClassroomContainer {...props} />}
+                    />
                     <PrivateRoute
                         path="/classroom/:classroom_id/test-results"
                         component={props => <TestResultsContainer {...props} />}
