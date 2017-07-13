@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Input from '../Forms/Input/Input';
 import Select from '../Forms/Select/Select';
+import QuestionCard from '../QuestionCard/QuestionCard';
 
 class CreateTests extends React.Component {
     componentDidMount() {
@@ -48,6 +49,8 @@ class CreateTests extends React.Component {
                         </div>
                     </form>
                 </section>
+                <h2>Title of test goes here:</h2>
+                <QuestionCard />
             </div>
         );
     }
