@@ -10,12 +10,12 @@ exports[`It renders the select component when you pass and object into options p
     <option
       value="bulldog"
     >
-      fluffy
+      bulldog
     </option>
     <option
       value="calico"
     >
-      meow
+      calico
     </option>
   </select>
 </span>

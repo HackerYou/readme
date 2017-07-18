@@ -1,9 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const Input = ({ name, value, labelText, type, placeholder, handleChange, classes }) => (
-    <span>
-        {labelText !== '' && <label htmlFor={name}>{labelText}</label>}
+const Input = (props) => {
+    const { name,
+        value,
+        labelText,
+        labelInline,
+        type,
+        placeholder,
+        handleChange,
+        classes,
+    } = props;
+    const labelClass = classNames({
+        inline: labelInline,
+    });
+    return (<span>
+        {labelText !== '' && <label htmlFor={name} className={labelClass}>{labelText}</label>}
         <input
             name={name}
             value={value}
@@ -12,10 +25,11 @@ const Input = ({ name, value, labelText, type, placeholder, handleChange, classe
             onChange={handleChange}
             className={classes}
         />
-    </span>
-);
+    </span>);
+};
 
 Input.defaultProps = {
+    labelInline: false,
     placeholder: '',
     classes: '',
     labelText: '',
@@ -24,6 +38,7 @@ Input.defaultProps = {
 
 Input.propTypes = {
     classes: PropTypes.string,
+    labelInline: PropTypes.bool,
     value: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,

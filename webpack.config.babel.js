@@ -41,7 +41,7 @@ export default (env) => {
         module: {
             rules: [
                 { test: /\.js$/, use: ifProd(['babel-loader'], ['babel-loader', 'eslint-loader']), exclude: /node_modules/ },
-                { test: /\.css$/, use: ['style-loader'] },
+                { test: /\.css$/, use: ['style-loader', 'css-loader'] },
                 { test: /\.scss$/,
                     use: ifProd(
                         extract({

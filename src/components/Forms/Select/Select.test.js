@@ -16,9 +16,9 @@ test('It renders the select component when you pass in array into options prop',
 test('It renders the select component when you pass and object into options prop', () => {
     const props = {
         name: 'Tiff',
-        chosenKey: 'petName',
+        chosenKey: '_id',
         chosenVal: 'breed',
-        options: [{petType: 'dog', breed:'bulldog', petName: 'fluffy'}, {petType: 'cat', breed:'calico', petName: 'meow'}]
+        options: [{petType: 'dog', breed:'bulldog', _id: '12312312', petName: 'fluffy'}, {petType: 'cat', breed:'calico', _id: '123213', petName: 'meow'}]
     };
     const component = renderer.create(<Select name={props.name} chosenKey={props.chosenKey} chosenVal={props.chosenVal} options={props.options}/>);
     let tree = component.toJSON();
