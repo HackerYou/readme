@@ -37,6 +37,9 @@ export default {
     loader: {
         loading: false,
     },
+    users: {
+        instructors: [],
+    },
     tests: {
         questions: [],
     },

@@ -9,3 +9,15 @@ export const getUserId = (id) => {
         },
     });
 };
+
+export const getAllInstructors = () => {
+    return fetch(`${config.getApiUrl()}/user`, {
+        method: 'GET',
+        headers: {
+            'x-access-token': config.getToken(),
+        },
+        data: {
+            instructor: true,
+        },
+    });
+};
