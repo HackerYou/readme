@@ -1,5 +1,6 @@
 import types from '../actionTypes';
-import { getCourseById } from '../../services/courseService';
+import { getCourses } from '../courseActions/courseActions';
+import { getCourseById, createCourse } from '../../services/courseService';
 import { getUserId } from '../../services/userService';
 import { errorHandler } from '../index';
 import { loading, loadingSuccess } from '../loaderActions/loaderActions';
@@ -55,3 +56,15 @@ export function getTestResults(classroomId) {
             });
     };
 }
+
+export function createClassroomThunk(payload) {
+    return (dispatch) => {
+        dispatch(loading());
+        return createCourse(payload)
+            .then(response => response.json())
+            .then(() => {
+                dispatch(getCourses());
+            });
+    };
+}
+
