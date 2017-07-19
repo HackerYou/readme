@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It renders the input component with an inline label if you pass the labelInline prop 1`] = `
+<span>
+  <label
+    className="inline"
+    htmlFor="title"
+  >
+    Title
+  </label>
+  <input
+    className=""
+    name="title"
+    onChange={null}
+    placeholder=""
+    type="text"
+    value="title"
+  />
+</span>
+`;

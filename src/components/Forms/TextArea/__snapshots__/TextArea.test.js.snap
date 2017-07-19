@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It renders the textarea component 1`] = `
+<span>
+  <label
+    htmlFor="description"
+  >
+    Dummy Textarea Component
+  </label>
+  <textarea
+    cols="30"
+    id="description"
+    name="description"
+    onChange={[Function]}
+    rows="10"
+  />
+</span>
+`;
