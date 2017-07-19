@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import { Link } from 'react-router-dom';
 import Select from '../Forms/Select/Select';
@@ -8,10 +9,48 @@ import DatePicker from '../Forms/DatePicker/DatePicker';
 import TextArea from '../Forms/TextArea/TextArea';
 
 class ManageClassroom extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            template: 'default',
+            title: '',
+            term: '',
+            startDate: moment(),
+            endDate: moment(),
+            instructor: '',
+            description: '',
+        };
+        this.handleDate = this.handleDate.bind(this);
+        this.handleInput = this.handleInput.bind(this);
+        this.createClass = this.createClass.bind(this);
+    }
     componentDidMount() {
         const { getTemplates, getInstructors } = this.props.actions;
         getTemplates();
         getInstructors();
+    }
+    handleDate(date, stateSlice) {
+        this.setState({
+            [stateSlice]: date,
+        });
+    }
+    handleInput(e) {
+        this.setState({
+            [e.target.name]: e.target.value,
+        });
+    }
+    createClass(e) {
+        e.preventDefault();
+        const { title, template, term, startDate, endDate, instructor, description } = this.state;
+        this.props.actions.createClassroomThunk({
+            title,
+            template,
+            term,
+            start_date: +new Date(startDate._d),
+            end_date: +new Date(endDate._d),
+            instructor,
+            description,
+        });
     }
     render() {
         const { instructors } = this.props.users;
@@ -26,14 +65,17 @@ class ManageClassroom extends React.Component {
             </header>
             <div className="card setupCard">
                 <h2>Create a new classroom</h2>
-                <form>
+                <form onSubmit={this.createClass}>
                     <div className="fieldRow">
                         <Select
                             options={courses}
                             name="template"
                             labelText="Template"
                             chosenKey="_id"
-                            chosenVal=""
+                            chosenText="title"
+                            chosenVal="_id"
+                            value={this.state.template}
+                            handleChange={this.handleInput}
                             labelInline
                         />
                     </div>
@@ -42,44 +84,62 @@ class ManageClassroom extends React.Component {
                             labelText="Title"
                             name="title"
                             type="text"
-                            value=""
+                            value={this.state.title}
                             placeholder="Enter Course Title"
+                            handleChange={this.handleInput}
                             labelInline
                         />
                         <Input
                             labelText="Term"
                             name="term"
                             type="text"
-                            value="courseTerm"
+                            value={this.state.term}
                             placeholder="eg Fall 2015"
+                            handleChange={this.handleInput}
                             labelInline
                         />
                     </div>
                     <div className="fieldRow">
                         <DatePicker
                             labelText="Start Date"
-                            pickerId="startdate"
-                            handleChange={() => this}
+                            pickerId="startDate"
+                            handleChange={this.handleDate}
+                            selectedDate={this.state.startDate}
                             labelInline
                         />
                         <DatePicker
                             labelText="End Date"
-                            pickerId="startdate"
-                            handleChange={() => this}
+                            pickerId="endDate"
+                            handleChange={this.handleDate}
+                            selectedDate={this.state.endDate}
                             labelInline
                         />
                     </div>
                     <div className="fieldRow">
                         <Select
                             options={instructors.map(i => ({ name: `${i.firstName} ${i.lastName}`, _id: i._id }))}
-                            name=""
+                            name="instructor"
+                            labelText="Instructor"
                             chosenKey="_id"
-                            chosenVal="name"
+                            chosenText="name"
+                            chosenVal="_id"
+                            handleChange={this.handleInput}
+                            value={this.state.instructor}
+                            labelInline
                         />
-                        Create a new instructor
+                        <small>
+                            Create a new instructor
+                        </small>
                     </div>
                     <div className="fieldRow">
-                        <TextArea name="classroom-description" label="Classroom Description" />
+                        <TextArea
+                            name="description"
+                            label="Classroom Description"
+                            cols="30"
+                            rows="10"
+                            handleChange={this.handleInput}
+                            val={this.state.description}
+                        />
                     </div>
                     <button className="success">Create Classroom</button>
                 </form>
@@ -104,6 +164,7 @@ ManageClassroom.propTypes = {
     actions: PropTypes.shape({
         getTemplates: PropTypes.func.isRequired,
         getInstructors: PropTypes.func.isRequired,
+        createClassroomThunk: PropTypes.func.isRequired,
     }).isRequired,
 };
 
