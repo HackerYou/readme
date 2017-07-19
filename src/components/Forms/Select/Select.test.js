@@ -35,7 +35,7 @@ test('It renders the select component with an inline label if you pass the label
         labelText: 'Select your pet',
         labelInline: true,
         chosenKey: 'petName',
-        options: [{petType: 'dog', petName: 'fluffy'}, {petType: 'cat', petName: 'meow'}]
+        options: ['calico', 'pooch', 'spaghetti'],
     };
     const component = renderer.create(<Select {...props} />);
     let tree = component.toJSON();
