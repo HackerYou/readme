@@ -4,9 +4,16 @@ exports[`It renders the select component when you pass and object into options p
 <span>
   <select
     className=""
-    name="Tiff"
+    name="Test"
     onChange={null}
+    value="test"
   >
+    <option
+      disabled={true}
+      value="default"
+    >
+      Select an option...
+    </option>
     <option
       value="bulldog"
     >
@@ -21,27 +28,73 @@ exports[`It renders the select component when you pass and object into options p
 </span>
 `;
 
-exports[`It renders the select component when you pass in array into options prop 1`] = `
+exports[`It renders the select component when you pass in an array of options 1`] = `
 <span>
   <select
     className=""
     name="Test"
     onChange={null}
+    value="test"
   >
     <option
-      value="blue"
+      disabled={true}
+      value="default"
     >
-      blue
+      Select an option...
     </option>
     <option
-      value="green"
+      value="calico"
     >
-      green
+      calico
     </option>
     <option
-      value="darkcyan"
+      value="pooch"
     >
-      darkcyan
+      pooch
+    </option>
+    <option
+      value="spaghetti"
+    >
+      spaghetti
+    </option>
+  </select>
+</span>
+`;
+
+exports[`It renders the select component with an inline label if you pass the labelInline prop 1`] = `
+<span>
+  <label
+    className="inline"
+    htmlFor="Tiff"
+  >
+    Select your pet
+  </label>
+  <select
+    className=""
+    name="Tiff"
+    onChange={null}
+    value="Tiff"
+  >
+    <option
+      disabled={true}
+      value="default"
+    >
+      Select an option...
+    </option>
+    <option
+      value="calico"
+    >
+      calico
+    </option>
+    <option
+      value="pooch"
+    >
+      pooch
+    </option>
+    <option
+      value="spaghetti"
+    >
+      spaghetti
     </option>
   </select>
 </span>

@@ -13,20 +13,23 @@ const Select = (props) => {
         labelInline,
         handleChange,
         classes,
+        chosenText,
+        value,
     } = props;
     const labelClass = classNames({
         inline: labelInline,
     });
     return (<span>
         {labelText !== '' && <label htmlFor={name} className={labelClass}>{labelText}</label>}
-        <select name={name} className={classes} onChange={handleChange}>
+        <select name={name} className={classes} value={value} onChange={handleChange}>
+            <option value="default" disabled>Select an option...</option>
             { options.map((option) => {
                 if (typeof option === 'string') {
                     return <option key={keygen._()} value={option}>{option}</option>;
                 }
                 return (
                     <option key={option[chosenKey]} value={option[chosenVal]}>
-                        {option[chosenVal]}
+                        {option[chosenText]}
                     </option>
                 );
             })}
@@ -39,14 +42,17 @@ Select.defaultProps = {
     labelText: '',
     handleChange: null,
     chosenKey: '',
+    chosenText: '',
     chosenVal: '',
     labelInline: false,
 };
 
 Select.propTypes = {
+    value: PropTypes.string.isRequired,
     labelInline: PropTypes.bool,
     classes: PropTypes.string,
     chosenKey: PropTypes.string,
+    chosenText: PropTypes.string,
     chosenVal: PropTypes.string,
     name: PropTypes.string.isRequired,
     options: PropTypes.arrayOf(
