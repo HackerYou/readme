@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-
 import { Link } from 'react-router-dom';
+
+import { run, ruleRunner } from '../../utils/forms/ruleRunner';
+import { required } from '../../utils/forms/rules';
 import Select from '../Forms/Select/Select';
 import Input from '../Forms/Input/Input';
 import DatePicker from '../Forms/DatePicker/DatePicker';
 import TextArea from '../Forms/TextArea/TextArea';
+
+const fieldValidations = [
+    ruleRunner('title', 'Title', required),
+];
 
 class ManageClassroom extends React.Component {
     constructor() {
@@ -19,6 +25,7 @@ class ManageClassroom extends React.Component {
             endDate: moment(),
             instructor: '',
             description: '',
+            validationErrors: {},
         };
         this.handleDate = this.handleDate.bind(this);
         this.handleInput = this.handleInput.bind(this);
@@ -28,6 +35,10 @@ class ManageClassroom extends React.Component {
         const { getTemplates, getInstructors } = this.props.actions;
         getTemplates();
         getInstructors();
+        this.setState({ validationErrors: run(this.state, fieldValidations) });
+    }
+    errorFor(field) {
+        return this.state.validationErrors[field] || '';
     }
     handleDate(date, stateSlice) {
         this.setState({
@@ -35,14 +46,21 @@ class ManageClassroom extends React.Component {
         });
     }
     handleInput(e) {
-        this.setState({
+        const newState = Object.assign({}, this.state, {
             [e.target.name]: e.target.value,
         });
+        newState.validationErrors = run(newState, fieldValidations);
+        this.setState(newState);
     }
     createClass(e) {
         e.preventDefault();
+
+        this.setState({ showErrors: true });
+        if (Object.keys(this.state.validationErrors).length > 0) {
+            return null;
+        }
         const { title, template, term, startDate, endDate, instructor, description } = this.state;
-        this.props.actions.createClassroomThunk({
+        return this.props.actions.createClassroomThunk({
             title,
             template,
             term,
@@ -87,6 +105,8 @@ class ManageClassroom extends React.Component {
                             value={this.state.title}
                             placeholder="Enter Course Title"
                             handleChange={this.handleInput}
+                            showError={this.state.showErrors}
+                            errorText={this.errorFor('title')}
                             labelInline
                         />
                         <Input
