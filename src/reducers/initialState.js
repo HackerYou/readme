@@ -38,7 +38,7 @@ export default {
         loading: false,
     },
     broadcast: {
-        message: 'hi',
+        message: '',
         broadcastType: 'success',
         show: false,
     },
