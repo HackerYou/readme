@@ -23,6 +23,7 @@ module.exports = {
         "react/jsx-indent-props": [2, 4],
         "import/prefer-default-export": 0,
         "no-underscore-dangle": 0,
-        "react/no-did-mount-set-state": 0
+        "react/no-did-mount-set-state": 0,
+        "no-restricted-syntax": [0, "ForOfStatement"]
     }
 };
