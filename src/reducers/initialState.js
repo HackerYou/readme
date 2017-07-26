@@ -37,6 +37,11 @@ export default {
     loader: {
         loading: false,
     },
+    broadcast: {
+        message: 'hi',
+        broadcastType: 'success',
+        show: false,
+    },
     users: {
         instructors: [],
     },

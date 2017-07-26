@@ -9,7 +9,9 @@ import createHistory from 'history/createBrowserHistory';
 
 import rootReducer from './reducers/index';
 import { updateUserStatus } from './actions/userActions/userActions';
+import { endBroadcast } from './actions/broadcastActions/broadcastActions';
 import Loader from './components/Loader/Loader';
+import Broadcast from './components/Broadcast/Broadcast';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
@@ -34,39 +36,52 @@ const store = createStore(
     ),
 );
 
+history.listen(() => {
+    const currentState = store.getState();
+    if (currentState.broadcast.message.length > 0) {
+        store.dispatch(endBroadcast());
+    }
+});
+
 store.dispatch(updateUserStatus());
 
 const App = () => (
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <div className="wrapper">
-                <Loader />
-                <Route exact path="/" render={props => <Login {...props} />} />
-                <Route path="/:all_routes" render={props => <HeaderContainer {...props} />} />
-                <PrivateRoute path="/dashboard" component={DashboardContainer} />
-                <Switch>
+            <div>
+                <Broadcast />
+                <div className="wrapper">
+                    <Loader />
+                    <Route exact path="/" render={props => <Login {...props} />} />
+                    <Route path="/:all_routes" render={props => <HeaderContainer {...props} />} />
                     <PrivateRoute
-                        path="/classroom/manage"
-                        component={props => <ManageClassroomContainer {...props} />}
+                        path="/dashboard"
+                        component={props => <DashboardContainer {...props} />}
                     />
+                    <Switch>
+                        <PrivateRoute
+                            path="/classroom/manage"
+                            component={props => <ManageClassroomContainer {...props} />}
+                        />
+                        <PrivateRoute
+                            path="/classroom/:classroom_id/test-results"
+                            component={props => <TestResultsContainer {...props} />}
+                        />
+                        <PrivateRoute
+                            path="/classroom/:classroom_id/create-test"
+                            component={props => <CreateTestContainer {...props} />}
+                        />
+                        <PrivateRoute
+                            path="/classroom/:classroom_id"
+                            component={props => <ClassroomContainer {...props} />}
+                        />
+                    </Switch>
                     <PrivateRoute
-                        path="/classroom/:classroom_id/test-results"
-                        component={props => <TestResultsContainer {...props} />}
+                        path="/lesson/:lesson_id"
+                        component={props => <LessonContainer {...props} />}
                     />
-                    <PrivateRoute
-                        path="/classroom/:classroom_id/create-test"
-                        component={props => <CreateTestContainer {...props} />}
-                    />
-                    <PrivateRoute
-                        path="/classroom/:classroom_id"
-                        component={props => <ClassroomContainer {...props} />}
-                    />
-                </Switch>
-                <PrivateRoute
-                    path="/lesson/:lesson_id"
-                    component={props => <LessonContainer {...props} />}
-                />
-                <Footer />
+                    <Footer />
+                </div>
             </div>
         </ConnectedRouter>
     </Provider>
