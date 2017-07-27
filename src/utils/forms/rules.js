@@ -7,6 +7,13 @@ export const required = (text) => {
     return ErrorMessages.isRequired;
 };
 
+export const notDefault = (text) => {
+    if (text !== 'default') {
+        return null;
+    }
+    return ErrorMessages.isDefault;
+};
+
 export const mustMatch = (field, fieldName) => {
     return (text, state) => {
         return state[field] === text ? null : ErrorMessages.mustMatch(fieldName);

@@ -8,3 +8,4 @@ export const minLength = (length) => {
     return fieldName => `${fieldName} must be at least ${length} characters`;
 };
 
+export const isDefault = fieldName => `${fieldName} can't be default.`;
