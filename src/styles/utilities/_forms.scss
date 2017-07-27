@@ -26,6 +26,9 @@ label {
   }
 }
 
+.datepicker label + div {
+  display: inline;
+}
 .datepicker__input-container {
 	display: inline-block;
   /*margin-bottom: 1.7rem;*/
