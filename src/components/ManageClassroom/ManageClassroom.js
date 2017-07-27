@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 import { run, ruleRunner } from '../../utils/forms/ruleRunner';
-import { required } from '../../utils/forms/rules';
+import { required, notDefault } from '../../utils/forms/rules';
 import Select from '../Forms/Select/Select';
 import Input from '../Forms/Input/Input';
 import DatePicker from '../Forms/DatePicker/DatePicker';
@@ -12,6 +12,8 @@ import TextArea from '../Forms/TextArea/TextArea';
 
 const fieldValidations = [
     ruleRunner('title', 'Title', required),
+    ruleRunner('term', 'Term', required),
+    ruleRunner('template', 'Template', notDefault),
 ];
 
 class ManageClassroom extends React.Component {
@@ -23,7 +25,7 @@ class ManageClassroom extends React.Component {
             term: '',
             startDate: moment(),
             endDate: moment(),
-            instructor: '',
+            instructor: 'default',
             description: '',
             validationErrors: {},
         };
@@ -54,9 +56,15 @@ class ManageClassroom extends React.Component {
     }
     createClass(e) {
         e.preventDefault();
+        const { broadcast } = this.props.actions;
+        const { validationErrors } = this.state;
+        const prefix = 'Please resolve the following errors: ';
 
-        this.setState({ showErrors: true });
-        if (Object.keys(this.state.validationErrors).length > 0) {
+
+        if (Object.keys(validationErrors).length > 0) {
+            let errors = Object.keys(validationErrors).map(error => validationErrors[error]);
+            errors = errors.join(', ');
+            broadcast(prefix + errors, 'error');
             return null;
         }
         const { title, template, term, startDate, endDate, instructor, description } = this.state;
@@ -105,8 +113,6 @@ class ManageClassroom extends React.Component {
                             value={this.state.title}
                             placeholder="Enter Course Title"
                             handleChange={this.handleInput}
-                            showError={this.state.showErrors}
-                            errorText={this.errorFor('title')}
                             labelInline
                         />
                         <Input
@@ -182,6 +188,7 @@ ManageClassroom.propTypes = {
         courses: PropTypes.arrayOf(PropTypes.object).isRequired,
     }).isRequired,
     actions: PropTypes.shape({
+        broadcast: PropTypes.func.isRequired,
         getTemplates: PropTypes.func.isRequired,
         getInstructors: PropTypes.func.isRequired,
         createClassroomThunk: PropTypes.func.isRequired,

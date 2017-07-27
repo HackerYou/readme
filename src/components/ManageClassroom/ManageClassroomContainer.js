@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import * as classroomActions from '../../actions/classroomActions/classroomActions';
 import * as courseActions from '../../actions/courseActions/courseActions';
 import * as usersActions from '../../actions/usersActions/usersActions';
+import * as broadcastActions from '../../actions/broadcastActions/broadcastActions';
+
 import ManageClassroom from './ManageClassroom';
 
 const mapStateToProps = ({ course, users }) => {
@@ -19,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
             ...courseActions,
             ...classroomActions,
             ...usersActions,
+            ...broadcastActions,
         }, dispatch),
     };
 };
