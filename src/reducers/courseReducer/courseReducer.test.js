@@ -7,13 +7,16 @@ describe('course reducer', () => {
     it('should return the initial state', () => {
         expect(courseReducer(undefined, {})).toEqual(
             {
-                courses: []
+                courses: [],
+                templates: [],
             }
         )
     });
 
     it('should handle UPDATE_COURSES', () => {
-        const courses = [];
+        const courses = {
+            courses: [],
+        }
         expect(
             courseReducer({}, {
                 type: types.UPDATE_COURSES,
