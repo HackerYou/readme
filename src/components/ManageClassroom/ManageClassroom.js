@@ -9,6 +9,7 @@ import Select from '../Forms/Select/Select';
 import Input from '../Forms/Input/Input';
 import DatePicker from '../Forms/DatePicker/DatePicker';
 import TextArea from '../Forms/TextArea/TextArea';
+import CourseCard from '../CourseCard/CourseCard';
 
 const fieldValidations = [
     ruleRunner('title', 'Title', required),
@@ -34,8 +35,9 @@ class ManageClassroom extends React.Component {
         this.createClass = this.createClass.bind(this);
     }
     componentDidMount() {
-        const { getTemplates, getInstructors } = this.props.actions;
+        const { getTemplates, getInstructors, getCourses } = this.props.actions;
         getTemplates();
+        getCourses();
         getInstructors();
         this.setState({ validationErrors: run(this.state, fieldValidations) });
     }
@@ -80,7 +82,7 @@ class ManageClassroom extends React.Component {
     }
     render() {
         const { instructors } = this.props.users;
-        const { courses } = this.props.course;
+        const { templates, courses } = this.props.course;
         return (<div className="container">
             <header className="topContent">
                 <Link className="linkBtn" to="/dashboard">
@@ -94,7 +96,7 @@ class ManageClassroom extends React.Component {
                 <form onSubmit={this.createClass}>
                     <div className="fieldRow">
                         <Select
-                            options={courses}
+                            options={templates}
                             name="template"
                             labelText="Template"
                             chosenKey="_id"
@@ -172,8 +174,19 @@ class ManageClassroom extends React.Component {
             </div>
             <div className="content">
                 <h1>Your Classrooms</h1>
-                <section>
-                    Classrooms Stub
+                <section className="dashWrap">
+                    {courses.filter(course => course.template === false)
+                        .map((course) => {
+                            return (
+                                <CourseCard
+                                    title={course.title}
+                                    instructor={course.instructor}
+                                    term={course.term}
+                                    classroomId={course._id}
+                                    key={course._id}
+                                />
+                            );
+                        })}
                 </section>
             </div>
         </div>);
@@ -185,11 +198,13 @@ ManageClassroom.propTypes = {
         instructors: PropTypes.arrayOf(PropTypes.object).isRequired,
     }).isRequired,
     course: PropTypes.shape({
+        templates: PropTypes.arrayOf(PropTypes.object).isRequired,
         courses: PropTypes.arrayOf(PropTypes.object).isRequired,
     }).isRequired,
     actions: PropTypes.shape({
         broadcast: PropTypes.func.isRequired,
         getTemplates: PropTypes.func.isRequired,
+        getCourses: PropTypes.func.isRequired,
         getInstructors: PropTypes.func.isRequired,
         createClassroomThunk: PropTypes.func.isRequired,
     }).isRequired,

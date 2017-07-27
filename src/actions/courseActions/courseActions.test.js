@@ -23,8 +23,8 @@ describe('async actions', () => {
         });
         const expectedActions = [
             {
-                type: types.UPDATE_COURSES,
-                courses: [],
+                type: types.UPDATE_TEMPLATES,
+                templates: [],
             }
 
         ];

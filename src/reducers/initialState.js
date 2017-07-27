@@ -5,6 +5,7 @@ export default {
         loggedIn: !!localStorage[`${config.getAppName()}_token`],
     },
     course: {
+        templates: [],
         courses: [],
     },
     classroom: {
