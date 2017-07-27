@@ -24,8 +24,8 @@ class CourseCard extends React.Component {
         return (
             <div className="classCard">
                 <article className="card">
-                    <h3>{this.props.title || 'Unknown Classroom'}</h3>
-                    <h4>{this.state.instructor || 'HackerYou Team'}</h4>
+                    <h3>{this.props.title}</h3>
+                    <h4>{this.state.instructor}</h4>
                     <footer className="classCardMeta">
                         <p className="red">
                             <strong>{this.props.term}</strong>
