@@ -14,9 +14,9 @@ class Topics extends React.Component {
 }
 
 Topics.propTypes = {
-    topics: PropTypes.shape({
-        topics: PropTypes.array.isRequired,
-    }).isRequired,
+    // topics: PropTypes.shape({
+        // topics: PropTypes.array.isRequired,
+    // }).isRequired,
     actions: PropTypes.shape({
         getTopicsThunk: PropTypes.func.isRequired,
     }).isRequired,
