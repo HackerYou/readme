@@ -10,10 +10,12 @@ const Input = (props) => {
         type,
         placeholder,
         handleChange,
+        largeLabel,
         classes,
     } = props;
     const labelClass = classNames({
         inline: labelInline,
+        largeLabel,
     });
     return (<span>
         {labelText !== '' && <label htmlFor={name} className={labelClass}>{labelText}</label>}
@@ -30,6 +32,7 @@ const Input = (props) => {
 
 Input.defaultProps = {
     labelInline: false,
+    largeLabel: false,
     placeholder: '',
     classes: '',
     labelText: '',
@@ -45,6 +48,7 @@ Input.propTypes = {
     labelText: PropTypes.string,
     placeholder: PropTypes.string,
     handleChange: PropTypes.func,
+    largeLabel: PropTypes.bool,
 };
 
 export default Input;
