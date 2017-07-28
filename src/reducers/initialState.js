@@ -49,4 +49,7 @@ export default {
     tests: {
         questions: [],
     },
+    topics: {
+        topics: [],
+    },
 };

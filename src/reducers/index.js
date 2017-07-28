@@ -10,6 +10,7 @@ import loader from './loaderReducer/loaderReducer';
 import tests from './testReducer/testReducer';
 import users from './usersReducer/usersReducer';
 import broadcast from './broadcastReducer/broadcastReducer';
+import topics from './topicsReducer/topicsReducer';
 
 const rootReducer =
     combineReducers({
@@ -23,6 +24,7 @@ const rootReducer =
         users,
         broadcast,
         router,
+        topics,
     });
 
 export default rootReducer;
