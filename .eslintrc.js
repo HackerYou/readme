@@ -24,6 +24,7 @@ module.exports = {
         "import/prefer-default-export": 0,
         "no-underscore-dangle": 0,
         "react/no-did-mount-set-state": 0,
-        "no-restricted-syntax": [0, "ForOfStatement"]
+        "no-restricted-syntax": [0, "ForOfStatement"],
+        "jsx-a11y/no-static-element-interactions": 0
     }
 };
