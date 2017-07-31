@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Input from '../Forms/Input/Input';
 import Select from '../Forms/Select/Select';
+import Pagination from '../Pagination/Pagination';
 import Topic from '../Topic/Topic';
 
 const filters = {
@@ -24,8 +25,13 @@ class TopicsList extends React.Component {
         this.state = {
             name: '',
             filter: filters.SHOW_ALL,
+            pageOfItems: [],
         };
         this.handleChange = this.handleChange.bind(this);
+        this.onChangePage = this.onChangePage.bind(this);
+    }
+    onChangePage(pageOfItems) {
+        this.setState({ pageOfItems });
     }
     handleChange(e) {
         this.setState({
@@ -58,8 +64,9 @@ class TopicsList extends React.Component {
                         </form>
                     </div>
                 </section>
+                <Pagination items={this.props.topics} onChangePage={this.onChangePage} />
                 <section className="topicsWrap">
-                    {this.props.topics.map(topic => <Topic key={topic._id} topic={topic} />)}
+                    {this.state.pageOfItems.map(topic => <Topic key={topic._id} topic={topic} />)}
                 </section>
             </div>
         );
