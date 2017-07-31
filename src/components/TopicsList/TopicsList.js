@@ -24,7 +24,6 @@ class TopicsList extends React.Component {
         super();
         this.state = {
             name: '',
-            filter: filters.SHOW_ALL,
             pageOfItems: [],
         };
         this.handleChange = this.handleChange.bind(this);
@@ -34,9 +33,7 @@ class TopicsList extends React.Component {
         this.setState({ pageOfItems });
     }
     handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
+        this.props.setVisibilityFilter(e.target.value);
     }
     render() {
         return (
@@ -58,13 +55,13 @@ class TopicsList extends React.Component {
                                 name="filter"
                                 labelText="Filter by category"
                                 handleChange={this.handleChange}
-                                value={this.state.filter}
+                                value={this.props.topics.visibilityFilter}
                                 labelInline
                             />
                         </form>
                     </div>
                 </section>
-                <Pagination items={this.props.topics} onChangePage={this.onChangePage} />
+                <Pagination items={this.props.topics.topics} onChangePage={this.onChangePage} />
                 <section className="topicsWrap">
                     {this.state.pageOfItems.map(topic => <Topic key={topic._id} topic={topic} />)}
                 </section>
@@ -74,7 +71,11 @@ class TopicsList extends React.Component {
 }
 
 TopicsList.propTypes = {
-    topics: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    topics: PropTypes.shape({
+        topics: PropTypes.arrayOf(PropTypes.object).isRequired,
+        visibilityFilter: PropTypes.string.isRequired,
+    }).isRequired,
+    setVisibilityFilter: PropTypes.func.isRequired,
 };
 
 export default TopicsList;

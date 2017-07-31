@@ -51,5 +51,6 @@ export default {
     },
     topics: {
         topics: [],
+        visibilityFilter: 'Show All',
     },
 };
