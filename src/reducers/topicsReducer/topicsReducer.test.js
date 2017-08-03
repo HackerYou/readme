@@ -7,7 +7,9 @@ describe('topics reducer', () => {
     it('should return the initial state', () => {
         expect(topicsReducer(undefined, {})).toEqual(
             {
-                topics: []
+                topics: [],
+                searchKeyword: '',
+                visibilityFilter: 'Show All',
             }
         )
     })
