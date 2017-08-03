@@ -8,6 +8,16 @@ export default function (state = initialState.topics, action) {
         newState.topics = action.topics;
         return newState;
     }
+    case types.SET_TOPICS_FILTER: {
+        const newState = JSON.parse(JSON.stringify(state));
+        newState.visibilityFilter = action.filter;
+        return newState;
+    }
+    case types.SEARCH_TOPICS: {
+        const newState = JSON.parse(JSON.stringify(state));
+        newState.searchKeyword = action.keyword;
+        return newState;
+    }
     default: {
         return state;
     }
