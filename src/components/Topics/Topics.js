@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
 import TopicsList from '../TopicsList/TopicsList';
 import Input from '../Forms/Input/Input';
 
@@ -57,6 +56,7 @@ class Topics extends React.Component {
                         <TopicsList
                             setVisibilityFilter={this.props.actions.setVisibilityFilter}
                             topics={this.props.topics}
+                            searchTopics={this.props.actions.searchTopics}
                         />
                     </div>
                 </div>
@@ -73,6 +73,7 @@ Topics.propTypes = {
     actions: PropTypes.shape({
         getTopicsThunk: PropTypes.func.isRequired,
         setVisibilityFilter: PropTypes.func.isRequired,
+        searchTopics: PropTypes.func.isRequired,
     }).isRequired,
 };
 

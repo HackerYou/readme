@@ -32,12 +32,23 @@ const getFilteredTopics = (topics, filter) => {
     }
 };
 
-const mapStateToProps = (state) => {
-    console.log(state.topics.visibilityFilter);
+const searchTopics = (topics, keyword) => {
+    if (keyword === '') {
+        return topics;
+    }
+    const lowercaseKeyword = keyword.toLowerCase();
+    return topics.filter(topic => topic.title.toLowerCase().indexOf(lowercaseKeyword) !== -1);
+};
+
+const mapStateToProps = ({ topics }) => {
+    // console.log(searchTopics(topics.topics, topics.searchKeyword));
     return {
         topics: {
-            topics: getFilteredTopics(state.topics.topics, state.topics.visibilityFilter),
-            visibilityFilter: state.topics.visibilityFilter,
+            topics:
+                getFilteredTopics(
+                    searchTopics(topics.topics, topics.searchKeyword),
+                topics.visibilityFilter),
+            visibilityFilter: topics.visibilityFilter,
         },
     };
 };

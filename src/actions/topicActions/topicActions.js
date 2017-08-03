@@ -8,6 +8,13 @@ export function updateTopics(topics) {
     };
 }
 
+export function searchTopics(keyword) {
+    return {
+        type: types.SEARCH_TOPICS,
+        keyword,
+    };
+}
+
 export function setVisibilityFilter(filter) {
     return {
         type: types.SET_TOPICS_FILTER,
