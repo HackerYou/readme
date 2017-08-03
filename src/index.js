@@ -21,6 +21,7 @@ import ClassroomContainer from './components/Classroom/ClassroomContainer';
 import TestResultsContainer from './components/TestResults/TestResultsContainer';
 import CreateTestContainer from './components/CreateTests/CreateTestContainer';
 import LessonContainer from './components/Lesson/LessonContainer';
+import TopicsContainer from './components/Topics/TopicsContainer';
 import Footer from './components/Footer/Footer';
 
 import './styles/style.scss';
@@ -76,6 +77,10 @@ const App = () => (
                             component={props => <ClassroomContainer {...props} />}
                         />
                     </Switch>
+                    <PrivateRoute
+                        path="/topics"
+                        component={props => <TopicsContainer {...props} />}
+                    />
                     <PrivateRoute
                         path="/lesson/:lesson_id"
                         component={props => <LessonContainer {...props} />}

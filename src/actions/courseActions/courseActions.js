@@ -3,14 +3,21 @@ import clone from 'clone';
 import types from '../actionTypes';
 import { requestCourses, requestTemplates } from '../../services/courseService';
 
-export function updateCourses(courses, settings) {
+export function updateCourses(courses, settings = { includeTemplates: true }) {
     let newCourses = clone(courses);
-    if (!settings.includeTemplates) {
-        newCourses = courses.filter(course => course.template === false);
+    if (settings.includeTemplates === false) {
+        newCourses = courses.filter(course => course.template !== true);
     }
     return {
         type: types.UPDATE_COURSES,
         courses: newCourses,
+    };
+}
+
+export function updateTemplates(templates) {
+    return {
+        type: types.UPDATE_TEMPLATES,
+        templates,
     };
 }
 
@@ -19,7 +26,7 @@ export function getTemplates() {
         return requestTemplates()
             .then(response => response.json())
             .then(({ course }) => {
-                dispatch(updateCourses(course, { includeTemplates: true }));
+                dispatch(updateTemplates(course));
             })
             .catch((error) => {
                 throw (error);

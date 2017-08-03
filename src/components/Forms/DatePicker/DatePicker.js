@@ -9,7 +9,7 @@ const DatePicker = ({ handleChange, pickerId, labelText, labelInline, selectedDa
         inline: labelInline,
     });
     return (
-        <span>
+        <span className="datepicker">
             <label htmlFor={pickerId} className={labelClass}>{labelText}</label>
             <ReactDatePicker
                 id={pickerId}
