@@ -43,8 +43,10 @@ color: white;
 
 .notification-visible {
 	opacity: 1;
+	display: block;
 }
 
 .notification-hidden {
-opacity: 0;
+	opacity: 0;
+	display: none;
 }
