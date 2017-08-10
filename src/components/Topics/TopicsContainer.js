@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 
 import Topics from './Topics';
 import * as topicActions from '../../actions/topicActions/topicActions';
+import * as broadcastActions from '../../actions/broadcastActions/broadcastActions';
 
 const filterTopics = topics => filter => topics.filter(topic => topic.category === filter);
 
@@ -37,11 +38,12 @@ const searchTopics = (topics, keyword) => {
         return topics;
     }
     const lowercaseKeyword = keyword.toLowerCase();
-    return topics.filter(topic => topic.title.toLowerCase().indexOf(lowercaseKeyword) !== -1);
+    return topics.filter((topic) => {
+        return topic.title && topic.title.toLowerCase().indexOf(lowercaseKeyword) !== -1;
+    });
 };
 
-const mapStateToProps = ({ topics }) => {
-    // console.log(searchTopics(topics.topics, topics.searchKeyword));
+const mapStateToProps = ({ topics, broadcast }) => {
     return {
         topics: {
             topics:
@@ -50,12 +52,13 @@ const mapStateToProps = ({ topics }) => {
                 topics.visibilityFilter),
             visibilityFilter: topics.visibilityFilter,
         },
+        broadcast,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators({ ...topicActions }, dispatch),
+        actions: bindActionCreators({ ...topicActions, ...broadcastActions }, dispatch),
     };
 };
 

@@ -9,3 +9,14 @@ export function getTopics() {
         },
     });
 }
+
+export function createTopic(topic) {
+    return fetch(`${config.getApiUrl()}/topic`, {
+        method: 'POST',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(topic),
+    });
+}

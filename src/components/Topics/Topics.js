@@ -3,21 +3,49 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import TopicsList from '../TopicsList/TopicsList';
 import Input from '../Forms/Input/Input';
+import { run, ruleRunner } from '../../utils/forms/ruleRunner';
+import { required } from '../../utils/forms/rules';
+
+const fieldValidations = [
+    ruleRunner('title', 'Topic title', required),
+];
 
 class Topics extends React.Component {
     constructor() {
         super();
         this.state = {
-            topic: '',
+            title: '',
+            validationErrors: {},
         };
+        this.handleInput = this.handleInput.bind(this);
+        this.createTopic = this.createTopic.bind(this);
     }
     componentDidMount() {
         const { getTopicsThunk } = this.props.actions;
         getTopicsThunk();
+        this.setState({ validationErrors: run(this.state, fieldValidations) });
     }
     handleInput(e) {
-        this.setState({
+        const newState = Object.assign({}, this.state, {
             [e.target.name]: e.target.value,
+        });
+        newState.validationErrors = run(newState, fieldValidations);
+        this.setState(newState);
+    }
+    createTopic(e) {
+        e.preventDefault();
+        const { broadcast } = this.props.actions;
+        const { validationErrors, title } = this.state;
+        const prefix = 'Please resolve the following errors: ';
+
+        if (Object.keys(validationErrors).length > 0) {
+            let errors = Object.keys(validationErrors).map(error => validationErrors[error]);
+            errors = errors.join(', ');
+            broadcast(prefix + errors, 'error');
+            return null;
+        }
+        return this.props.actions.createTopicThunk({
+            title,
         });
     }
     render() {
@@ -41,9 +69,9 @@ class Topics extends React.Component {
                                 <div className="fieldRow">
                                     <Input
                                         labelText="Create new topic"
-                                        name="topic"
+                                        name="title"
                                         type="text"
-                                        value={this.state.topic}
+                                        value={this.state.title}
                                         placeholder="Topic Name"
                                         handleChange={this.handleInput}
                                         labelInline
@@ -71,9 +99,11 @@ Topics.propTypes = {
         visibilityFilter: PropTypes.string.isRequired,
     }).isRequired,
     actions: PropTypes.shape({
+        broadcast: PropTypes.func.isRequired,
         getTopicsThunk: PropTypes.func.isRequired,
         setVisibilityFilter: PropTypes.func.isRequired,
         searchTopics: PropTypes.func.isRequired,
+        createTopicThunk: PropTypes.func.isRequired,
     }).isRequired,
 };
 
