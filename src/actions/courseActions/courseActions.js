@@ -55,7 +55,7 @@ export function createTemplateThunk(template) {
             .then(response => response.json())
             .then(() => {
                 dispatch(loadingSuccess());
-                dispatch(getCourses());
+                dispatch(getTemplates());
                 dispatch(broadcast('Template successfully created.', 'success'));
             });
     };
