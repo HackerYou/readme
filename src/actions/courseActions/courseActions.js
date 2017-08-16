@@ -1,7 +1,9 @@
 import clone from 'clone';
 
 import types from '../actionTypes';
-import { requestCourses, requestTemplates } from '../../services/courseService';
+import { requestCourses, requestTemplates, createTemplate } from '../../services/courseService';
+import { broadcast } from '../broadcastActions/broadcastActions';
+import { loading, loadingSuccess } from '../loaderActions/loaderActions';
 
 export function updateCourses(courses, settings = { includeTemplates: true }) {
     let newCourses = clone(courses);
@@ -42,6 +44,19 @@ export function getCourses() {
             })
             .catch((error) => {
                 throw (error);
+            });
+    };
+}
+
+export function createTemplateThunk(template) {
+    return (dispatch) => {
+        dispatch(loading());
+        return createTemplate(template)
+            .then(response => response.json())
+            .then(() => {
+                dispatch(loadingSuccess());
+                dispatch(getCourses());
+                dispatch(broadcast('Template successfully created.', 'success'));
             });
     };
 }
