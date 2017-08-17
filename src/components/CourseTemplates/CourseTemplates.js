@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Input from '../Forms/Input/Input';
 import { run, ruleRunner } from '../../utils/forms/ruleRunner';
 import { required } from '../../utils/forms/rules';
+import Input from '../Forms/Input/Input';
+import Card from '../Card/Card';
 
 const fieldValidations = [
     ruleRunner('title', 'Template title', required),
@@ -21,6 +22,8 @@ class CourseTemplates extends React.Component {
         this.createTemplate = this.createTemplate.bind(this);
     }
     componentDidMount() {
+        const { getTemplates } = this.props.actions;
+        getTemplates();
         this.setState({ validationErrors: run(this.state, fieldValidations) });
     }
     handleInput(e) {
@@ -48,6 +51,7 @@ class CourseTemplates extends React.Component {
         });
     }
     render() {
+        const { templates } = this.props.course;
         return (
             <section className="mainContent">
                 <div className="container">
@@ -76,6 +80,13 @@ class CourseTemplates extends React.Component {
                         </div>
                     </form>
                 </section>
+                <section className="templateWrap">
+                    {templates.map((course) => {
+                        return (
+                            <Card title={course.title} key={course._id} callToAction="View/Edit" />
+                        );
+                    })}
+                </section>
             </section>
         );
     }
@@ -85,6 +96,10 @@ CourseTemplates.propTypes = {
     actions: PropTypes.shape({
         broadcast: PropTypes.func.isRequired,
         createTemplateThunk: PropTypes.func.isRequired,
+        getTemplates: PropTypes.func.isRequired,
+    }).isRequired,
+    course: PropTypes.shape({
+        templates: PropTypes.array,
     }).isRequired,
 };
 

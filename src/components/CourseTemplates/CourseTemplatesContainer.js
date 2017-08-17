@@ -5,9 +5,10 @@ import CourseTemplates from './CourseTemplates';
 import * as broadcastActions from '../../actions/broadcastActions/broadcastActions';
 import * as courseActions from '../../actions/courseActions/courseActions';
 
-const mapStateToProps = (state) => {
-    const newState = Object.assign({}, state);
-    return newState;
+const mapStateToProps = ({ course }) => {
+    return {
+        course,
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
