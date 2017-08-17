@@ -17,6 +17,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
 import Instructors from './components/Instructors/Instructors';
+import MembersContainer from './components/Members/MembersContainer';
 import ManageClassroomContainer from './components/ManageClassroom/ManageClassroomContainer';
 import ClassroomContainer from './components/Classroom/ClassroomContainer';
 import TestResultsContainer from './components/TestResults/TestResultsContainer';
@@ -94,6 +95,10 @@ const App = () => (
                     <PrivateRoute
                         path="/instructors"
                         component={props => <Instructors {...props} />}
+                    />
+                    <PrivateRoute
+                        path="/members"
+                        component={props => <MembersContainer {...props} />}
                     />
                     <Footer />
                 </div>
