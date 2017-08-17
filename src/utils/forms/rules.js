@@ -1,3 +1,4 @@
+import * as EmailValidator from 'email-validator';
 import * as ErrorMessages from './errorMessages';
 
 export const required = (text) => {
@@ -26,3 +27,9 @@ export const minLength = (length) => {
     };
 };
 
+export const validEmail = (field) => {
+    if (EmailValidator.validate(field)) {
+        return null;
+    }
+    return ErrorMessages.isValidEmail;
+};
