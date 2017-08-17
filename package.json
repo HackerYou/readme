@@ -16,6 +16,7 @@
     "babel-core": "^6.25.0",
     "classnames": "^2.2.5",
     "clone": "^2.1.1",
+    "email-validator": "^1.1.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-plugin-import": "^2.3.0",
