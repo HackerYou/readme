@@ -22,6 +22,8 @@ class Members extends React.Component {
         this.addUser = this.addUser.bind(this);
     }
     componentDidMount() {
+        const { getAllUsersThunk } = this.props.actions;
+        getAllUsersThunk();
         this.setState({ validationErrors: run(this.state, fieldValidations) });
     }
     handleInput(e) {
@@ -99,6 +101,7 @@ class Members extends React.Component {
 Members.propTypes = {
     actions: PropTypes.shape({
         broadcast: PropTypes.func.isRequired,
+        getAllUsersThunk: PropTypes.func.isRequired,
     }).isRequired,
 };
 

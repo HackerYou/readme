@@ -45,6 +45,7 @@ export default {
     },
     users: {
         instructors: [],
+        users: [],
     },
     tests: {
         questions: [],

@@ -3,17 +3,17 @@ import { bindActionCreators } from 'redux';
 
 import Members from './Members';
 import * as broadcastActions from '../../actions/broadcastActions/broadcastActions';
-import * as userActions from '../../actions/userActions/userActions';
+import * as usersActions from '../../actions/usersActions/usersActions';
 
-const mapStateToProps = ({ course }) => {
+const mapStateToProps = ({ users }) => {
     return {
-        course,
+        users,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators({ ...userActions, ...broadcastActions }, dispatch),
+        actions: bindActionCreators({ ...usersActions, ...broadcastActions }, dispatch),
     };
 };
 
