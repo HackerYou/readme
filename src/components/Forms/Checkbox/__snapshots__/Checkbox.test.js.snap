@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It renders the checkbox component 1`] = `
+<span>
+  <label
+    htmlFor="8675309"
+  >
+    Title
+  </label>
+  <input
+    id="8675309"
+    onChange={null}
+    type="checkbox"
+  />
+</span>
+`;
