@@ -7,6 +7,7 @@ describe('user reducer', () => {
     expect(usersReducer(undefined, {})).toEqual(
         {
             instructors: [],
+            users: [],
         }
     )
    });
