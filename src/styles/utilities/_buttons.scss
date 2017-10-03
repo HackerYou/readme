@@ -25,6 +25,7 @@ button, .button {
 		background: $blue;
 		color: white;
 		border: 1px solid $blueLight;
+		display: inline-block;
 		&:hover {
 			background: $blueLight;
 			border: 1px solid $blue;
