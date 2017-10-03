@@ -14,6 +14,7 @@ class CreateTests extends React.Component {
             },
         };
         this.handleChange = this.handleChange.bind(this);
+        // this.createTest = this.createTest.bind(this);
     }
     componentDidMount() {
         const { getCourse, retrieveQuestions } = this.props.actions;
@@ -28,6 +29,9 @@ class CreateTests extends React.Component {
             testInfo,
         });
     }
+    // createTest() {
+
+    // }
     render() {
         const options = [
             {

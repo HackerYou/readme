@@ -2,7 +2,7 @@ import React from 'react';
 
 const Members = () => {
     return (
-        <div>Woop Woop! Linting!</div>
+        <div>Woop Woop! hello Linting!</div>
     );
 };
 
