@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Input from '../Forms/Input/Input';
+
 const Members = () => {
     return (
         <section className="mainContent">
@@ -12,27 +14,25 @@ const Members = () => {
                 </header>
             </div>
             <section className="full card detailsForm">
-                <form className="addMembersForm" action="">
+                <form action="">
                     <div className="fieldRow">
-                        <label
-                            className="inline largeLabel"
-                            htmlFor="add"
-                        >Add by email
-                        </label>
-                        <div className="inlineRow">
-                            <input id="add" type="text" />
-                        </div>
+                        <Input
+                            labelText="Add by email"
+                            type="text"
+                            labelClass="inline largeLabel"
+                            name="add"
+                        />
                         <button className="success">Add User</button>
                     </div>
                 </form>
                 <form action="">
                     <div className="fieldRow">
-                        <label
-                            className="inline largeLabel"
-                            htmlFor="search"
-                        >Search by name:
-                        </label>
-                        <input type="text" id="search" />
+                        <Input
+                            labelText="Search by name"
+                            type="text"
+                            labelClass="inline largeLabel"
+                            name="search"
+                        />
                         <button className="primary">Search</button>
                     </div>
                 </form>
