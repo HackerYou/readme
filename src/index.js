@@ -26,6 +26,7 @@ import LessonContainer from './components/Lesson/LessonContainer';
 import TopicsContainer from './components/Topics/TopicsContainer';
 import CourseTemplatesContainer from './components/CourseTemplates/CourseTemplatesContainer';
 import Footer from './components/Footer/Footer';
+import IssuesContainer from './components/Issues/IssuesContainer';
 
 import './styles/style.scss';
 
@@ -99,6 +100,10 @@ const App = () => (
                     <PrivateRoute
                         path="/members"
                         component={props => <MembersContainer {...props} />}
+                    />
+                    <PrivateRoute
+                        path="/issues"
+                        component={props => <IssuesContainer {...props} />}
                     />
                     <Footer />
                 </div>

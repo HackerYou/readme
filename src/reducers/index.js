@@ -11,6 +11,7 @@ import tests from './testReducer/testReducer';
 import users from './usersReducer/usersReducer';
 import broadcast from './broadcastReducer/broadcastReducer';
 import topics from './topicsReducer/topicsReducer';
+import issues from './issuesReducer/issuesReducer';
 
 const rootReducer =
     combineReducers({
@@ -25,6 +26,7 @@ const rootReducer =
         broadcast,
         router,
         topics,
+        issues,
     });
 
 export default rootReducer;
