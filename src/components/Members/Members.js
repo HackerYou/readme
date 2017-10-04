@@ -52,7 +52,7 @@ class Members extends React.Component {
                     </form>
                 </section>
                 <div className="container card memberWrap">
-                    <MembersCard />
+                    <MembersCard members={this.props.users.instructors} />
                 </div>
             </section>
         );
@@ -60,6 +60,9 @@ class Members extends React.Component {
 }
 
 Members.propTypes = {
+    users: PropTypes.shape({
+        instructors: PropTypes.array.isRequired,
+    }).isRequired,
     actions: PropTypes.shape({
         getInstructors: PropTypes.func.isRequired,
     }).isRequired,

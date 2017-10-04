@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const MembersCard = () => {
+const MembersCard = ({ members }) => {
+    console.log(members);
     return (
         <ul className="memberList">
             <li>
@@ -21,6 +23,12 @@ const MembersCard = () => {
             </li>
         </ul>
     );
+};
+
+MembersCard.propTypes = {
+    members: PropTypes.shape({
+        instructors: PropTypes.array.isRequired,
+    }).isRequired,
 };
 
 export default MembersCard;
