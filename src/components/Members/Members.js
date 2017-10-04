@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Input from '../Forms/Input/Input';
+import MembersCard from '../Members/MembersCard';
 
 const Members = () => {
     return (
@@ -12,6 +13,7 @@ const Members = () => {
                         back to dashboard
                     </Link>
                 </header>
+                <h1>Manage Members</h1>
             </div>
             <section className="full card detailsForm">
                 <form action="">
@@ -38,24 +40,7 @@ const Members = () => {
                 </form>
             </section>
             <div className="container card memberWrap">
-                <ul className="memberList">
-                    <li>
-                        <p>
-                            <strong>Sylvia Nguyen</strong>
-                        </p>
-                        <p>sylvia@hackeryou.com</p>
-                        <p>
-                            <span>1</span>
-                            <span>Classroom</span>
-                        </p>
-                        <div className="inputBlock">
-                            <div className="fieldRow">
-                                <label htmlFor="12">Instructor</label>
-                                <input type="checkbox" id="12" />
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <MembersCard />
             </div>
         </section>
     );
