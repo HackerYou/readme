@@ -82,6 +82,9 @@
     "webpack-dev-server": "^2.4.5",
     "webpack-validator": "^3.0.0"
   },
+  "engines": {
+    "node": "^8.6.0"
+  },
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
