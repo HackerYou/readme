@@ -1,10 +1,10 @@
 import { getAllInstructors } from '../../services/userService';
 import types from '../actionTypes';
 
-export function updateInstructors(instructors) {
+export function updateInstructors(users) {
     return {
         type: types.UPDATE_INSTRUCTORS,
-        instructors,
+        users,
     };
 }
 

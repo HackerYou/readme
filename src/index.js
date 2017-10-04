@@ -22,7 +22,7 @@ import TestResultsContainer from './components/TestResults/TestResultsContainer'
 import CreateTestContainer from './components/CreateTests/CreateTestContainer';
 import LessonContainer from './components/Lesson/LessonContainer';
 import TopicsContainer from './components/Topics/TopicsContainer';
-import Members from './components/Members/Members';
+import MembersContainer from './components/Members/MembersContainer';
 import Footer from './components/Footer/Footer';
 
 import './styles/style.scss';
@@ -62,7 +62,7 @@ const App = () => (
                     />
                     <PrivateRoute
                         path="/members"
-                        component={props => <Members {...props} />}
+                        component={props => <MembersContainer {...props} />}
                     />
                     <Switch>
                         <PrivateRoute
