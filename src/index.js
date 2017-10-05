@@ -16,14 +16,17 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import DashboardContainer from './components/Dashboard/DashboardContainer';
+import Instructors from './components/Instructors/Instructors';
+import MembersContainer from './components/Members/MembersContainer';
 import ManageClassroomContainer from './components/ManageClassroom/ManageClassroomContainer';
 import ClassroomContainer from './components/Classroom/ClassroomContainer';
 import TestResultsContainer from './components/TestResults/TestResultsContainer';
 import CreateTestContainer from './components/CreateTests/CreateTestContainer';
 import LessonContainer from './components/Lesson/LessonContainer';
 import TopicsContainer from './components/Topics/TopicsContainer';
-import MembersContainer from './components/Members/MembersContainer';
+import CourseTemplatesContainer from './components/CourseTemplates/CourseTemplatesContainer';
 import Footer from './components/Footer/Footer';
+import IssuesContainer from './components/Issues/IssuesContainer';
 
 import './styles/style.scss';
 
@@ -60,10 +63,6 @@ const App = () => (
                         path="/dashboard"
                         component={props => <DashboardContainer {...props} />}
                     />
-                    <PrivateRoute
-                        path="/members"
-                        component={props => <MembersContainer {...props} />}
-                    />
                     <Switch>
                         <PrivateRoute
                             path="/classroom/manage"
@@ -89,6 +88,22 @@ const App = () => (
                     <PrivateRoute
                         path="/lesson/:lesson_id"
                         component={props => <LessonContainer {...props} />}
+                    />
+                    <PrivateRoute
+                        path="/course-templates"
+                        component={props => <CourseTemplatesContainer {...props} />}
+                    />
+                    <PrivateRoute
+                        path="/instructors"
+                        component={props => <Instructors {...props} />}
+                    />
+                    <PrivateRoute
+                        path="/members"
+                        component={props => <MembersContainer {...props} />}
+                    />
+                    <PrivateRoute
+                        path="/issues"
+                        component={props => <IssuesContainer {...props} />}
                     />
                     <Footer />
                 </div>

@@ -9,3 +9,5 @@ export const minLength = (length) => {
 };
 
 export const isDefault = fieldName => `${fieldName} can't be default.`;
+
+export const isValidEmail = fieldName => `${fieldName} is not a valid email.`;

@@ -45,11 +45,17 @@ export default {
     },
     users: {
         instructors: [],
+        users: [],
     },
     tests: {
         questions: [],
     },
     topics: {
         topics: [],
+        visibilityFilter: 'Show All',
+        searchKeyword: '',
+    },
+    issues: {
+        issues: [],
     },
 };

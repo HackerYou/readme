@@ -33,7 +33,7 @@ const AdminPanel = () => (
                 <p>Questions</p>
             </Link>
             <Link className="linkBtn dashboardBtn flagged" to="issues">
-                {/* {this.state.numOfIssues !== 0 ? showNotification : null}*/ }Fix Me
+                { /* {this.state.numOfIssues !== 0 ? showNotification : null} */ }Fix Me
                 <i className="fa fa-inbox" />
                 <p>Flagged Notes</p>
             </Link>

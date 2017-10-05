@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Members from './Members';
+import * as broadcastActions from '../../actions/broadcastActions/broadcastActions';
 import * as usersActions from '../../actions/usersActions/usersActions';
 
 const mapStateToProps = ({ users }) => {
@@ -12,7 +13,7 @@ const mapStateToProps = ({ users }) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators({ ...usersActions }, dispatch),
+        actions: bindActionCreators({ ...usersActions, ...broadcastActions }, dispatch),
     };
 };
 

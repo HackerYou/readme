@@ -39,3 +39,13 @@ export const getCourseById = (id) => {
     });
 };
 
+export const createTemplate = (course) => {
+    return fetch(`${config.getApiUrl()}/course/template`, {
+        method: 'POST',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(course),
+    });
+};

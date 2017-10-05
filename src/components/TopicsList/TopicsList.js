@@ -24,47 +24,55 @@ class TopicsList extends React.Component {
         super();
         this.state = {
             name: '',
-            filter: filters.SHOW_ALL,
             pageOfItems: [],
         };
-        this.handleChange = this.handleChange.bind(this);
+        this.handleInput = this.handleInput.bind(this);
         this.onChangePage = this.onChangePage.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     onChangePage(pageOfItems) {
         this.setState({ pageOfItems });
     }
-    handleChange(e) {
+    handleInput(e) {
         this.setState({
             [e.target.name]: e.target.value,
         });
+    }
+    handleSelect(e) {
+        this.props.setVisibilityFilter(e.target.value);
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.searchTopics(this.state.name);
     }
     render() {
         return (
             <div>
                 <section className="full card topicsForm searchTopics">
                     <div className="inlineFieldRow">
-                        <form>
+                        <form onSubmit={this.handleSubmit}>
                             <Input
                                 labelText="Search by name"
                                 name="name"
                                 type="text"
                                 value={this.state.name}
                                 placeholder="Topic Name"
-                                handleChange={this.handleChange}
+                                handleChange={this.handleInput}
                                 labelInline
                             />
                             <Select
                                 options={Object.keys(filters).map(filter => filters[filter])}
                                 name="filter"
                                 labelText="Filter by category"
-                                handleChange={this.handleChange}
-                                value={this.state.filter}
+                                handleChange={this.handleSelect}
+                                value={this.props.topics.visibilityFilter}
                                 labelInline
                             />
                         </form>
                     </div>
                 </section>
-                <Pagination items={this.props.topics} onChangePage={this.onChangePage} />
+                <Pagination items={this.props.topics.topics} onChangePage={this.onChangePage} />
                 <section className="topicsWrap">
                     {this.state.pageOfItems.map(topic => <Topic key={topic._id} topic={topic} />)}
                 </section>
@@ -74,7 +82,12 @@ class TopicsList extends React.Component {
 }
 
 TopicsList.propTypes = {
-    topics: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    topics: PropTypes.shape({
+        topics: PropTypes.arrayOf(PropTypes.object).isRequired,
+        visibilityFilter: PropTypes.string.isRequired,
+    }).isRequired,
+    setVisibilityFilter: PropTypes.func.isRequired,
+    searchTopics: PropTypes.func.isRequired,
 };
 
 export default TopicsList;
