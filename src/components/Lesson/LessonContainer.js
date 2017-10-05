@@ -7,6 +7,7 @@ import Lesson from './Lesson';
 const mapStateToProps = (state) => {
     return {
         lesson: state.lesson,
+        admin: state.user.admin,
     };
 };
 
