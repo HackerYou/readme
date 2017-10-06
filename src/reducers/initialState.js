@@ -58,4 +58,7 @@ export default {
     issues: {
         issues: [],
     },
+    media: {
+        media: [],
+    },
 };

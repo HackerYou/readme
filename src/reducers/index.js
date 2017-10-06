@@ -12,6 +12,7 @@ import users from './usersReducer/usersReducer';
 import broadcast from './broadcastReducer/broadcastReducer';
 import topics from './topicsReducer/topicsReducer';
 import issues from './issuesReducer/issuesReducer';
+import media from './mediaReducer/mediaReducer';
 
 const rootReducer =
     combineReducers({
@@ -27,6 +28,7 @@ const rootReducer =
         router,
         topics,
         issues,
+        media,
     });
 
 export default rootReducer;
