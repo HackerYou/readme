@@ -30,7 +30,9 @@ class Issues extends React.Component {
 }
 
 Issues.propTypes = {
-    issues: PropTypes.arrayOf(PropTypes.object).isRequired,
+    issues: PropTypes.shape({
+        issues: PropTypes.array.isRequired,
+    }).isRequired,
     actions: PropTypes.shape({
         getIssues: PropTypes.func.isRequired,
     }).isRequired,

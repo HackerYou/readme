@@ -10,3 +10,13 @@ export const requestIssues = () => {
     });
 };
 
+export const postIssue = (issue) => {
+    return fetch(`${config.getApiUrl().replace('v1', 'v2')}/flaggedIssues`, {
+        method: 'POST',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(issue),
+    });
+};

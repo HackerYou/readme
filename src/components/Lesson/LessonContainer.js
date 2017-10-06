@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as lessonActions from '../../actions/lessonActions/lessonActions';
+import * as issuesActions from '../../actions/issuesActions/issuesActions';
 import Lesson from './Lesson';
 
 
@@ -13,7 +14,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        actions: bindActionCreators(lessonActions, dispatch),
+        actions: bindActionCreators(Object.assign({}, lessonActions, issuesActions), dispatch),
     };
 };
 

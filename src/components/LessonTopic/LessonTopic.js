@@ -20,9 +20,20 @@ class LessonTopic extends React.Component {
         super();
         this.state = {
             isModalOpen: false,
+            issue: '',
+            topicId: '',
+            title: '',
         };
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+    componentDidMount() {
+        const { topic } = this.props;
+        this.setState({
+            topicId: topic._id,
+            title: topic.title,
+        });
     }
     openModal(e) {
         e.preventDefault();
@@ -34,6 +45,11 @@ class LessonTopic extends React.Component {
         e.preventDefault();
         this.setState({
             isModalOpen: false,
+        });
+    }
+    handleChange(e) {
+        this.setState({
+            issue: e.target.value,
         });
     }
     render() {
@@ -49,12 +65,26 @@ class LessonTopic extends React.Component {
                 </h2>
                 <Markdown options={{ html: true, highlight: prs }}>{topic.body}</Markdown>
                 <Modal isOpen={this.state.isModalOpen}>
-                    <form className="modalBody card flagForm">
+                    <form
+                        className="modalBody card flagForm"
+                        onSubmit={(e) => {
+                            this.props.addIssue(
+                                e,
+                                this.state.issue,
+                                this.state.topicId,
+                                this.state.title,
+                                );
+                        }}
+                        data-id={topic._id}
+                    >
                         <i onClick={this.closeModal} className="fa fa-times chalk-close" />
                         <label htmlFor="issueNote">
                             What is your issue? Add a description here and we will fix it for you!
                     </label>
-                        <textarea name="issueNote" />
+                        <textarea
+                            name="issueNote"
+                            onChange={this.handleChange}
+                        />
                         <br />
                         <input type="submit" value="Send" />
                     </form>
@@ -71,7 +101,7 @@ LessonTopic.propTypes = {
         body: PropTypes.string.isRequired,
     }).isRequired,
     admin: PropTypes.bool.isRequired,
-
+    addIssue: PropTypes.func.isRequired,
 };
 
 export default LessonTopic;
