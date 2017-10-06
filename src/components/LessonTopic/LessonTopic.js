@@ -15,31 +15,55 @@ const prs = () => {
     }
 };
 
-const LessonTopic = ({ topic, admin }) => {
-    return (
-        <div className="lessonTopic">
-            <h2 className="lessonTitle">{topic.title} {admin &&
-                <div className="flag-in-topic">
-                    <Link to={`/topic/${topic._id}`}><i className="fa fa-pencil topic-edit" /></Link>
-                    <i className="fa fa-flag topic-edit" />
-                </div>
+class LessonTopic extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            isModalOpen: false,
+        };
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+    openModal(e) {
+        e.preventDefault();
+        this.setState({
+            isModalOpen: true,
+        });
+    }
+    closeModal(e) {
+        e.preventDefault();
+        this.setState({
+            isModalOpen: false,
+        });
+    }
+    render() {
+        const { topic, admin } = this.props;
+        return (
+            <div className="lessonTopic">
+                <h2 className="lessonTitle">{topic.title} {admin &&
+                    <div className="flag-in-topic">
+                        <Link to={`/topic/${topic._id}`}><i className="fa fa-pencil topic-edit" /></Link>
+                        <i className="fa fa-flag topic-edit" onClick={this.openModal} />
+                    </div>
                 }
-            </h2>
-            <Markdown options={{ html: true, highlight: prs }}>{topic.body}</Markdown>
-            <Modal>
-                <form className="modalBody card flagForm">
-                    <i className="fa fa-times chalk-close" />
-                    <label htmlFor="issueNote">
+                </h2>
+                <Markdown options={{ html: true, highlight: prs }}>{topic.body}</Markdown>
+                <Modal isOpen={this.state.isModalOpen}>
+                    <form className="modalBody card flagForm">
+                        <i onClick={this.closeModal} className="fa fa-times chalk-close" />
+                        <label htmlFor="issueNote">
                             What is your issue? Add a description here and we will fix it for you!
                     </label>
-                    <textarea name="issueNote" />
-                    <br />
-                    <input type="submit" value="Send" />
-                </form>
-            </Modal>
-        </div>
-    );
-};
+                        <textarea name="issueNote" />
+                        <br />
+                        <input type="submit" value="Send" />
+                    </form>
+                </Modal>
+            </div>
+        );
+    }
+}
+
 
 LessonTopic.propTypes = {
     topic: PropTypes.shape({
