@@ -24,6 +24,7 @@ import TestResultsContainer from './components/TestResults/TestResultsContainer'
 import CreateTestContainer from './components/CreateTests/CreateTestContainer';
 import LessonContainer from './components/Lesson/LessonContainer';
 import TopicsContainer from './components/Topics/TopicsContainer';
+import MediaContainer from './components/Media/MediaContainer';
 import CourseTemplatesContainer from './components/CourseTemplates/CourseTemplatesContainer';
 import Footer from './components/Footer/Footer';
 import IssuesContainer from './components/Issues/IssuesContainer';
@@ -100,6 +101,10 @@ const App = () => (
                     <PrivateRoute
                         path="/members"
                         component={props => <MembersContainer {...props} />}
+                    />
+                    <PrivateRoute
+                        path="/media"
+                        component={props => <MediaContainer {...props} />}
                     />
                     <PrivateRoute
                         path="/issues"
