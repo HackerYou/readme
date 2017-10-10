@@ -16,12 +16,19 @@ class Issues extends React.Component {
                 <header>
                     <h1>Issues</h1>
                     <nav className="issues-nav">
-                        {/* <i className="fa fa-archive redLight"> </i>
-                        <i className="fa fa-th-large"> </i> */}
+                        <i className="fa fa-archive redLight" />
+                        <i className="fa fa-th-large" />
                     </nav>
                 </header>
                 <section className="dashWrap">
-                    {issues.map(issue => <Issue key={issue._id} issue={issue} />)}
+                    {issues.map((issue) => {
+                        return (<Issue
+                            key={issue._id}
+                            issue={issue}
+                            delete={this.props.actions.removeIssue}
+                        />);
+                    },
+                        )}
                 </section>
             </div>
         );
@@ -35,6 +42,7 @@ Issues.propTypes = {
     }).isRequired,
     actions: PropTypes.shape({
         getIssues: PropTypes.func.isRequired,
+        removeIssue: PropTypes.func.isRequired,
     }).isRequired,
 };
 
