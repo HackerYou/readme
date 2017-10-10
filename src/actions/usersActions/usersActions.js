@@ -16,13 +16,13 @@ export function updateUsers(users) {
 }
 
 export function getAllUsersThunk() {
-    return dispatch => (
-        getAllUsers()
+    return (dispatch) => {
+        return getAllUsers()
             .then(response => response.json())
             .then((data) => {
                 dispatch(updateUsers(data.user));
-            })
-    );
+            });
+    };
 }
 
 export function getInstructors() {

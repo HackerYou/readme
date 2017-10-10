@@ -2,33 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const MembersCard = ({ members }) => {
-    console.log(members);
     return (
         <ul className="memberList">
-            <li>
-                <p>
-                    <strong>Sylvia Nguyen</strong>
-                </p>
-                <p>sylvia@hackeryou.com</p>
-                <p>
-                    <span>1</span>
-                    <span>Classroom</span>
-                </p>
-                <div className="inputBlock">
-                    <div className="fieldRow">
-                        <label htmlFor="12">Instructor</label>
-                        <input type="checkbox" id="12" />
-                    </div>
-                </div>
-            </li>
+            {members.map((member) => {
+                return (
+                    <li key={member._id}>
+                        <p>
+                            <strong>{member.firstName} {member.lastName}</strong>
+                        </p>
+                        <p>{member.email}</p>
+                        <p>
+                            <span>1</span>
+                            <span>Classroom</span>
+                        </p>
+                        <div className="inputBlock">
+                            <div className="fieldRow">
+                                <label htmlFor={member._id}>Instructor</label>
+                                <input type="checkbox" id={member._id} />
+                            </div>
+                            <div className="fieldRow">
+                                <label htmlFor={member._id}>Admin</label>
+                                <input type="checkbox" id={member._id} />
+                            </div>
+                        </div>
+                        <p>
+                            <span>Remove User?</span>
+                            <i className="chalk-remove red" data-user={member._id} />
+                        </p>
+                    </li>
+                );
+            })}
         </ul>
     );
 };
 
 MembersCard.propTypes = {
-    members: PropTypes.shape({
-        instructors: PropTypes.array.isRequired,
-    }).isRequired,
+    members: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MembersCard;
