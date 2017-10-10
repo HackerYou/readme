@@ -74,6 +74,8 @@ class LessonTopic extends React.Component {
                                 this.state.topicId,
                                 this.state.title,
                                 );
+
+                            this.closeModal(e);
                         }}
                         data-id={topic._id}
                     >

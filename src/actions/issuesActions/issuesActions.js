@@ -1,7 +1,7 @@
 // import clone from 'clone';
-
+import config from '../../services/config';
 import types from '../actionTypes';
-import { requestIssues, postIssue, deleteIssue } from '../../services/issuesService';
+import { requestIssues, postIssue, deleteIssue, updateIssue } from '../../services/issuesService';
 
 export function updateIssues(issues) {
     return {
@@ -22,7 +22,6 @@ export function getIssues() {
 }
 
 export function createIssue(issueData) {
-    // eslint-disable-next-line
     return (dispatch) => {
         return postIssue(issueData)
             .then(response => response.json())
@@ -42,6 +41,25 @@ export function removeIssue(issueId) {
             .then(response => response.json())
             .then(({ issues }) => {
                 dispatch(updateIssues(issues));
+            })
+            .catch((error) => { throw (error); });
+    };
+}
+
+export function archiveIssue(issueData) {
+    const updatedIssue = issueData;
+
+    updatedIssue.archived = !updatedIssue.archived;
+    updatedIssue.archived_at = Date.now();
+    updatedIssue.archived_by = config.getUserIdFromToken();
+    return (dispatch) => {
+        return updateIssue(updatedIssue._id, updatedIssue)
+            .then(response => response.json())
+            .then(({ issue }) => {
+                dispatch({
+                    type: types.TOGGLE_ARCHIVE,
+                    issue,
+                });
             })
             .catch((error) => { throw (error); });
     };

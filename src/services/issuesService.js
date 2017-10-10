@@ -23,12 +23,23 @@ export const postIssue = (issue) => {
     });
 };
 
-export const deleteIssue = (issue) => {
-    return fetch(`${v2url}/flaggedIssues/${issue}`, {
+export const deleteIssue = (id) => {
+    return fetch(`${v2url}/flaggedIssues/${id}`, {
         method: 'DELETE',
         headers: {
             'x-access-token': config.getToken(),
             'Content-Type': 'application/json',
         },
+    });
+};
+
+export const updateIssue = (id, issueData) => {
+    return fetch(`${v2url}/flaggedIssues/${id}`, {
+        method: 'PUT',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(issueData),
     });
 };

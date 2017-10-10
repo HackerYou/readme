@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Issue = props => (
     <div className="classCard">
         <article className="issueCard card">
+            <i className={props.issue.archived ? 'fa fa-archive redLight' : 'fa fa-archive '} onClick={() => props.archive(props.issue)} />
             <h3>{props.issue.title}</h3>
             <div className="created-info">
                 <p className="created-by">
@@ -57,6 +58,7 @@ Issue.propTypes = {
 
     }).isRequired,
     delete: PropTypes.func.isRequired,
+    archive: PropTypes.func.isRequired,
 };
 
 export default Issue;
