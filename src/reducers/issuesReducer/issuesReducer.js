@@ -11,6 +11,16 @@ export default function (state = initialState.issues, action) {
         Object.assign(newState, { issues: action.issues });
         return newState;
     }
+    case types.ADD_ISSUE: {
+        const newState = objClone(state);
+        newState.issues.push(action.issue);
+        return newState;
+    }
+    case types.TOGGLE_ARCHIVE: {
+        const newState = objClone(state);
+        newState.issues.push(action.issue);
+        return newState;
+    }
     default:
         return state;
     }
