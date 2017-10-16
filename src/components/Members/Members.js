@@ -6,6 +6,7 @@ import MembersCard from './MembersCard';
 import { run, ruleRunner } from '../../utils/forms/ruleRunner';
 import { validEmail } from '../../utils/forms/rules';
 import Input from '../Forms/Input/Input';
+import Pagination from '../Pagination/Pagination';
 
 const fieldValidations = [
     ruleRunner('email', 'E-mail address', validEmail),
@@ -19,9 +20,11 @@ class Members extends React.Component {
             email: '',
             name: '',
             validationErrors: {},
+            pageOfItems: [],
         };
         this.handleInput = this.handleInput.bind(this);
         this.addUser = this.addUser.bind(this);
+        this.onChangePage = this.onChangePage.bind(this);
     }
     componentDidMount() {
         const { getInstructors } = this.props.actions;
@@ -31,7 +34,9 @@ class Members extends React.Component {
         getAllUsersThunk();
         this.setState({ validationErrors: run(this.state, fieldValidations) });
     }
-
+    onChangePage(pageOfItems) {
+        this.setState({ pageOfItems });
+    }
     handleInput(e) {
         const newState = Object.assign({}, this.state, {
             [e.target.name]: e.target.value,
@@ -97,8 +102,15 @@ class Members extends React.Component {
                         </div>
                     </form>
                 </section>
+                <Pagination items={this.props.users.users} onChangePage={this.onChangePage} />
                 <div className="container card memberWrap">
-                    <MembersCard members={this.props.users.users} />
+                    {this.state.pageOfItems.map((member) => {
+                        console.log(member);
+                        return (<MembersCard
+                            member={member}
+                            key={member._id}
+                        />);
+                    })}
                 </div>
             </div>
         );
