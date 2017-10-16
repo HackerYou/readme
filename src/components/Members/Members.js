@@ -132,7 +132,6 @@ Members.propTypes = {
         getAllUsersThunk: PropTypes.func.isRequired,
         searchUsers: PropTypes.func.isRequired,
     }).isRequired,
-    // searchUsers: PropTypes.func.isRequired,
 };
 
 export default Members;

@@ -14,20 +14,6 @@ const getFilteredUsers = (users, filter) => {
         return users;
     case 'HTML':
         return usersToFilter('html');
-    case 'CSS':
-        return usersToFilter('css');
-    case 'Javascript':
-        return usersToFilter('javascript');
-    case 'Tools':
-        return usersToFilter('tools');
-    case 'Project':
-        return usersToFilter('project');
-    case 'Resource':
-        return usersToFilter('resource');
-    case 'UX':
-        return usersToFilter('ux');
-    case 'SEO':
-        return usersToFilter('seo');
     default:
         return users;
     }
