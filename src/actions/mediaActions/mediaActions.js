@@ -1,5 +1,4 @@
 // import clone from 'clone';
-
 import types from '../actionTypes';
 import { requestMedia } from '../../services/mediaService';
 

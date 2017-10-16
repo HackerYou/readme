@@ -1,27 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Issue = ({ issue }) => (
+const Issue = props => (
     <div className="classCard">
         <article className="issueCard card">
-            <h3>{issue.title}</h3>
+            <i className={props.issue.archived ? 'fa fa-archive redLight' : 'fa fa-archive '} onClick={() => props.archive(props.issue)} />
+            <h3>{props.issue.title}</h3>
             <div className="created-info">
                 <p className="created-by">
                     <strong>
                         <span>Created at:</span>
-                        <span>{issue.created_at}</span>
+                        <span>{props.issue.created_at}</span>
                     </strong>
                 </p>
                 <p className="created-by">
                     <strong>
                         <span>By:</span>
-                        <span>{issue.created_by.firstName} {issue.created_by.lastName}</span>
+                        <span>
+                            {props.issue.created_by.firstName} {props.issue.created_by.lastName}
+                        </span>
                     </strong>
                 </p>
             </div>
-            <p>{issue.body}</p>
-            <button className="button primary">Edit Issue</button>
-            <button className="button error">Remove Issue </button>
+            <p>{props.issue.body}</p>
+            <Link className="button primary" to={`/topic/${props.issue.topic_id}/edit`}>Edit Issue</Link>
+            <button
+                onClick={() => { props.delete(props.issue._id); }}
+                className="button error"
+            >
+                Remove Issue
+            </button>
         </article>
     </div>
 );
@@ -48,6 +57,8 @@ Issue.propTypes = {
         updated_at: PropTypes.number,
 
     }).isRequired,
+    delete: PropTypes.func.isRequired,
+    archive: PropTypes.func.isRequired,
 };
 
 export default Issue;
