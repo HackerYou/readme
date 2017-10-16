@@ -25,6 +25,7 @@ class Members extends React.Component {
         this.handleInput = this.handleInput.bind(this);
         this.addUser = this.addUser.bind(this);
         this.onChangePage = this.onChangePage.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount() {
         const { getInstructors } = this.props.actions;
@@ -59,6 +60,10 @@ class Members extends React.Component {
         }
         return null;
     }
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.actions.searchUsers(this.state.name);
+    }
     render() {
         return (
             <div>
@@ -86,7 +91,7 @@ class Members extends React.Component {
                             <button className="success">Add User</button>
                         </div>
                     </form>
-                    <form className="addMembersForm">
+                    <form className="addMembersForm" onSubmit={this.handleSubmit}>
                         <div className="fieldRow">
                             <Input
                                 labelText="Search by name:"
@@ -105,7 +110,6 @@ class Members extends React.Component {
                 <Pagination items={this.props.users.users} onChangePage={this.onChangePage} />
                 <div className="container card memberWrap">
                     {this.state.pageOfItems.map((member) => {
-                        console.log(member);
                         return (<MembersCard
                             member={member}
                             key={member._id}
@@ -126,7 +130,9 @@ Members.propTypes = {
         getInstructors: PropTypes.func.isRequired,
         broadcast: PropTypes.func.isRequired,
         getAllUsersThunk: PropTypes.func.isRequired,
+        searchUsers: PropTypes.func.isRequired,
     }).isRequired,
+    // searchUsers: PropTypes.func.isRequired,
 };
 
 export default Members;

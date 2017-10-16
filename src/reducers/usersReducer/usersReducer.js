@@ -14,6 +14,11 @@ export default function (state = initialState.users, action) {
         newState.users = action.users;
         return newState;
     }
+    case types.SEARCH_USERS: {
+        const newState = JSON.parse(JSON.stringify(state));
+        newState.searchKeyword = action.keyword;
+        return newState;
+    }
     default:
         return state;
     }

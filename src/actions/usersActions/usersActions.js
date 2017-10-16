@@ -8,6 +8,13 @@ export function updateInstructors(users) {
     };
 }
 
+export function searchUsers(keyword) {
+    return {
+        type: types.SEARCH_USERS,
+        keyword,
+    };
+}
+
 export function updateUsers(users) {
     return {
         type: types.UPDATE_USERS,
