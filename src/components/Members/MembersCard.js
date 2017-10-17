@@ -33,8 +33,21 @@ const MembersCard = ({ member }) => {
 };
 
 MembersCard.propTypes = {
-    member: PropTypes.arrayOf(PropTypes.object).isRequired,
+    member: PropTypes.shape({
+        _id: PropTypes.string.isRequired,
+        admin: PropTypes.bool.isRequired,
+        courseSections: PropTypes.array.isRequired,
+        courses: PropTypes.array.isRequired,
+        created_at: PropTypes.number.isRequired,
+        email: PropTypes.string.isRequired,
+        favoriteClassrooms: PropTypes.array.isRequired,
+        firstName: PropTypes.string.isRequired,
+        first_sign_up: PropTypes.bool.isRequired,
+        instructor: PropTypes.bool.isRequired,
+        lastName: PropTypes.string.isRequired,
+        tests: PropTypes.array.isRequired,
+        updated_at: PropTypes.number.isRequired,
+    }).isRequired,
 };
 
 export default MembersCard;
-

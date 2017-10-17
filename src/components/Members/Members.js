@@ -123,7 +123,6 @@ class Members extends React.Component {
 
 Members.propTypes = {
     users: PropTypes.shape({
-        instructors: PropTypes.array.isRequired,
         users: PropTypes.array.isRequired,
     }).isRequired,
     actions: PropTypes.shape({
