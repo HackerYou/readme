@@ -19,12 +19,11 @@ describe('async actions', () => {
         nock(`${config.getApiUrl()}`)
         .get('/user')
         .reply(200, {
-            user: {}
+            user: []
         });
         const expectedActions = [
             {
                 type: types.UPDATE_INSTRUCTORS,
-                instructors: {},
                 users: [],
             }
         ];

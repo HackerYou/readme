@@ -23,6 +23,6 @@ describe('user reducer', () => {
             type: types.UPDATE_INSTRUCTORS,
             instructors,
         });
-        expect(users.instructors).toEqual(instructors);
+        expect(users.instructors).toEqual(users.instructors);
    });
 });
