@@ -25,6 +25,7 @@ describe('async actions', () => {
             {
                 type: types.UPDATE_INSTRUCTORS,
                 instructors: {},
+                users: [],
             }
         ];
         const store = mockStore({});

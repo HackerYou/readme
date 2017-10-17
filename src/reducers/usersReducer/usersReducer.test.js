@@ -8,6 +8,7 @@ describe('user reducer', () => {
         {
             instructors: [],
             users: [],
+            searchKeyword: '',
         }
     )
    });
