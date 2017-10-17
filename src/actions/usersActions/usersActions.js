@@ -1,10 +1,17 @@
 import { getAllInstructors, getAllUsers } from '../../services/userService';
 import types from '../actionTypes';
 
-export function updateInstructors(instructors) {
+export function updateInstructors(users) {
     return {
         type: types.UPDATE_INSTRUCTORS,
-        instructors,
+        users,
+    };
+}
+
+export function searchUsers(keyword) {
+    return {
+        type: types.SEARCH_USERS,
+        keyword,
     };
 }
 
@@ -16,13 +23,13 @@ export function updateUsers(users) {
 }
 
 export function getAllUsersThunk() {
-    return dispatch => (
-        getAllUsers()
+    return (dispatch) => {
+        return getAllUsers()
             .then(response => response.json())
             .then((data) => {
                 dispatch(updateUsers(data.user));
-            })
-    );
+            });
+    };
 }
 
 export function getInstructors() {

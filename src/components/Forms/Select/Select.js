@@ -41,7 +41,7 @@ Select.defaultProps = {
     classes: '',
     labelText: '',
     handleChange: null,
-    chosenKey: '',
+    chosenKey: keygen._(),
     chosenText: '',
     chosenVal: '',
     labelInline: false,

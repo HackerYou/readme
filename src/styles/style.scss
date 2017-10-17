@@ -66,6 +66,10 @@ header.intro {
 header.topContent {
 	margin-bottom: 3rem;
 	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	@include bp(sm) {
 		margin-bottom: 1rem;
 	}
@@ -132,6 +136,7 @@ section.detailsForm > form .fieldRow, .detailsForm > form .fieldRow {
 @import 'partials/accessibility';
 @import 'partials/issues';
 @import 'partials/lessons';
+@import 'partials/pagination';
 
 
 

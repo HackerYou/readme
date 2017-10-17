@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
+import MembersCard from './MembersCard';
 import { run, ruleRunner } from '../../utils/forms/ruleRunner';
 import { validEmail } from '../../utils/forms/rules';
 import Input from '../Forms/Input/Input';
+import Pagination from '../Pagination/Pagination';
 
 const fieldValidations = [
     ruleRunner('email', 'E-mail address', validEmail),
@@ -14,17 +16,27 @@ class Members extends React.Component {
     constructor() {
         super();
         this.state = {
+            members: [],
             email: '',
             name: '',
             validationErrors: {},
+            pageOfItems: [],
         };
         this.handleInput = this.handleInput.bind(this);
         this.addUser = this.addUser.bind(this);
+        this.onChangePage = this.onChangePage.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount() {
+        const { getInstructors } = this.props.actions;
         const { getAllUsersThunk } = this.props.actions;
+
+        getInstructors();
         getAllUsersThunk();
         this.setState({ validationErrors: run(this.state, fieldValidations) });
+    }
+    onChangePage(pageOfItems) {
+        this.setState({ pageOfItems });
     }
     handleInput(e) {
         const newState = Object.assign({}, this.state, {
@@ -48,15 +60,17 @@ class Members extends React.Component {
         }
         return null;
     }
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.actions.searchUsers(this.state.name);
+    }
     render() {
         return (
             <div>
                 <div className="container">
                     <header className="topContent">
-                        <Link to="dashboard" className="linkBtn">
-                            <button className="primary">
-                                <i className="chalk-home" />Back to Dashboard
-                            </button>
+                        <Link className="linkBtn button primary" to="/dashboard">
+                            back to dashboard
                         </Link>
                     </header>
                     <h1>Manage Members</h1>
@@ -77,7 +91,7 @@ class Members extends React.Component {
                             <button className="success">Add User</button>
                         </div>
                     </form>
-                    <form className="addMembersForm">
+                    <form className="addMembersForm" onSubmit={this.handleSubmit}>
                         <div className="fieldRow">
                             <Input
                                 labelText="Search by name:"
@@ -93,15 +107,29 @@ class Members extends React.Component {
                         </div>
                     </form>
                 </section>
+                <Pagination items={this.props.users.users} onChangePage={this.onChangePage} />
+                <div className="container card memberWrap">
+                    {this.state.pageOfItems.map((member) => {
+                        return (<MembersCard
+                            member={member}
+                            key={member._id}
+                        />);
+                    })}
+                </div>
             </div>
         );
     }
 }
 
 Members.propTypes = {
+    users: PropTypes.shape({
+        users: PropTypes.array.isRequired,
+    }).isRequired,
     actions: PropTypes.shape({
+        getInstructors: PropTypes.func.isRequired,
         broadcast: PropTypes.func.isRequired,
         getAllUsersThunk: PropTypes.func.isRequired,
+        searchUsers: PropTypes.func.isRequired,
     }).isRequired,
 };
 

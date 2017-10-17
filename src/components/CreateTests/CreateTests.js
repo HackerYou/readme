@@ -5,12 +5,33 @@ import Select from '../Forms/Select/Select';
 import QuestionCard from '../QuestionCard/QuestionCard';
 
 class CreateTests extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            testInfo: {
+                showTest: '',
+                testName: '',
+            },
+        };
+        this.handleChange = this.handleChange.bind(this);
+        // this.createTest = this.createTest.bind(this);
+    }
     componentDidMount() {
         const { getCourse, retrieveQuestions } = this.props.actions;
         const { classroom_id } = this.props.match.params;
         getCourse(classroom_id);
         retrieveQuestions();
     }
+    handleChange(e) {
+        const testInfo = Object.assign({}, this.state.testInfo);
+        testInfo[e.target.name] = e.target.value;
+        this.setState({
+            testInfo,
+        });
+    }
+    // createTest() {
+
+    // }
     render() {
         const options = [
             {
@@ -31,7 +52,8 @@ class CreateTests extends React.Component {
                             name="testName"
                             type="text"
                             labelText="What is the name of the test?"
-                            value=""
+                            value={this.state.testName}
+                            handleChange={this.handleChange}
                         />
                         <Input
                             type="submit"
@@ -41,10 +63,11 @@ class CreateTests extends React.Component {
                         <div className="fieldRow">
                             <label htmlFor="show">Show test in classroom</label>
                             <Select
-                                value="cat"
+                                handleChange={this.handleChange}
+                                value={this.state.showTest}
                                 chosenVal="value"
-                                chosenKey="text"
-                                name="cat"
+                                chosenText="text"
+                                name="showTest"
                                 options={options}
                             />
                         </div>
