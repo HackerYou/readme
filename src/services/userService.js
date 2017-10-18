@@ -38,9 +38,17 @@ export const createUser = (user) => {
             'x-access-token': config.getToken(),
             'Content-Type': 'application/json',
         },
-        // data: JSON.stringify({
-        //     emails: user,
-        // }),
+        body: JSON.stringify(user),
+    });
+};
+
+export const updateUser = (user, id) => {
+    return fetch(`${config.getApiUrl()}/user/${id}`, {
+        method: 'PUT',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify(user),
     });
 };

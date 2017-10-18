@@ -22,6 +22,7 @@ class Members extends React.Component {
             validationErrors: {},
             pageOfItems: [],
         };
+        // this.setTypeOfMember = this.setTypeOfMember.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.addUser = this.addUser.bind(this);
         this.onChangePage = this.onChangePage.bind(this);
@@ -30,15 +31,17 @@ class Members extends React.Component {
     componentDidMount() {
         const { getInstructors } = this.props.actions;
         const { getAllUsersThunk } = this.props.actions;
-        // const { createUserThunk } = this.props.actions;
 
         getInstructors();
         getAllUsersThunk();
-        // createUserThunk();
         this.setState({ validationErrors: run(this.state, fieldValidations) });
     }
     onChangePage(pageOfItems) {
         this.setState({ pageOfItems });
+    }
+    setTypeOfMember(e) {
+        console.log(e.target.value, 'this is working');
+        return this;
     }
     handleInput(e) {
         const newState = Object.assign({}, this.state, {
@@ -60,7 +63,6 @@ class Members extends React.Component {
             broadcast(prefix + errors, 'error');
             return null;
         }
-        // return null;
         return this.props.actions.createUserThunk({
             emails: email,
         });
@@ -118,6 +120,7 @@ class Members extends React.Component {
                         return (<MembersCard
                             member={member}
                             key={member._id}
+                            handleChange={this.setTypeOfMember}
                         />);
                     })}
                 </div>

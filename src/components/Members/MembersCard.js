@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MembersCard = ({ member }) => {
+const MembersCard = ({ member, handleChange }) => {
     return (
         <ul className="memberList">
             <li key={member._id}>
@@ -16,11 +16,21 @@ const MembersCard = ({ member }) => {
                 <div className="inputBlock">
                     <div className="fieldRow">
                         <label htmlFor={member._id}>Instructor</label>
-                        <input type="checkbox" id={member._id} />
+                        <input
+                            type="checkbox"
+                            value="instructor"
+                            id={member._id}
+                            onChange={handleChange}
+                        />
                     </div>
                     <div className="fieldRow">
                         <label htmlFor={member._id}>Admin</label>
-                        <input type="checkbox" id={member._id} />
+                        <input
+                            type="checkbox"
+                            value="admin"
+                            id={member._id}
+                            onChange={handleChange}
+                        />
                     </div>
                 </div>
                 <p>
@@ -48,6 +58,7 @@ MembersCard.propTypes = {
         tests: PropTypes.array.isRequired,
         updated_at: PropTypes.number.isRequired,
     }).isRequired,
+    handleChange: PropTypes.func.isRequired,
 };
 
 export default MembersCard;
