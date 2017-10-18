@@ -31,3 +31,16 @@ export const getAllInstructors = () => {
     });
 };
 
+export const createUser = (user) => {
+    return fetch(`${config.getApiUrl()}/user`, {
+        method: 'POST',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+        // data: JSON.stringify({
+        //     emails: user,
+        // }),
+        body: JSON.stringify(user),
+    });
+};

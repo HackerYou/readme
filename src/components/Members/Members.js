@@ -30,9 +30,11 @@ class Members extends React.Component {
     componentDidMount() {
         const { getInstructors } = this.props.actions;
         const { getAllUsersThunk } = this.props.actions;
+        // const { createUserThunk } = this.props.actions;
 
         getInstructors();
         getAllUsersThunk();
+        // createUserThunk();
         this.setState({ validationErrors: run(this.state, fieldValidations) });
     }
     onChangePage(pageOfItems) {
@@ -48,7 +50,7 @@ class Members extends React.Component {
     addUser(e) {
         e.preventDefault();
         const { broadcast } = this.props.actions;
-        const { validationErrors } = this.state;
+        const { validationErrors, email } = this.state;
         const prefix = 'Please resolve the following errors: ';
         const errorKeys = Object.keys(validationErrors);
 
@@ -58,7 +60,10 @@ class Members extends React.Component {
             broadcast(prefix + errors, 'error');
             return null;
         }
-        return null;
+        // return null;
+        return this.props.actions.createUserThunk({
+            emails: email,
+        });
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -130,6 +135,7 @@ Members.propTypes = {
         broadcast: PropTypes.func.isRequired,
         getAllUsersThunk: PropTypes.func.isRequired,
         searchUsers: PropTypes.func.isRequired,
+        createUserThunk: PropTypes.func.isRequired,
     }).isRequired,
 };
 
