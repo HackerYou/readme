@@ -43,6 +43,7 @@ export const createUser = (user) => {
 };
 
 export const updateUser = (user, id) => {
+    // const id = user._id;
     return fetch(`${config.getApiUrl()}/user/${id}`, {
         method: 'PUT',
         headers: {

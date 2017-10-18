@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MembersCard = ({ member, handleChange }) => {
+const MembersCard = ({ member, handleChange, index }) => {
     return (
         <ul className="memberList">
             <li key={member._id}>
@@ -21,6 +21,7 @@ const MembersCard = ({ member, handleChange }) => {
                             value="instructor"
                             id={member._id}
                             onChange={handleChange}
+                            data-index={index}
                         />
                     </div>
                     <div className="fieldRow">
@@ -30,6 +31,7 @@ const MembersCard = ({ member, handleChange }) => {
                             value="admin"
                             id={member._id}
                             onChange={handleChange}
+                            data-index={index}
                         />
                     </div>
                 </div>
@@ -59,6 +61,7 @@ MembersCard.propTypes = {
         updated_at: PropTypes.number.isRequired,
     }).isRequired,
     handleChange: PropTypes.func.isRequired,
+    index: PropTypes.number.isRequired,
 };
 
 export default MembersCard;

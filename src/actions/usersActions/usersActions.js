@@ -1,4 +1,4 @@
-import { getAllInstructors, getAllUsers, createUser } from '../../services/userService';
+import { getAllInstructors, getAllUsers, createUser, updateUser } from '../../services/userService';
 import { loading, loadingSuccess } from '../loaderActions/loaderActions';
 import { broadcast } from '../broadcastActions/broadcastActions';
 import types from '../actionTypes';
@@ -48,11 +48,22 @@ export function createUserThunk(user) {
     return (dispatch) => {
         dispatch(loading());
         return createUser(user)
-            // .then(response => response.json())
             .then(() => {
                 dispatch(getAllUsersThunk());
                 dispatch(loadingSuccess());
                 dispatch(broadcast('User successfully created.', 'success'));
+            });
+    };
+}
+
+export function updateUserThunk(user, id) {
+    return (dispatch) => {
+        dispatch(loading());
+        return updateUser(user, id)
+            // .then(response => response.json())
+            .then(() => {
+                dispatch(getAllUsersThunk());
+                dispatch(loadingSuccess());
             });
     };
 }

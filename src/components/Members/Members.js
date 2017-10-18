@@ -22,7 +22,7 @@ class Members extends React.Component {
             validationErrors: {},
             pageOfItems: [],
         };
-        // this.setTypeOfMember = this.setTypeOfMember.bind(this);
+        this.setTypeOfMember = this.setTypeOfMember.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.addUser = this.addUser.bind(this);
         this.onChangePage = this.onChangePage.bind(this);
@@ -40,7 +40,31 @@ class Members extends React.Component {
         this.setState({ pageOfItems });
     }
     setTypeOfMember(e) {
-        console.log(e.target.value, 'this is working');
+        console.log(e.target.dataset.index, 'this is working');
+        const index = e.target.dataset.index;
+        const member = this.props.users.users[index];
+        const { updateUserThunk } = this.props.actions;
+
+        // console.log(member);
+
+        if (e.target.value === 'admin') {
+            member.admin = true;
+        } else {
+            member.admin = false;
+        }
+
+        if (e.target.value === 'instructor') {
+            member.instructor = true;
+        } else {
+            member.instructor = false;
+        }
+
+        console.log(member);
+
+        updateUserThunk(member, member._id).then((res) => {
+            console.log(res);
+        });
+
         return this;
     }
     handleInput(e) {
@@ -116,11 +140,12 @@ class Members extends React.Component {
                 </section>
                 <Pagination items={this.props.users.users} onChangePage={this.onChangePage} />
                 <div className="container card memberWrap">
-                    {this.state.pageOfItems.map((member) => {
+                    {this.state.pageOfItems.map((member, i) => {
                         return (<MembersCard
                             member={member}
                             key={member._id}
                             handleChange={this.setTypeOfMember}
+                            index={i}
                         />);
                     })}
                 </div>
@@ -139,6 +164,7 @@ Members.propTypes = {
         getAllUsersThunk: PropTypes.func.isRequired,
         searchUsers: PropTypes.func.isRequired,
         createUserThunk: PropTypes.func.isRequired,
+        updateUserThunk: PropTypes.func.isRequired,
     }).isRequired,
 };
 
