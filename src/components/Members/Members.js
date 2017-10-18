@@ -40,32 +40,17 @@ class Members extends React.Component {
         this.setState({ pageOfItems });
     }
     setTypeOfMember(e) {
-        console.log(e.target.dataset.index, 'this is working');
         const index = e.target.dataset.index;
         const member = this.props.users.users[index];
         const { updateUserThunk } = this.props.actions;
+        const selected = e.target.value;
 
-        // console.log(member);
-
-        if (e.target.value === 'admin') {
-            member.admin = true;
+        if (e.target.checked && selected) {
+            member[selected] = true;
         } else {
-            member.admin = false;
+            member[selected] = false;
         }
-
-        if (e.target.value === 'instructor') {
-            member.instructor = true;
-        } else {
-            member.instructor = false;
-        }
-
-        console.log(member);
-
-        updateUserThunk(member, member._id).then((res) => {
-            console.log(res);
-        });
-
-        return this;
+        updateUserThunk(member, member._id);
     }
     handleInput(e) {
         const newState = Object.assign({}, this.state, {

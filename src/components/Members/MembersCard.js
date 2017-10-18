@@ -22,6 +22,7 @@ const MembersCard = ({ member, handleChange, index }) => {
                             id={member._id}
                             onChange={handleChange}
                             data-index={index}
+                            checked={member.instructor}
                         />
                     </div>
                     <div className="fieldRow">
@@ -32,6 +33,7 @@ const MembersCard = ({ member, handleChange, index }) => {
                             id={member._id}
                             onChange={handleChange}
                             data-index={index}
+                            checked={member.admin}
                         />
                     </div>
                 </div>
