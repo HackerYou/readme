@@ -55,9 +55,7 @@ class Members extends React.Component {
     }
     removeUser(e, id) {
         const { deleteUserThunk } = this.props.actions;
-        console.log(id, 'working');
         deleteUserThunk(id);
-        return this;
     }
     handleInput(e) {
         const newState = Object.assign({}, this.state, {
