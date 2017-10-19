@@ -43,7 +43,6 @@ export const createUser = (user) => {
 };
 
 export const updateUser = (user, id) => {
-    // const id = user._id;
     return fetch(`${config.getApiUrl()}/user/${id}`, {
         method: 'PUT',
         headers: {
@@ -51,5 +50,15 @@ export const updateUser = (user, id) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(user),
+    });
+};
+
+export const deleteUser = (id) => {
+    return fetch(`${config.getApiUrl()}/user/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
     });
 };

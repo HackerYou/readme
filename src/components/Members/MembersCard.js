@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MembersCard = ({ member, handleChange, index }) => {
+const MembersCard = ({ member, handleChange, index, removeUser }) => {
     return (
         <ul className="memberList">
             <li key={member._id}>
@@ -39,7 +39,11 @@ const MembersCard = ({ member, handleChange, index }) => {
                 </div>
                 <p>
                     <span>Remove User?</span>
-                    <i className="chalk-remove red" data-user={member._id} />
+                    <i
+                        className="chalk-remove red"
+                        data-user={member._id}
+                        onClick={e => removeUser(e, member._id)}
+                    />
                 </p>
             </li>
         </ul>
@@ -64,6 +68,7 @@ MembersCard.propTypes = {
     }).isRequired,
     handleChange: PropTypes.func.isRequired,
     index: PropTypes.number.isRequired,
+    removeUser: PropTypes.func.isRequired,
 };
 
 export default MembersCard;

@@ -27,6 +27,7 @@ class Members extends React.Component {
         this.addUser = this.addUser.bind(this);
         this.onChangePage = this.onChangePage.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.removeUser = this.removeUser.bind(this);
     }
     componentDidMount() {
         const { getInstructors } = this.props.actions;
@@ -51,6 +52,12 @@ class Members extends React.Component {
             member[selected] = false;
         }
         updateUserThunk(member, member._id);
+    }
+    removeUser(e, id) {
+        const { deleteUserThunk } = this.props.actions;
+        console.log(id, 'working');
+        deleteUserThunk(id);
+        return this;
     }
     handleInput(e) {
         const newState = Object.assign({}, this.state, {
@@ -131,6 +138,7 @@ class Members extends React.Component {
                             key={member._id}
                             handleChange={this.setTypeOfMember}
                             index={i}
+                            removeUser={this.removeUser}
                         />);
                     })}
                 </div>
@@ -150,6 +158,7 @@ Members.propTypes = {
         searchUsers: PropTypes.func.isRequired,
         createUserThunk: PropTypes.func.isRequired,
         updateUserThunk: PropTypes.func.isRequired,
+        deleteUserThunk: PropTypes.func.isRequired,
     }).isRequired,
 };
 
