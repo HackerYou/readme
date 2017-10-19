@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MembersCard = ({ member }) => {
+const MembersCard = ({ member, handleChange, index, removeUser }) => {
     return (
         <ul className="memberList">
             <li key={member._id}>
@@ -16,16 +16,34 @@ const MembersCard = ({ member }) => {
                 <div className="inputBlock">
                     <div className="fieldRow">
                         <label htmlFor={member._id}>Instructor</label>
-                        <input type="checkbox" id={member._id} />
+                        <input
+                            type="checkbox"
+                            value="instructor"
+                            id={member._id}
+                            onChange={handleChange}
+                            data-index={index}
+                            checked={member.instructor}
+                        />
                     </div>
                     <div className="fieldRow">
                         <label htmlFor={member._id}>Admin</label>
-                        <input type="checkbox" id={member._id} />
+                        <input
+                            type="checkbox"
+                            value="admin"
+                            id={member._id}
+                            onChange={handleChange}
+                            data-index={index}
+                            checked={member.admin}
+                        />
                     </div>
                 </div>
                 <p>
                     <span>Remove User?</span>
-                    <i className="chalk-remove red" data-user={member._id} />
+                    <i
+                        className="chalk-remove red"
+                        data-user={member._id}
+                        onClick={e => removeUser(e, member._id)}
+                    />
                 </p>
             </li>
         </ul>
@@ -48,6 +66,9 @@ MembersCard.propTypes = {
         tests: PropTypes.array.isRequired,
         updated_at: PropTypes.number.isRequired,
     }).isRequired,
+    handleChange: PropTypes.func.isRequired,
+    index: PropTypes.number.isRequired,
+    removeUser: PropTypes.func.isRequired,
 };
 
 export default MembersCard;

@@ -31,3 +31,34 @@ export const getAllInstructors = () => {
     });
 };
 
+export const createUser = (user) => {
+    return fetch(`${config.getApiUrl()}/user`, {
+        method: 'POST',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+    });
+};
+
+export const updateUser = (user, id) => {
+    return fetch(`${config.getApiUrl()}/user/${id}`, {
+        method: 'PUT',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+    });
+};
+
+export const deleteUser = (id) => {
+    return fetch(`${config.getApiUrl()}/user/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+    });
+};

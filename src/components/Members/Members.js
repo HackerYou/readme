@@ -22,10 +22,12 @@ class Members extends React.Component {
             validationErrors: {},
             pageOfItems: [],
         };
+        this.setTypeOfMember = this.setTypeOfMember.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.addUser = this.addUser.bind(this);
         this.onChangePage = this.onChangePage.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.removeUser = this.removeUser.bind(this);
     }
     componentDidMount() {
         const { getInstructors } = this.props.actions;
@@ -38,6 +40,23 @@ class Members extends React.Component {
     onChangePage(pageOfItems) {
         this.setState({ pageOfItems });
     }
+    setTypeOfMember(e) {
+        const index = e.target.dataset.index;
+        const member = this.props.users.users[index];
+        const { updateUserThunk } = this.props.actions;
+        const selected = e.target.value;
+
+        if (e.target.checked && selected) {
+            member[selected] = true;
+        } else {
+            member[selected] = false;
+        }
+        updateUserThunk(member, member._id);
+    }
+    removeUser(e, id) {
+        const { deleteUserThunk } = this.props.actions;
+        deleteUserThunk(id);
+    }
     handleInput(e) {
         const newState = Object.assign({}, this.state, {
             [e.target.name]: e.target.value,
@@ -48,7 +67,7 @@ class Members extends React.Component {
     addUser(e) {
         e.preventDefault();
         const { broadcast } = this.props.actions;
-        const { validationErrors } = this.state;
+        const { validationErrors, email } = this.state;
         const prefix = 'Please resolve the following errors: ';
         const errorKeys = Object.keys(validationErrors);
 
@@ -58,7 +77,9 @@ class Members extends React.Component {
             broadcast(prefix + errors, 'error');
             return null;
         }
-        return null;
+        return this.props.actions.createUserThunk({
+            emails: email,
+        });
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -109,10 +130,13 @@ class Members extends React.Component {
                 </section>
                 <Pagination items={this.props.users.users} onChangePage={this.onChangePage} />
                 <div className="container card memberWrap">
-                    {this.state.pageOfItems.map((member) => {
+                    {this.state.pageOfItems.map((member, i) => {
                         return (<MembersCard
                             member={member}
                             key={member._id}
+                            handleChange={this.setTypeOfMember}
+                            index={i}
+                            removeUser={this.removeUser}
                         />);
                     })}
                 </div>
@@ -130,6 +154,9 @@ Members.propTypes = {
         broadcast: PropTypes.func.isRequired,
         getAllUsersThunk: PropTypes.func.isRequired,
         searchUsers: PropTypes.func.isRequired,
+        createUserThunk: PropTypes.func.isRequired,
+        updateUserThunk: PropTypes.func.isRequired,
+        deleteUserThunk: PropTypes.func.isRequired,
     }).isRequired,
 };
 
