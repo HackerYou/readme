@@ -52,7 +52,7 @@ const MembersCard = ({ member, handleChange, index, removeUser }) => {
 
 MembersCard.propTypes = {
     member: PropTypes.shape({
-        _id: PropTypes.string.isRequired,
+        _id: PropTypes.number.isRequired,
         admin: PropTypes.bool.isRequired,
         courseSections: PropTypes.array.isRequired,
         courses: PropTypes.array.isRequired,
