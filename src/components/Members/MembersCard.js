@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Input from '../Forms/Input/Input';
 
 const MembersCard = ({ member, handleChange, index, removeUser }) => {
     return (
@@ -15,25 +16,29 @@ const MembersCard = ({ member, handleChange, index, removeUser }) => {
                 </p>
                 <div className="inputBlock">
                     <div className="fieldRow">
-                        <label htmlFor={member._id}>Instructor</label>
-                        <input
+                        <Input
+                            labelText="Instructor"
+                            name="instAdmin"
                             type="checkbox"
                             value="instructor"
-                            id={member._id}
-                            onChange={handleChange}
-                            data-index={index}
+                            handleChange={handleChange}
                             checked={member.instructor}
+                            index={index}
+                            labelInline
+                            largeLabel
                         />
                     </div>
                     <div className="fieldRow">
-                        <label htmlFor={member._id}>Admin</label>
-                        <input
+                        <Input
+                            labelText="Admin"
+                            name="instAdmin"
                             type="checkbox"
                             value="admin"
-                            id={member._id}
-                            onChange={handleChange}
-                            data-index={index}
+                            handleChange={handleChange}
                             checked={member.admin}
+                            index={index}
+                            labelInline
+                            largeLabel
                         />
                     </div>
                 </div>
