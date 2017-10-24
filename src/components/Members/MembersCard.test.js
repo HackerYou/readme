@@ -11,7 +11,7 @@ test('It calls the function that gets passed in as a prop to removeUser when you
     handleChange: mockHandleChange,
     index: 20,
     member: {
-      _id: 87238,
+      _id: "87238",
       admin: true,
       courseSections: [{ id: "58743959", courseId: "9898737", sections: ["567567"] }],
       courses: ["9874569845", "89549876945"],
