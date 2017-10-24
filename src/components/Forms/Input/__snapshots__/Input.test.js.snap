@@ -9,6 +9,7 @@ exports[`It renders the input component with an inline label if you pass the lab
     Title
   </label>
   <input
+    checked={false}
     className=""
     name="title"
     onChange={null}

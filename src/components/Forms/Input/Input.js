@@ -12,6 +12,7 @@ const Input = (props) => {
         handleChange,
         largeLabel,
         classes,
+        checked,
     } = props;
     const labelClass = classNames({
         inline: labelInline,
@@ -26,6 +27,7 @@ const Input = (props) => {
             placeholder={placeholder}
             onChange={handleChange}
             className={classes}
+            checked={checked}
         />
     </span>);
 };
@@ -37,6 +39,7 @@ Input.defaultProps = {
     classes: '',
     labelText: '',
     handleChange: null,
+    checked: false,
 };
 
 Input.propTypes = {
@@ -49,6 +52,7 @@ Input.propTypes = {
     placeholder: PropTypes.string,
     handleChange: PropTypes.func,
     largeLabel: PropTypes.bool,
+    checked: PropTypes.bool,
 };
 
 export default Input;

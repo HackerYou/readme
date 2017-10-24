@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Input from '../Forms/Input/Input';
 
 const MembersCard = ({ member, handleChange, index, removeUser }) => {
     return (
@@ -15,25 +16,29 @@ const MembersCard = ({ member, handleChange, index, removeUser }) => {
                 </p>
                 <div className="inputBlock">
                     <div className="fieldRow">
-                        <label htmlFor={member._id}>Instructor</label>
-                        <input
+                        <Input
+                            labelText="Instructor"
+                            name="instAdmin"
                             type="checkbox"
                             value="instructor"
-                            id={member._id}
-                            onChange={handleChange}
-                            data-index={index}
+                            handleChange={() => handleChange(index, 'instructor', member.instructor)}
                             checked={member.instructor}
+                            index={index}
+                            labelInline
+                            largeLabel
                         />
                     </div>
                     <div className="fieldRow">
-                        <label htmlFor={member._id}>Admin</label>
-                        <input
+                        <Input
+                            labelText="Admin"
+                            name="instAdmin"
                             type="checkbox"
                             value="admin"
-                            id={member._id}
-                            onChange={handleChange}
-                            data-index={index}
+                            handleChange={() => handleChange(index, 'admin', member.admin)}
                             checked={member.admin}
+                            index={index}
+                            labelInline
+                            largeLabel
                         />
                     </div>
                 </div>
@@ -52,7 +57,7 @@ const MembersCard = ({ member, handleChange, index, removeUser }) => {
 
 MembersCard.propTypes = {
     member: PropTypes.shape({
-        _id: PropTypes.number.isRequired,
+        _id: PropTypes.string.isRequired,
         admin: PropTypes.bool.isRequired,
         courseSections: PropTypes.array.isRequired,
         courses: PropTypes.array.isRequired,
