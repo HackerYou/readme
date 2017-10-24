@@ -21,7 +21,7 @@ const MembersCard = ({ member, handleChange, index, removeUser }) => {
                             name="instAdmin"
                             type="checkbox"
                             value="instructor"
-                            handleChange={handleChange}
+                            handleChange={() => handleChange(index, 'instructor', member.instructor)}
                             checked={member.instructor}
                             index={index}
                             labelInline
@@ -34,7 +34,7 @@ const MembersCard = ({ member, handleChange, index, removeUser }) => {
                             name="instAdmin"
                             type="checkbox"
                             value="admin"
-                            handleChange={handleChange}
+                            handleChange={() => handleChange(index, 'admin', member.admin)}
                             checked={member.admin}
                             index={index}
                             labelInline

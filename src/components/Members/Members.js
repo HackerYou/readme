@@ -40,13 +40,11 @@ class Members extends React.Component {
     onChangePage(pageOfItems) {
         this.setState({ pageOfItems });
     }
-    setTypeOfMember(e) {
-        const index = e.target.dataset.index;
+    setTypeOfMember(index, selected, checked) {
         const member = this.props.users.users[index];
         const { updateUserThunk } = this.props.actions;
-        const selected = e.target.value;
 
-        if (e.target.checked && selected) {
+        if (checked && selected) {
             member[selected] = true;
         } else {
             member[selected] = false;

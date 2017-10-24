@@ -12,7 +12,6 @@ const Input = (props) => {
         handleChange,
         largeLabel,
         classes,
-        index,
         checked,
     } = props;
     const labelClass = classNames({
@@ -28,7 +27,6 @@ const Input = (props) => {
             placeholder={placeholder}
             onChange={handleChange}
             className={classes}
-            data-index={index}
             checked={checked}
         />
     </span>);
@@ -41,7 +39,6 @@ Input.defaultProps = {
     classes: '',
     labelText: '',
     handleChange: null,
-    index: 0,
     checked: false,
 };
 
@@ -55,7 +52,6 @@ Input.propTypes = {
     placeholder: PropTypes.string,
     handleChange: PropTypes.func,
     largeLabel: PropTypes.bool,
-    index: PropTypes.number,
     checked: PropTypes.bool,
 };
 
