@@ -64,6 +64,7 @@ export function createClassroomThunk(payload) {
             .then(response => response.json())
             .then(() => {
                 dispatch(getCourses());
+                dispatch(loadingSuccess());
             });
     };
 }

@@ -95,7 +95,7 @@ class Members extends React.Component {
                     <h1>Manage Members</h1>
                 </div>
                 <section className="full card detailsForm">
-                    <form className="addMembersForm" onSubmit={this.addUser}>
+                    <form className="addMembersForm createUser" onSubmit={this.addUser}>
                         <div className="fieldRow">
                             <Input
                                 labelText="Add by email"

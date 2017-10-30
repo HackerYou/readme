@@ -86,7 +86,7 @@
     "node": "^8.6.0"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --runInBand",
     "test:watch": "jest --watch",
     "prebuild": "rimraf public",
     "build": "webpack --env.prod -p",
