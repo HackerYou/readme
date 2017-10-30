@@ -24,7 +24,7 @@ describe('spy addUser()', () => {
       const test = shallow(<Members {...props} />)
 
       const wrapper = test.find('.createUser');
-      wrapper.simulate('submit', { preventDefault:function(){}});
+      wrapper.simulate('submit', { preventDefault:function(){} });
       expect(spy).toHaveBeenCalled();
     });
 });
