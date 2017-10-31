@@ -83,7 +83,12 @@ class CourseTemplates extends React.Component {
                 <section className="templateWrap">
                     {templates.map((course) => {
                         return (
-                            <Card title={course.title} key={course._id} callToAction="View/Edit" />
+                            <Card
+                                title={course.title}
+                                key={course._id}
+                                id={course._id}
+                                callToAction="View/Edit"
+                            />
                         );
                     })}
                 </section>
