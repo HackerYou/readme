@@ -6,7 +6,9 @@ export default {
     },
     course: {
         templates: [],
-        courses: [],
+        courses: {
+            sections: [],
+        },
     },
     classroom: {
         _id: '',

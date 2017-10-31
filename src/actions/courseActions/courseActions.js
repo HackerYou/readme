@@ -1,7 +1,7 @@
 import clone from 'clone';
 
 import types from '../actionTypes';
-import { requestCourses, requestTemplates, createTemplate } from '../../services/courseService';
+import { requestCourses, requestTemplates, createTemplate, getCourseById } from '../../services/courseService';
 import { broadcast } from '../broadcastActions/broadcastActions';
 import { loading, loadingSuccess } from '../loaderActions/loaderActions';
 
@@ -61,3 +61,12 @@ export function createTemplateThunk(template) {
     };
 }
 
+export function getCourse(id) {
+    return (dispatch) => {
+        return getCourseById(id)
+            .then(response => response.json())
+            .then((data) => {
+                dispatch(updateCourses(data.course));
+            });
+    };
+}

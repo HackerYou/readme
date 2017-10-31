@@ -23,6 +23,7 @@ class CourseTemplates extends React.Component {
     }
     componentDidMount() {
         const { getTemplates } = this.props.actions;
+
         getTemplates();
         this.setState({ validationErrors: run(this.state, fieldValidations) });
     }
@@ -52,6 +53,7 @@ class CourseTemplates extends React.Component {
     }
     render() {
         const { templates } = this.props.course;
+
         return (
             <section className="mainContent">
                 <div className="container">
@@ -102,6 +104,8 @@ CourseTemplates.propTypes = {
         broadcast: PropTypes.func.isRequired,
         createTemplateThunk: PropTypes.func.isRequired,
         getTemplates: PropTypes.func.isRequired,
+        // getSection: PropTypes.func.isRequired,
+        getCourse: PropTypes.func.isRequired,
     }).isRequired,
     course: PropTypes.shape({
         templates: PropTypes.array,
