@@ -13,6 +13,34 @@ const EditCourseTemplates = () => {
             </header>
             <section className="lessonsWrap">
                 <ol className="lessonColumn">
+                    <li className="lessonGroup">
+                        <header className="lessonGroupTop">
+                            <h3>Title goes here</h3>
+                            <p className="deleteSection">
+                                <i className="chalk-remove red" />Remove Section
+                            </p>
+                        </header>
+                        <div className="card">
+                            <ol>
+                                <li className="lessonRow">
+                                    <a href="" lassName="lessonInfo">
+                                        <p className="lessonTitle">Lesson title goes here</p>
+                                    </a>
+                                    <div className="lessonMeta">
+                                        <span>
+                                            <a href="">view</a>
+                                            <a href="">|edit</a>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ol>
+                            <ol>
+                                <li className="new-lessonRow">
+                                    <p className="lessonTitle">+ Add new lesson</p>
+                                </li>
+                            </ol>
+                        </div>
+                    </li>
                     <li>
                         <article className="lessonNew">
                             <ul>
