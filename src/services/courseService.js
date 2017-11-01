@@ -60,3 +60,13 @@ export const createSection = (data, courseId) => {
         body: JSON.stringify(data),
     });
 };
+
+export const removeSection = (courseId, sectionId) => {
+    return fetch(`${config.getApiUrl()}/course/${courseId}/section/${sectionId}`, {
+        method: 'DELETE',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+    });
+};

@@ -1,7 +1,7 @@
 import clone from 'clone';
 
 import types from '../actionTypes';
-import { requestCourses, requestTemplates, createTemplate, getCourseById } from '../../services/courseService';
+import { requestCourses, requestTemplates, createTemplate, getCourseById, createSection, removeSection } from '../../services/courseService';
 import { broadcast } from '../broadcastActions/broadcastActions';
 import { loading, loadingSuccess } from '../loaderActions/loaderActions';
 
@@ -67,6 +67,30 @@ export function getCourse(id) {
             .then(response => response.json())
             .then((data) => {
                 dispatch(updateCourses(data.course));
+            });
+    };
+}
+
+export function createNewSection(section, id) {
+    return (dispatch) => {
+        return createSection(section, id)
+            .then(response => response.json())
+            .then((data) => {
+                dispatch(updateCourses(data.course));
+                dispatch(loadingSuccess());
+                dispatch(broadcast('User successfully created.', 'success'));
+            });
+    };
+}
+
+export function deleteSection(courseId, sectionId) {
+    return (dispatch) => {
+        dispatch(loading());
+        return removeSection(courseId, sectionId)
+            .then(response => response.json())
+            .then(() => {
+                dispatch(loadingSuccess());
+                dispatch(broadcast('User successfully deleted.', 'success'));
             });
     };
 }

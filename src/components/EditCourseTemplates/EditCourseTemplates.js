@@ -4,19 +4,40 @@ import PropTypes from 'prop-types';
 class EditCourseTemplates extends React.Component {
     constructor() {
         super();
+        this.state = {
+            title: '',
+        };
         this.addSection = this.addSection.bind(this);
+        this.removeSection = this.removeSection.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
         const { getCourse } = this.props.actions;
+        // console.log(this.props.match.params.template_id);
         getCourse(this.props.match.params.template_id);
     }
     addSection(e) {
         e.preventDefault();
-        console.log('hello');
-        return this;
+        const { createNewSection } = this.props.actions;
+        const title = this.state.title;
+        const id = this.props.course.courses._id;
+        createNewSection({ title }, id);
+    }
+    handleChange(e) {
+        const newState = Object.assign({}, this.state, {
+            [e.target.name]: e.target.value,
+        });
+        this.setState(newState);
+    }
+    removeSection(e, sectionId) {
+        const { deleteSection } = this.props.actions;
+        const courseId = this.props.course.courses._id;
+
+        deleteSection(courseId, sectionId);
     }
     render() {
         const sections = this.props.course.courses.sections;
+        // console.log(this.props.course);
         return (
             <div className="container full">
                 <button className="primary"><i className="chalk-home" />back to dashboard</button>
@@ -25,7 +46,7 @@ class EditCourseTemplates extends React.Component {
                     <p className="title">
                         Drag and drop to reorganize lessons
                     (one at a time for now, multiple coming soon!)
-                </p>
+                    </p>
                 </header>
                 <section className="lessonsWrap">
                     <ol className="lessonColumn">
@@ -37,6 +58,9 @@ class EditCourseTemplates extends React.Component {
                                         <input
                                             type="text"
                                             placeholder="topic section title"
+                                            onChange={this.handleChange}
+                                            value={this.state.title}
+                                            name="title"
                                         />
                                         <button className="success">Create</button>
                                     </form>
@@ -48,9 +72,14 @@ class EditCourseTemplates extends React.Component {
                                 <li className="lessonGroup" key={section._id}>
                                     <header className="lessonGroupTop">
                                         <h3>{section.title}</h3>
-                                        <p className="deleteSection">
+                                        <a
+                                            className="deleteSection"
+                                            onClick={
+                                                e => this.removeSection(e, section._id)
+                                            }
+                                        >
                                             <i className="chalk-remove red" />Remove Section
-                                        </p>
+                                        </a>
                                     </header>
                                     <div className="card">
                                         <ol>
@@ -104,10 +133,13 @@ class EditCourseTemplates extends React.Component {
 EditCourseTemplates.propTypes = {
     actions: PropTypes.shape({
         getCourse: PropTypes.func.isRequired,
+        createNewSection: PropTypes.func.isRequired,
+        deleteSection: PropTypes.func.isRequired,
     }).isRequired,
     course: PropTypes.shape({
         courses: PropTypes.shape({
             sections: PropTypes.array,
+            _id: PropTypes.string,
         }).isRequired,
     }).isRequired,
     match: PropTypes.shape({

@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import * as courseActions from '../../actions/courseActions/courseActions';
+import * as coursesActions from '../../actions/coursesActions/coursesActions';
 import Dashboard from './Dashboard';
 
-const mapStateToProps = ({ auth, course, user }) => {
-    return { auth, course, user };
+const mapStateToProps = ({ auth, courses, user }) => {
+    return { auth, courses, user };
 };
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(courseActions, dispatch),
+    actions: bindActionCreators(coursesActions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
