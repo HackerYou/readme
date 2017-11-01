@@ -2,9 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class EditCourseTemplates extends React.Component {
+    constructor() {
+        super();
+        this.addSection = this.addSection.bind(this);
+    }
     componentDidMount() {
         const { getCourse } = this.props.actions;
         getCourse(this.props.match.params.template_id);
+    }
+    addSection(e) {
+        e.preventDefault();
+        console.log('hello');
+        return this;
     }
     render() {
         const sections = this.props.course.courses.sections;
@@ -20,9 +29,23 @@ class EditCourseTemplates extends React.Component {
                 </header>
                 <section className="lessonsWrap">
                     <ol className="lessonColumn">
+                        <li>
+                            <article className="lessonNew">
+                                <ul>
+                                    <form className="new-lesson" onSubmit={this.addSection}>
+                                        <h3>Add new section</h3>
+                                        <input
+                                            type="text"
+                                            placeholder="topic section title"
+                                        />
+                                        <button className="success">Create</button>
+                                    </form>
+                                </ul>
+                            </article>
+                        </li>
                         {sections.map((section) => {
                             return (
-                                <li className="lessonGroup">
+                                <li className="lessonGroup" key={section._id}>
                                     <header className="lessonGroupTop">
                                         <h3>{section.title}</h3>
                                         <p className="deleteSection">
@@ -32,9 +55,8 @@ class EditCourseTemplates extends React.Component {
                                     <div className="card">
                                         <ol>
                                             {section.lessons.map((item) => {
-                                                // console.log(item.title);
                                                 return (
-                                                    <li className="lessonRow">
+                                                    <li className="lessonRow" key={item._id}>
                                                         <a href="" className="lessonInfo">
                                                             <p className="lessonTitle">
                                                                 {item.title}
@@ -59,20 +81,6 @@ class EditCourseTemplates extends React.Component {
                                 </li>
                             );
                         })}
-                        <li>
-                            <article className="lessonNew">
-                                <ul>
-                                    <form className="new-lesson">
-                                        <h3>Add new section</h3>
-                                        <input
-                                            type="text"
-                                            placeholder="topic section title"
-                                        />
-                                        <button className="success">Create</button>
-                                    </form>
-                                </ul>
-                            </article>
-                        </li>
                     </ol>
                     <aside>
                         <section className="sideCard">
@@ -92,15 +100,6 @@ class EditCourseTemplates extends React.Component {
         );
     }
 }
-
-// EditCourseTemplates.defaultProps = {
-//     course: {
-//         courses: {
-//             sections: [],
-//         },
-//     },
-//     test: {},
-// };
 
 EditCourseTemplates.propTypes = {
     actions: PropTypes.shape({
