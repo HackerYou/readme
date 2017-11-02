@@ -104,7 +104,6 @@ CourseTemplates.propTypes = {
         broadcast: PropTypes.func.isRequired,
         createTemplateThunk: PropTypes.func.isRequired,
         getTemplates: PropTypes.func.isRequired,
-        // getSection: PropTypes.func.isRequired,
         getCourse: PropTypes.func.isRequired,
     }).isRequired,
     course: PropTypes.shape({

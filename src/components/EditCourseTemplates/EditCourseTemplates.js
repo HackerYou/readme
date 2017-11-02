@@ -13,7 +13,6 @@ class EditCourseTemplates extends React.Component {
     }
     componentDidMount() {
         const { getCourse } = this.props.actions;
-        // console.log(this.props.match.params.template_id);
         getCourse(this.props.match.params.template_id);
     }
     addSection(e) {
@@ -37,7 +36,6 @@ class EditCourseTemplates extends React.Component {
     }
     render() {
         const sections = this.props.course.courses.sections;
-        // console.log(this.props.course);
         return (
             <div className="container full">
                 <button className="primary"><i className="chalk-home" />back to dashboard</button>
