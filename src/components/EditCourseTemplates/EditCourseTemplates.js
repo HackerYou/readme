@@ -69,7 +69,7 @@ class EditCourseTemplates extends React.Component {
                             return (
                                 <li className="lessonGroup" key={section._id}>
                                     <header className="lessonGroupTop">
-                                        <h3>{section.title}</h3>
+                                        <h3 id={section.title}>{section.title}</h3>
                                         <a
                                             className="deleteSection"
                                             onClick={
@@ -114,7 +114,11 @@ class EditCourseTemplates extends React.Component {
                             <h3>Course Topics</h3>
                             <div className="card topicLegend">
                                 <ul className="topicList">
-                                    <li>something</li>
+                                    {sections.map((section) => {
+                                        return (
+                                            <li><a href={`#${section.title}`}>{section.title}</a></li>
+                                        );
+                                    })}
                                 </ul>
                             </div>
                         </section>
