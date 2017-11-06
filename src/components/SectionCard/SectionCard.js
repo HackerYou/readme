@@ -13,10 +13,10 @@ const SectionCard = ({ title, id, lessons, removeSection }) => {
                     }
                 >
                     <i className="chalk-remove red" />Remove Section
-                                            </a>
+                </a>
             </header>
             <div className="card">
-                <ol>
+                <ol key={id}>
                     {lessons.map((item) => {
                         return (
                             <li className="lessonRow" key={item._id}>
