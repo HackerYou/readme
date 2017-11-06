@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import SectionCard from '../SectionCard/SectionCard';
+
 class EditCourseTemplates extends React.Component {
     constructor() {
         super();
@@ -67,45 +69,12 @@ class EditCourseTemplates extends React.Component {
                         </li>
                         {sections.map((section) => {
                             return (
-                                <li className="lessonGroup" key={section._id}>
-                                    <header className="lessonGroupTop">
-                                        <h3 id={section.title}>{section.title}</h3>
-                                        <a
-                                            className="deleteSection"
-                                            onClick={
-                                                e => this.removeSection(e, section._id)
-                                            }
-                                        >
-                                            <i className="chalk-remove red" />Remove Section
-                                        </a>
-                                    </header>
-                                    <div className="card">
-                                        <ol>
-                                            {section.lessons.map((item) => {
-                                                return (
-                                                    <li className="lessonRow" key={item._id}>
-                                                        <a href="" className="lessonInfo">
-                                                            <p className="lessonTitle">
-                                                                {item.title}
-                                                            </p>
-                                                        </a>
-                                                        <div className="lessonMeta">
-                                                            <span>
-                                                                <a href="">view</a>
-                                                                <a href="">|edit</a>
-                                                            </span>
-                                                        </div>
-                                                    </li>
-                                                );
-                                            })}
-                                        </ol>
-                                        <ol>
-                                            <li className="new-lessonRow">
-                                                <p className="lessonTitle">+ Add new lesson</p>
-                                            </li>
-                                        </ol>
-                                    </div>
-                                </li>
+                                <SectionCard
+                                    title={section.title}
+                                    id={section._id}
+                                    lessons={section.lessons}
+                                    removeSection={this.removeSection}
+                                />
                             );
                         })}
                     </ol>
@@ -116,7 +85,7 @@ class EditCourseTemplates extends React.Component {
                                 <ul className="topicList">
                                     {sections.map((section) => {
                                         return (
-                                            <li><a href={`#${section.title}`}>{section.title}</a></li>
+                                            <li key={section._id}><a href={`#${section.title}`}>{section.title}</a></li>
                                         );
                                     })}
                                 </ul>
