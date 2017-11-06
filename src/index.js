@@ -28,7 +28,7 @@ import MediaContainer from './components/Media/MediaContainer';
 import CourseTemplatesContainer from './components/CourseTemplates/CourseTemplatesContainer';
 import Footer from './components/Footer/Footer';
 import IssuesContainer from './components/Issues/IssuesContainer';
-import EditCourseTemplates from './components/EditCourseTemplates/EditCourseTemplates';
+import EditCourseTemplatesContainer from './components/EditCourseTemplates/EditCourseTemplatesContainer';
 
 import './styles/style.scss';
 
@@ -84,7 +84,7 @@ const App = () => (
                         />
                         <PrivateRoute
                             path="/course-templates/:template_id/edit"
-                            component={props => <EditCourseTemplates {...props} />}
+                            component={props => <EditCourseTemplatesContainer {...props} />}
                         />
                         <PrivateRoute
                             path="/course-templates"

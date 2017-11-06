@@ -38,10 +38,16 @@ class CourseCard extends React.Component {
     }
 }
 
+CourseCard.defaultProps = {
+    title: '',
+    instructor: '',
+    term: '',
+};
+
 CourseCard.propTypes = {
-    title: PropTypes.string.isRequired,
-    instructor: PropTypes.string.isRequired,
-    term: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    instructor: PropTypes.string,
+    term: PropTypes.string,
     classroomId: PropTypes.string.isRequired,
 };
 

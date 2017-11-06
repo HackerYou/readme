@@ -49,3 +49,24 @@ export const createTemplate = (course) => {
         body: JSON.stringify(course),
     });
 };
+
+export const createSection = (data, courseId) => {
+    return fetch(`${config.getApiUrl()}/course/${courseId}/section`, {
+        method: 'POST',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+};
+
+export const removeSection = (courseId, sectionId) => {
+    return fetch(`${config.getApiUrl()}/course/${courseId}/section/${sectionId}`, {
+        method: 'DELETE',
+        headers: {
+            'x-access-token': config.getToken(),
+            'Content-Type': 'application/json',
+        },
+    });
+};

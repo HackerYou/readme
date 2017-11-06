@@ -47,17 +47,8 @@ Classroom.propTypes = {
         instructor: PropTypes.bool.isRequired,
     }).isRequired,
     classroom: PropTypes.shape({
-    //     _id: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         sections: PropTypes.arrayOf(PropTypes.object).isRequired,
-    //     template: PropTypes.bool.isRequired,
-    //     term: PropTypes.string.isRequired,
-    //     start_date: PropTypes.number.isRequired,
-    //     end_date: PropTypes.number.isRequired,
-    //     instructor: PropTypes.string.isRequired,
-    //     description: PropTypes.string.isRequired,
-    //     created_at: PropTypes.number.isRequired,
-    //     updated_at: PropTypes.number.isRequired,
     }).isRequired,
     match: PropTypes.shape({
         params: PropTypes.shape({

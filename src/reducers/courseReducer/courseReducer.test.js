@@ -7,7 +7,9 @@ describe('course reducer', () => {
     it('should return the initial state', () => {
         expect(courseReducer(undefined, {})).toEqual(
             {
-                courses: [],
+                courses: {
+                    sections: [],
+                },
                 templates: [],
             }
         )
@@ -15,7 +17,9 @@ describe('course reducer', () => {
 
     it('should handle UPDATE_COURSES', () => {
         const courses = {
-            courses: [],
+            courses: {
+                sections: [],
+            },
         }
         expect(
             courseReducer({}, {

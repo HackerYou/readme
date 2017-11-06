@@ -11,7 +11,7 @@ class Dashboard extends React.Component {
         getCourses();
     }
     render() {
-        const { courses } = this.props.course;
+        const courses = this.props.courses;
         return (
             <div className="container full classroom-container">
                 {isAdmin(this.props.user) && <AdminPanel />}
@@ -37,9 +37,7 @@ class Dashboard extends React.Component {
 }
 
 Dashboard.propTypes = {
-    course: PropTypes.shape({
-        courses: PropTypes.arrayOf(PropTypes.object).isRequired,
-    }).isRequired,
+    courses: PropTypes.arrayOf(PropTypes.object).isRequired,
     user: PropTypes.shape({
         admin: PropTypes.bool.isRequired,
     }).isRequired,

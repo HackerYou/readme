@@ -3,6 +3,7 @@ import { routerReducer as router } from 'react-router-redux';
 
 import auth from './authReducer/authReducer';
 import course from './courseReducer/courseReducer';
+import courses from './coursesReducer/coursesReducer';
 import classroom from './classroomReducer/classroomReducer';
 import user from './userReducer/userReducer';
 import lesson from './lessonReducer/lessonReducer';
@@ -18,6 +19,7 @@ const rootReducer =
     combineReducers({
         auth,
         course,
+        courses,
         classroom,
         user,
         lesson,

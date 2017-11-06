@@ -37,10 +37,11 @@ section.templateWrap {
 		/*margin-bottom: 0;*/
 		max-width: 70%;
 	}
-	p.deleteSection {
+	a.deleteSection {
 		font-size: 1.3rem;
 		margin: 0 0 0 1rem;
 		cursor: pointer;
+		text-decoration: none;
 	}
 }
 
