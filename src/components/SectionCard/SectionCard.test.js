@@ -13,5 +13,7 @@ test('It calls the function that gets passed in as a prop to remove section on c
   }
 
   const sectionCard = shallow(<SectionCard {...props} removeSection={mockOnClick} />);
-  sectionCard.find('.deleteSection').simulate('click', { target: { value: 'Removes section' } }); 
+  sectionCard.find('.deleteSection').simulate('click', { target: { value: 'Removes section' } });
+
+  expect(mockOnClick).toHaveBeenCalled();
 });
