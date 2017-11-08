@@ -82,7 +82,8 @@ class ManageClassroom extends React.Component {
     }
     render() {
         const { users } = this.props.users;
-        const { templates, courses } = this.props.course;
+        const { templates } = this.props.course;
+        const { courses } = this.props;
         return (<div className="container">
             <header className="topContent">
                 <Link className="linkBtn" to="/dashboard">
@@ -199,8 +200,8 @@ ManageClassroom.propTypes = {
     }).isRequired,
     course: PropTypes.shape({
         templates: PropTypes.arrayOf(PropTypes.object).isRequired,
-        courses: PropTypes.arrayOf(PropTypes.object).isRequired,
     }).isRequired,
+    courses: PropTypes.arrayOf(PropTypes.object).isRequired,
     actions: PropTypes.shape({
         broadcast: PropTypes.func.isRequired,
         getTemplates: PropTypes.func.isRequired,
