@@ -15,7 +15,7 @@ describe('async actions', () => {
       nock.cleanAll();
   })
 
-  it('creates a UPDATE_CLASSROOMS action after templates are retrieved', () => {
+  it('creates a UPDATE_TEMPLATES action after templates are retrieved', () => {
     nock(`${config.getApiUrl()}`)
         .get('/course/template')
         .reply(200, {
@@ -26,14 +26,13 @@ describe('async actions', () => {
                 type: types.UPDATE_TEMPLATES,
                 templates: [],
             }
-
         ];
         const store = mockStore({ courses: [] });
         return store.dispatch(actions.getTemplates()).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
         });   
   });
-  it('creates a UPDATE_CLASSROOMS action after classrooms are retrieved', () => {
+  it('creates a UPDATE_TEMPLATES action after classrooms are retrieved', () => {
         nock(`${config.getApiUrl()}`)
         .get('/course')
         .reply(200, {
