@@ -51,4 +51,41 @@ describe('async actions', () => {
         });
   
     });
+    it('creates an UPDATE_COURSES action after new section is created', () => {
+        nock(`${config.getApiUrl()}`)
+        .post(`/course/100/section`, {
+            title: 'section title',
+        })
+        .reply(200, {
+            course: { 
+                section: [],
+            } 
+        },)
+
+        const expectedActions = [
+            {
+                type: types.UPDATE_COURSES,
+                courses: {
+                    section: [],
+                },
+            },
+            {
+                type: 'LOADING_SUCCESS'
+            },
+            {
+                broadcastType: 'success',
+                message: 'User successfully created.',
+                type: 'BROADCAST_MESSAGE'
+            },
+
+        ]
+        const store = mockStore({ courses: {
+            section: [],
+        } });
+        
+
+        return store.dispatch(actions.createNewSection({title: 'section title'}, 100)).then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
 })
