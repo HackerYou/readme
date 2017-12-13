@@ -81,7 +81,10 @@ class ManageClassroom extends React.Component {
         });
     }
     render() {
-        const { users } = this.props.users;
+        let { instructors } = this.props.users;
+        instructors = instructors.filter((person) => {
+            return person.instructor;
+        });
         const { templates } = this.props.course;
         const { courses } = this.props;
         return (<div className="container">
@@ -146,7 +149,7 @@ class ManageClassroom extends React.Component {
                     </div>
                     <div className="fieldRow">
                         <Select
-                            options={users.map(i => ({ name: `${i.firstName} ${i.lastName}`, _id: i._id }))}
+                            options={instructors.map(i => ({ name: `${i.firstName} ${i.lastName}`, _id: i._id }))}
                             name="instructor"
                             labelText="Instructor"
                             chosenKey="_id"
@@ -196,7 +199,7 @@ class ManageClassroom extends React.Component {
 
 ManageClassroom.propTypes = {
     users: PropTypes.shape({
-        users: PropTypes.array.isRequired,
+        instructors: PropTypes.array.isRequired,
     }).isRequired,
     course: PropTypes.shape({
         templates: PropTypes.arrayOf(PropTypes.object).isRequired,
