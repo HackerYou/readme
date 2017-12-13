@@ -83,7 +83,7 @@ class ManageClassroom extends React.Component {
     render() {
         let { instructors } = this.props.users;
         instructors = instructors.filter((person) => {
-            return person.instructor === true;
+            return person.instructor;
         });
         const { templates } = this.props.course;
         const { courses } = this.props;
