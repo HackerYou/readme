@@ -60,7 +60,7 @@ describe('async actions', () => {
             course: { 
                 section: [],
             } 
-        },)
+        })
 
         const expectedActions = [
             {
