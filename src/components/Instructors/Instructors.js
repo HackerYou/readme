@@ -3,12 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 class Instructors extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            instructors: [],
-        };
-    }
     componentDidMount() {
         const { getInstructors } = this.props.actions;
         getInstructors();
